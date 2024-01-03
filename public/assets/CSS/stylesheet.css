@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: Arial;
+    list-style-type: none;
 }
 html{
     height: 100%;
@@ -13,7 +14,7 @@ nav{
     align-items: center;
     padding: 1%;
     color: #fff;
-    background-image: linear-gradient(navy, gray);
+    background-color: black;
 }
 nav a {
 color: white;
@@ -24,4 +25,20 @@ text-decoration: underline;
 }
 .nav-body{
     background-image: linear-gradient(navy, gray);
+}
+.center{
+    text-align: center;
+}
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* Footer Styles */
+.footer-main{
+    padding-left: 5%;
+    padding-top: 2%;
 }
