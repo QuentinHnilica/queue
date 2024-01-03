@@ -1,0 +1,25 @@
+.pricing-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.pricing-header h3 {
+    font-size: x-large;
+    font-weight: bolder;
+}
+.pricing-main{
+
+}
+.price-block{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 2%;
+    text-align: center;
+}
+.price-container{
+    border: 2px solid black;
+    padding: auto;
+}
