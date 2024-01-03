@@ -14,6 +14,14 @@ router.get("/contact", async (req, res) => {
   res.render("contact");
 });
 
+router.get("/pricing", async (req, res) => {
+  res.render("pricing");
+});
+
+router.get("/services", async (req, res) => {
+  res.render("services");
+});
+
 router.post("/contact/submit", async (req, res) => {
   try {
     console.log(req.body);
