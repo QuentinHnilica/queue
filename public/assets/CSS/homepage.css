@@ -1,10 +1,10 @@
 .home-box{
     margin-top: 2%;
-    margin-left: 5%;
-    margin-right: 5%;
+    /* margin-left: 5%; */
+    /* margin-right: 5%; */
 }
 .home-about{
-    background-image: url(../imgs/port-back.png);
+    background-image: url(../imgs/about-us.png);
     background-repeat: no-repeat;
     background-size: auto;
     width: 100%;
