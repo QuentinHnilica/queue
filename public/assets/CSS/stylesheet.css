@@ -8,6 +8,7 @@
 :root{
     --text-primary: #df8327;
     --text-primary-dark: #b7691b;
+    --text-primary-light: #eaae73;
 }
 html{
     height: 100%;
@@ -42,6 +43,8 @@ text-decoration: underline;
     text-decoration: none;
 }
 .nav-phone-bot{
+
+}
 
 .btn-primary{
     background-color: var(--text-primary);
@@ -82,3 +85,8 @@ text-decoration: underline;
 .text-primary{
     color: var(--text-primary) !important;
 }
+.icon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
