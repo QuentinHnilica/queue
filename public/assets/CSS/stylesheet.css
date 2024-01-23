@@ -97,3 +97,38 @@ text-decoration: underline;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
   }
+
+
+/* Service Page */
+
+.service-header{
+    text-align: center;
+}
+.service-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.service-title{
+    display: flex;
+    justify-content: center;
+}
+.service-body{
+    padding-top: 2%;
+}
+.service-footer{
+    text-align: center;
+    padding-top: 2%;
+}
+@media (max-width: 767px) {
+    .service-flex div{
+        width: 100%;
+        text-align: center;
+    }
+    .service-title{
+        background-color: white;
+    }
+}
