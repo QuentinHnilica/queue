@@ -1,5 +1,5 @@
 .home-box{
-    margin-top: 2%;
+    /* margin-top: 2%; */
     /* margin-left: 5%; */
     /* margin-right: 5%; */
 }
@@ -19,7 +19,73 @@
     left:0;
     width: 35%;
 }
+.about-us-text h4{
+    font-size: 64px;
+    font-weight: bolder;
+}
+.home-header{
+    text-align: center;
+    background-image: url('/assets/imgs/real-home-back-2.png');
+    color: white;
+}
 
+.home-footer{
+    text-align: center;
+    background-image: url('/assets/imgs/real-home-back-2.png');
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 300px;
+
+}
+.home-foot-text{
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+}
+@media (max-width: 767px) {
+    .home-header img{
+        width: 100%;
+    }
+    .home-bullet-footer img{
+        display: none;
+    }
+    .home-bullets div{
+        width: 100% !important;
+    }
+    .home-bullet-footer div{
+        width: 100% !important;
+    }
+    .home-footer div{
+        width: 100% !important;
+    }
+    .home-about-text-footer{
+        padding-bottom: 5%;
+    }
+}
+.home-bullets{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 2%;
+}
+.home-bullets div{
+    width: 25%;
+}
+
+.home-bullet-footer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 2%;
+}
+.home-bullet-footer div{
+    width: 25%;
+}
 .product-item{
     width: 40%;
 }
@@ -28,6 +94,13 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     flex-direction: row;
+}
+.products{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    height: 100%;
 }
 @media (max-width: 767px) {
     .product-item {
@@ -189,4 +262,25 @@
 
 .product-button:hover .item-text,.product-button:active .item-text,.product-button:focus .item-text {
     color: #000000
+}
+
+.btn-home{
+    background-color: var(--text-primary);
+    border: black solid 3px;
+    width: 500px;
+    height: 100px;
+    cursor: pointer;
+    display: inline-block;
+    font: bold 36px/100% Arial, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* -webkit-text-stroke: 2px black;  */
+}
+.btn-home:hover{
+    background-color: black;
+    border: black solid 3px;
+    color: var(--text-primary);
+    /* -webkit-text-stroke: 2px black;  */
+
 }

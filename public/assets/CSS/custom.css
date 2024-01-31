@@ -4,10 +4,17 @@
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
+
+    background-image: url('/assets/imgs/real-home-back-2.png');
+    color:white;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 .pricing-header h3 {
     font-size: x-large;
     font-weight: bolder;
+    color: var(--text-primary);
 }
 .pricing-main{
     padding-left: 10%;
@@ -24,7 +31,33 @@
     border: 2px solid black;
     padding: auto;
     width: 33%;
-    border-radius: 5%;
+    border-radius: 2%;
+    padding-bottom: 2%;
+
+    
+}
+
+.price-container h5{
+    font-size: 52px;
+    color: var(--text-primary);
+    font-weight: bolder;
+}
+
+
+
+@media (max-width: 767px) {
+    .price-container{
+        width: 100%;
+    }
+    section#price-compare thead th {
+        position: sticky;
+        top: 0px !important;
+        z-index: 5;
+        background-color: #fff
+    }
+}
+.mid-price{
+    background-color: lightgray;
 }
 table{
     border-collapse: collapse;
@@ -139,7 +172,6 @@ section#price-compare tr>:nth-child(2),section#price-compare tr>:nth-child(3),se
 }
 
 section#price-compare thead th {
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 5;
@@ -213,7 +245,7 @@ section#price-compare tbody .queue-svg-icon {
 }
 
 section#price-compare strong.highlight,section#plans strong.highlight {
-    color: #39bb60;
+    color: var(--text-primary-light);
     -webkit-filter: brightness(85%);
     filter: brightness(85%)
 }
@@ -303,3 +335,7 @@ section#price-compare .disclaimers {
         padding-bottom: .25rem
     }
 }
+
+
+
+

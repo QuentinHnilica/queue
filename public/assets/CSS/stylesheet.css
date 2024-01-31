@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;
     list-style-type: none;
 }
 :root{
@@ -28,6 +28,9 @@ text-decoration: none;
 font-size: 25px;
 text-decoration: underline;
 }
+nav a:hover{
+    text-decoration: underline;
+}
 .nav-link{
     color:black;
 }
@@ -50,7 +53,7 @@ text-decoration: underline;
     text-decoration: none;
 }
 .nav-phone-bot{
-
+    
 }
 
 .btn-primary{
@@ -96,7 +99,30 @@ text-decoration: underline;
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-  }
+}
+
+@media (max-width: 767px) {
+    .footer-row{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .footer-row div{
+        width: 100%;
+        margin:0;
+        text-align: center;
+    }
+    .footer-row h5{
+        display: none;
+    }
+    .navbar-brand img{
+        width: 50%;
+    }
+    .footer-li li:hover{
+        background-color: var(--text-primary);
+        color: black;
+    }
+
+}
 
 
 /* Service Page */
@@ -131,4 +157,18 @@ text-decoration: underline;
     .service-title{
         background-color: white;
     }
+}
+
+
+
+/* Contact Form */
+
+.contact-text{
+    background-image: url('/assets/imgs/real-home-back-2.png');
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    font-weight: bolder;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
