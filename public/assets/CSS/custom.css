@@ -12,7 +12,7 @@
     padding-bottom: 2%;
 }
 .pricing-header h3 {
-    font-size: x-large;
+    font-size: 48px;
     font-weight: bolder;
     color: var(--text-primary);
 }

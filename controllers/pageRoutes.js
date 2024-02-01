@@ -22,6 +22,22 @@ router.get("/services", async (req, res) => {
   res.render("services");
 });
 
+router.get("/seo", async (req, res) => {
+  res.render("seofeatures");
+});
+
+router.get("/email-features", async (req, res) => {
+  res.render("emailfeatures");
+});
+
+router.get("/hosting", async (req, res) => {
+  res.render("hostingfeatures");
+});
+
+router.get("/web-features", async (req, res) => {
+  res.render("webfeatures");
+});
+
 router.post("/contact/submit", async (req, res) => {
   try {
     console.log(req.body);
