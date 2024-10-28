@@ -48,4 +48,19 @@ router.post("/contact/submit", async (req, res) => {
   }
 });
 
+// Disclosure Routes
+router.get("/privacy", async (req, res) => {
+  res.render("privacy");
+});
+
+router.get("/policy", async (req, res) => {
+  res.render("policy");
+});
+router.get("/terms", async (req, res) => {
+  res.render("terms");
+});
+router.get("/accessibility", async (req, res) => {
+  res.render("accessibility");
+});
+
 module.exports = router;
