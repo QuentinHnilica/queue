@@ -1,0 +1,52 @@
+<section>
+    <div class="contact-text">
+        Enter your info, let's get in touch!
+    </div>
+    <div class="container" style="padding-top: 5%;">
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" aria-required="true">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <div id="email-text" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" aria-required="true">Phone</label>
+                    <input type="text" class="form-control" id="phone" aria-describedby="phone-number">
+                </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label" aria-required="true">Message</label>
+            <input type="text" class="form-control" id="message"
+                placeholder="Please Include Preferred Package if Applicable" aria-describedby="message">
+        </div>
+
+
+        <div class="q-flex-center">
+            <button type="submit" class="btn btn-primary btn-lg center" id="Sub">Submit</button>
+        </div>
+
+        </form>
+    </div>
+
+
+    </div>
+</section>
+
+
+<script>
+
+
+    document.getElementById("Sub").addEventListener('click', () => {
+        document.getElementById('contact-form').innerHTML = '<h3>Thank you for reaching out, a support agent will be in touch shortly!</h3>'
+
+    })
+</script>
+
+
+
+<script src="assets/js/contact.js"></script>
