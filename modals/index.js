@@ -1,3 +1,4 @@
 const Message = require('./Message')
+const User = require("../modals/user");
 
-module.exports = {Message}
+module.exports = {Message,User}

@@ -1,10 +1,10 @@
 <section>
     <div class="contact-text">
-        Enter your info, lets get in touch!
+        Enter your info, let's get in touch!
     </div>
     <div class="container" style="padding-top: 5%;">
         <div class="contact-form">
-            <form>
+            <form id="contact-form">
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name">
@@ -18,26 +18,34 @@
                     <label for="exampleInputEmail1" class="form-label" aria-required="true">Phone</label>
                     <input type="text" class="form-control" id="phone" aria-describedby="phone-number">
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" aria-required="true">Message</label>
-                    <input type="text" class="form-control" id="message" aria-describedby="message">
-                </div>
-            
-                {{!-- <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> --}}
-                <div class="q-flex-center">
-                    <button type="submit" class="btn btn-primary btn-lg center" id="Sub">Submit</button>
-                </div>
-            
-            </form>
         </div>
-        
-      
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label" aria-required="true">Message</label>
+            <input type="text" class="form-control" id="message"
+                placeholder="Please Include Preferred Package if Applicable" aria-describedby="message">
+        </div>
+
+
+        <div class="q-flex-center">
+            <button type="submit" class="btn btn-primary btn-lg center" id="Sub">Submit</button>
+        </div>
+
+        </form>
+    </div>
+
+
     </div>
 </section>
 
+
+<script>
+
+
+    document.getElementById("Sub").addEventListener('click', () => {
+        document.getElementById('contact-form').innerHTML = '<h3>Thank you for reaching out, a support agent will be in touch shortly!</h3>'
+
+    })
+</script>
 
 
 

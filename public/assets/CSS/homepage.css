@@ -24,7 +24,7 @@
     font-weight: bolder;
 }
 .home-header{
-    text-align: center;
+    text-align: center; 
     background-image: url('/assets/imgs/real-home-back-2.png');
     color: white;
 }
@@ -63,6 +63,12 @@
     }
     .home-about-text-footer{
         padding-bottom: 5%;
+    }
+    .btn-home{
+        width: 100% !important;
+    }
+    .row{
+        margin: 0 !important;
     }
 }
 .home-bullets{

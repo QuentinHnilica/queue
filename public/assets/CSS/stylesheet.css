@@ -29,11 +29,9 @@ nav{
     background-color: black;
 }
 nav a {
-color: white;
 font-weight: bold;
 text-decoration: none;
 font-size: 25px;
-text-decoration: underline;
 }
 nav a:hover{
     text-decoration: underline;
@@ -61,7 +59,7 @@ nav a:hover{
 }
 .nav-phone:hover{
     color: var(--text-primary-dark);
-    text-decoration: none;
+    text-decoration: none; 
 }
 .nav-phone-bot{
     
@@ -85,6 +83,7 @@ nav a:hover{
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
 
 /* Footer Styles */
 .footer-main{
@@ -134,6 +133,22 @@ nav a:hover{
     }
 
 }
+
+
+.footer-privacy{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .footer-privacy span{
+    padding-left: .5rem;
+  }
+  .footer-bottom{
+    justify-content: space-between;
+    flex-direction: row;
+  
+  }
 
 
 /* Service Page */
