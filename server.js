@@ -6,7 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, UPLOADSDIR } = process.env;
+const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, UPLOADSDIR, VIEWSFOLDER } = process.env;
 const app = express();
 
 const sequelize = require("./config/connection");
@@ -98,7 +98,7 @@ app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(VIEWSFOLDER));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
