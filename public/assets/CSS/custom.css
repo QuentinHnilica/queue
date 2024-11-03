@@ -20,21 +20,24 @@
     padding-left: 10%;
     padding-right: 10%;
 }
-.price-block{
+.price-block {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding-top: 2%;
     text-align: center;
+    align-items: stretch; /* Stretch all children to have the same height */
 }
-.price-container{
-    border: 2px solid black;
-    padding: auto;
-    width: 33%;
-    border-radius: 2%;
-    padding-bottom: 2%;
 
-    
+.price-container {
+    border: 2px solid black;
+    width: 30%; /* Slightly reduce the width to accommodate padding and spacing */
+    border-radius: 2%;
+    padding: 20px; /* Set padding for better layout */
+    display: flex; /* To ensure content aligns */
+    flex-direction: column; /* Make sure elements are in a vertical flow */
+    justify-content: space-between; /* Spread content evenly */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
 .price-container h5{
