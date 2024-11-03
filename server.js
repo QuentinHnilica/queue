@@ -98,7 +98,7 @@ app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-app.set("views", path.join(VIEWSFOLDER));
+app.use(express.static(VIEWSFOLDER));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
