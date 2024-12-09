@@ -1,0 +1,164 @@
+<div class="blog-page">
+    <div class="title">
+        <img src="{{blogPost.banner}}" alt="{{blogPost.subject}}-Banner" class="banner" />
+        <h1 class="blog-title">{{blogPost.subject}}</h1>
+        <h3 class="blog-author">By: {{blogPost.username}}</h3>
+        <h5 class="blog-date">{{blogPost.date}}</h5>
+        <div class="social-share">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{blogPostUrl}}" target="_blank"
+                class="share-button facebook">Share on Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url={{blogPostUrl}}&text={{blogPost.subject}}" target="_blank"
+                class="share-button twitter">Share on Twitter</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{blogPostUrl}}&title={{blogPost.subject}}"
+                target="_blank" class="share-button linkedin">Share on LinkedIn</a>
+        </div>
+
+
+    </div>
+    <div class="blog-body">
+        {{{blogPost.PostContent}}}
+    </div>
+</div>
+
+<style>
+    /* General Styling for the Blog Page */
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-page {
+        max-width: 1250px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Title Section Styling */
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .banner {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+        object-fit: cover;
+    }
+
+    .blog-title {
+        font-size: 2.5em;
+        color: #333;
+        margin: 20px 0 10px;
+    }
+
+    .blog-author {
+        font-size: 1.2em;
+        color: #666;
+        margin: 5px 0;
+    }
+
+    .blog-date {
+        font-size: 1em;
+        color: #999;
+        margin-bottom: 20px;
+    }
+
+    /* Blog Body Styling */
+    .blog-body {
+        text-align: left;
+        padding: 20px 10px;
+        font-size: 1.1em;
+        line-height: 1.8;
+        color: #444;
+    }
+
+    .blog-body img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-body p {
+        margin-bottom: 20px;
+    }
+
+    .blog-body h2,
+    .blog-body h3 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    /* Links Styling */
+    .blog-body a {
+        color: #007bff;
+        text-decoration: none;
+        border-bottom: 1px dotted #007bff;
+    }
+
+    .blog-body a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        .blog-page {
+            margin: 20px;
+            padding: 15px;
+        }
+
+        .blog-title {
+            font-size: 2em;
+        }
+
+        .blog-author,
+        .blog-date {
+            font-size: 1em;
+        }
+
+        .blog-body {
+            font-size: 1em;
+            padding: 15px 5px;
+        }
+    }
+
+    .social-share {
+        margin-top: 20px;
+    }
+
+    .share-button {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 4px;
+    }
+
+    .facebook {
+        background-color: #3b5998;
+    }
+
+    .twitter {
+        background-color: #1da1f2;
+    }
+
+    .linkedin {
+        background-color: #0077b5;
+    }
+
+    .share-button:hover {
+        opacity: 0.8;
+    }
+</style>

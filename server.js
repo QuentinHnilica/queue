@@ -7,6 +7,7 @@ const path = require("path");
 const fs = require("fs");
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, UPLOADSDIR, VIEWSFOLDER } = process.env;
+const fetchMetaData = require('./controllers/Middleware/metaDataMiddleware')
 const app = express();
 
 const sequelize = require("./config/connection");
@@ -86,7 +87,7 @@ const hbs = exphbs.create({
 
 const sess = {
   secret: "Super secret secret",
-  cookie: { secure: false }, //change to true when going live
+  cookie: {}, //change to true when going live
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -99,6 +100,7 @@ app.use(session(sess));
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.use(express.static(VIEWSFOLDER));
+app.use(fetchMetaData)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
@@ -300,10 +302,10 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
 
 
 app.use((req, res, next) => {
-  
-  res.status(404).render('notFound');
+  res.status(404).render("notFound");
 });
 
-
-app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+});
 

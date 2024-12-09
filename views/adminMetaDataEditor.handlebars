@@ -1,0 +1,187 @@
+<div class="metaBody">
+    <div class="meta-editor">
+        <h2>Meta Information Editor</h2>
+        <form id="metaForm">
+            <label for="page">Select Page:</label>
+            <select id="page" name="page">
+                <!-- Dynamically populated options, excluding pages with "Admin" in their name -->
+                {{#each pages}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+
+            <label for="title">Page Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter new title">
+
+            <label for="keywords">Keywords:</label>
+            <input type="text" id="keywords" name="keywords" placeholder="Enter keywords (comma-separated)">
+
+            <button type="button" id="saveMeta">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    var metaData
+    var selection = document.getElementById('page')
+
+    const GetAllData = async () => {
+
+        // Replace this with the correct endpoint for updating meta data
+        fetch('/admin/allMetaDataGet', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+
+                console.log(data)
+                metaData = data
+                DisplayCurrPage()
+
+            })
+            .catch(error => console.error('Error:', error));
+
+    }
+
+    function DisplayCurrPage() {
+
+        var currSelected = selection.options[selection.selectedIndex].value
+        if (metaData != null) {
+            var found = false
+            for (i = 0; i < metaData.length; i++) {
+                if (metaData[i].pageName == currSelected) {
+                    document.getElementById('title').value = metaData[i].title;
+                    document.getElementById('keywords').value = metaData[i].Keywords;
+                    found = true
+                    break
+                }
+            }
+
+            if (!found) {
+                document.getElementById('title').value = '';
+                document.getElementById('keywords').value = '';
+            }
+        }
+    }
+
+
+
+    document.getElementById('saveMeta').addEventListener('click', () => {
+        const page = document.getElementById('page').value;
+        const title = document.getElementById('title').value;
+        const keywords = document.getElementById('keywords').value;
+
+        console.log(page, title, keywords)
+        if (metaData != null) {
+            var found = false
+            for (i = 0; i < metaData.length; i++) {
+                if (metaData[i].pageName == page) {
+                    found = true
+                    fetch('/admin/update-meta', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ page, title, keywords }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+
+                            alert('Meta information updated successfully!');
+
+                        })
+                        .catch(error => console.error('Error:', error));
+                }
+            }
+
+            if (!found) {
+                // Replace this with the correct endpoint for updating meta data
+                fetch('/admin/addNewMeta', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ page, title, keywords }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.pageName == page) {
+                            alert('Meta information updated successfully!');
+                        } else {
+                            alert('Failed to update meta information.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+
+
+    });
+
+    selection.addEventListener('change', () => {
+        DisplayCurrPage()
+    })
+    GetAllData()
+</script>
+
+<style>
+    .metaBody {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+    }
+
+    .meta-editor {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+    }
+
+    h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin: 0.5rem 0 0.2rem;
+        font-weight: bold;
+    }
+
+    select,
+    input[type="text"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #28a745;
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+</style>

@@ -97,4 +97,15 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.use((req, res, next) => {
+  const isLoggedIn = req.session.logged_in ? true : false;
+  const currentPath = req.path;
+
+  // Pass variables to templates
+  res.locals.isLoggedIn = isLoggedIn;
+  res.locals.currentPath = currentPath;
+
+  next(); // Proceed to the next middleware or route
+});
+
 module.exports = router;

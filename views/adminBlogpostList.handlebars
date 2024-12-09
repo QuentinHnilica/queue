@@ -1,0 +1,99 @@
+{{!-- adminBlogList.handlebars --}}
+<div class="admin-blog-list">
+  <h1>All Blog Posts</h1>
+  
+  <div class="blog-actions">
+    <a href="/admin/blogTool" class="create-button">Create New Blog Post</a>
+  </div>
+
+  <table class="blog-table">
+    <thead>
+      <tr>
+        <th>Post ID</th>
+        <th>Username</th>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each blogPosts}}
+      <tr>
+        <td>{{this.PostId}}</td>
+        <td>{{this.username}}</td>
+        <td>{{this.subject}}</td>
+        <td>{{this.date}}</td>
+        <td><a href="/admin/blogpost/{{this.PostId}}" class="edit-button">Edit</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+
+
+<style>
+  .admin-blog-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .blog-actions {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .create-button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #28a745;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  .create-button:hover {
+    background-color: #218838;
+  }
+
+  .blog-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .blog-table th, .blog-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .blog-table th {
+    background-color: #f0f0f0;
+  }
+
+  .edit-button {
+    text-decoration: none;
+    color: #007bff;
+    background-color: #e9ecef;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  .edit-button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+</style>
+
+

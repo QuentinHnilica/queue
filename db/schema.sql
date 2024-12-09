@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS portfolio_DB;
-CREATE DATABASE portfolio_DB;
+DROP DATABASE IF EXISTS queue_DB;
+CREATE DATABASE queue_DB;
 
-use portfolio_DB;
+use queue_DB;
