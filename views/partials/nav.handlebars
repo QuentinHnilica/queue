@@ -1,38 +1,57 @@
-<nav class="navbar navbar-dark bg-light navbar-expand-lg">
-        <div class="container-fluid" style="display: flex; justfiy-content: space-evenly;">
-            <div class="col-2 nav-logo"><a class="navbar-brand" href="/"><img src="/assets/imgs/queue-logo-large.png" width="100%">  </a>
-              
-            </div>
-            <button class="navbar-toggler" style="background-color: #df8327 !important;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            <div class="collapse navbar-collapse" id="navbarScroll" style="justify-content: space-evenly;">
-            <div>
-              
-                <ul class="nav" style="display:flex; justify-content:center">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/pricing">Prices</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/services">Services</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact Us</a>
-                  </li>
-                </ul>
-            </div>
-            <div class="">
-                <ul class="nav ">
-                  <li class="nav-item">
-                    <a class="nav-phone" aria-current="page" href="tel:5172922786">(517) 292-2786</a>
-                    <br>
-                    <a href="mailto:support@queuedevelop.com"><i class="fa fa-envelope-o"></i> Support</a>
-                  </li>
-                </ul>
-            </div>
-           </div>
-        </div>
-    </nav>
+<nav class="bg-gray-200">
+  <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center px-4 py-3">
+    <!-- Logo aligned left on desktop -->
+    <a href="/" class="self-center lg:self-start">
+      <img src="/assets/imgs/queue-logo-large.png" alt="Logo" class="w-full max-w-xs">
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      class="inline-block lg:hidden text-orange-600 bg-orange-300 hover:bg-orange-400 p-2 rounded focus:outline-none transition duration-300"
+      onclick="toggleMenu()">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+
+    <!-- Menu content centered on desktop, toggles on mobile -->
+    <div class="hidden w-full lg:flex lg:w-auto lg:flex-grow" id="menu">
+      <ul class="flex-grow mt-4 lg:mt-0 justify-center text-center lg:flex">
+        <li>
+          <a class="inline-block text-black hover:text-orange-500 px-2 py-2" href="/pricing">Prices</a>
+        </li>
+        <li>
+          <a class="inline-block text-black hover:text-orange-500 px-2 py-2" href="/services">Services</a>
+        </li>
+        <li>
+          <a class="inline-block text-black hover:text-orange-500 px-2 py-2" href="/about">About</a>
+        </li>
+        <li>
+          <a class="inline-block text-black hover:text-orange-500 px-2 py-2" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+
+
+    <!-- Contact links adjusted to not expand unnecessarily -->
+    <div class="lg:flex lg:flex-initial">
+      <ul class="list-reset items-center">
+        <li class="flex flex-col items-center">
+          <a class="block lg:inline-block text-primary hover:text-black px-4 py-2" href="tel:5172922786">(517)
+            292-2786</a>
+          <a href="mailto:support@queuedevelop.com"
+            class="block lg:inline-block text-primary hover:text-black px-4 py-2"><i class="fa fa-envelope-o"></i>
+            Support</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    // This will toggle the display of menu by adding or removing the 'hidden' class
+    menu.classList.toggle('hidden');
+  }
+</script>

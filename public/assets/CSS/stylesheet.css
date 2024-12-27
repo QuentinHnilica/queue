@@ -5,6 +5,9 @@
     font-family: 'Roboto', sans-serif;
     list-style-type: none;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 a{
     color: var(--text-primary);
     text-decoration:none
