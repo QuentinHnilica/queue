@@ -25,7 +25,7 @@
 
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-900">
 
   {{#if (includes currentPath "/admin")}}
   {{#if isLoggedIn }}
@@ -43,66 +43,78 @@
 
   {{{body}}}
 
-  <footer class="py-5 footer-main">
-    <div class="row footer-row">
-      <div class="col-2 align-self-center center">
-        <div class=""><a class="navbar-brand" href="/"><img src="assets/imgs/queue-logo-large.png" class="footer-logof"
-              width="100%"> </a></div>
+  <footer class="bg-gray-800 text-gray-300 py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Logo Section -->
+      <div class="flex flex-col items-center md:items-start">
+        <a href="/" class="mb-4">
+          <img src="assets/imgs/queue-logo-large.png" alt="Queue Development Logo" class="w-32">
+        </a>
+        <p class="text-sm text-gray-400">© 2024 Queue Development, LLC. All rights reserved.</p>
       </div>
 
-      <div class="col-2 offset-1">
-        <h5>Services</h5>
-        <ul class="nav flex-column footer-li">
-          <li class="nav-item mb-2"><a href="/web-features" class="nav-link p-0 text-muted">Website Design</a></li>
-          <li class="nav-item mb-2"><a href="/email-features" class="nav-link p-0 text-muted">Email Features</a></li>
-          <li class="nav-item mb-2"><a href="/hosting" class="nav-link p-0 text-muted">Hosting</a></li>
-          <li class="nav-item mb-2"><a href="/seo" class="nav-link p-0 text-muted">SEO</a></li>
+      <!-- Services Links -->
+      <div>
+        <h5 class="text-lg font-semibold text-df8327 mb-4">Services</h5>
+        <ul class="space-y-2">
+          <li><a href="/web-features" class="hover:text-df8327 transition">Website Design</a></li>
+          <li><a href="/email-features" class="hover:text-df8327 transition">Email Features</a></li>
+          <li><a href="/hosting" class="hover:text-df8327 transition">Hosting</a></li>
+          <li><a href="/seo" class="hover:text-df8327 transition">SEO</a></li>
         </ul>
       </div>
 
-      <div class="col-2">
-        <h5>Info</h5>
-        <ul class="nav flex-column footer-li">
-          <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-muted">About Us</a></li>
-          <li class="nav-item mb-2"><a href="/pricing" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="/services" class="nav-link p-0 text-muted">Services</a></li>
-          <li class="nav-item mb-2"><a href="/contact" class="nav-link p-0 text-muted">Contact</a></li>
+      <!-- Info Links -->
+      <div>
+        <h5 class="text-lg font-semibold text-df8327 mb-4">Info</h5>
+        <ul class="space-y-2">
+          <li><a href="/about" class="hover:text-df8327 transition">About Us</a></li>
+          <li><a href="/pricing" class="hover:text-df8327 transition">Pricing</a></li>
+          <li><a href="/services" class="hover:text-df8327 transition">Services</a></li>
+          <li><a href="/contact" class="hover:text-df8327 transition">Contact</a></li>
         </ul>
       </div>
 
-      <div class="col-4 offset-1">
-        <form>
-          <h4>Subscribe to our newsletter</h5>
-            <p>Monthly digest of whats new and exciting from us.</p>
-            <div class="d-flex w-100 gap-2">
-              <label for="newsletter1" class="visually-hidden">Email address</label>
-              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-              <button class="btn btn-primary" type="button">Subscribe</button>
-            </div>
+      <!-- Newsletter -->
+      <div>
+        <h5 class="text-lg font-semibold text-df8327 mb-4">Subscribe to our Newsletter</h5>
+        <p class="text-sm text-gray-400 mb-4">Monthly digest of what's new and exciting from us.</p>
+        <form class="flex flex-col sm:flex-row gap-2">
+          <input type="email" placeholder="Email address"
+            class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-df8327">
+          <button type="submit" class="bg-df8327 hover:bg-orange-600 text-white px-6 py-2 rounded-md transition">
+            Subscribe
+          </button>
         </form>
       </div>
     </div>
 
-    <div class="d-flex justify-content-around py-4 my-4 border-top">
-      <div class="footer-privacy">
-        <span>
-          <p><a href="/accessibility">accessibility</a> | </p>
-        </span>
-        <span>
-          <p><a href="/terms"> terms and conditions</a> | </p>
-        </span>
-        <span>
-          <p><a href="/privacy"> privacy statement</a> | </p>
-        </span>
-        <span>
-          <p><a href="/policy">Policy</a></p>
-        </span>
+    <!-- Footer Bottom Section -->
+    <div class="mt-8 border-t border-gray-700 pt-4">
+      <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
+        <div class="flex space-x-4">
+          <a href="/accessibility" class="hover:text-df8327 transition">Accessibility</a>
+          <span>|</span>
+          <a href="/terms" class="hover:text-df8327 transition">Terms and Conditions</a>
+          <span>|</span>
+          <a href="/privacy" class="hover:text-df8327 transition">Privacy Statement</a>
+          <span>|</span>
+          <a href="/policy" class="hover:text-df8327 transition">Policy</a>
+        </div>
       </div>
-      <p>© 2024 Queue-Development, LLC. All rights reserved.</p>
     </div>
-
-
   </footer>
+
+  <style>
+    .text-df8327 {
+      color: #df8327;
+    }
+
+    .bg-df8327 {
+      background-color: #df8327;
+    }
+  </style>
+
 
   {{!--
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
