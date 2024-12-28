@@ -1,44 +1,50 @@
-<div>
-    <div>
-
-        <div class="service-details-header">
-            <div class="col-4 align-self-center">
-                <h3>Website Hosting</h3>
-
-            </div>
-
-            <div class="col-4 align-self-center">
-                <p><i class="fa fa-check-circle"></i> Performance Optimization</p>
-                <p><i class="fa fa-check-circle"></i> Security Measures</p>
-                <p><i class="fa fa-check-circle"></i> Backup and Recovery</p>
-
-            </div>
-        </div>
-
-
-        <div class="service-details-paragraph">
-            <div class="col-5">
-                <img src="/assets/imgs/Hosting-Service-photo.png" alt="Hosting-Features" width="100%" />
-            </div>
-
-            <div class="col-5 align-self-center">
-                <p>
-                    At Queue-Development, we optimize server performance, speed, and bandwidth to ensure your website
-                    loads quickly, providing a better user experience for visitors.
-                    We implement robust security measures, including firewalls, regular backups, and malware scanning,
-                    to protect your website from cyber threats and data loss.
-                    In order to ensure a smooth update process we regularly backup your website data, offering a layer
-                    of protection against data loss.
-                </p>
-                <p>
-                    You can see all Email Features in our packages <a href="/pricing">here</a>
-                </p>
-            </div>
-        </div>
-
+<section class="bg-gray-50 py-12">
+    <!-- Service Header -->
+    <div class="text-center mb-8">
+        <h2 class="text-4xl font-bold text-gray-900">Website Hosting</h2>
+        <p class="text-lg text-gray-600 mt-4">
+            Reliable hosting solutions designed for speed, security, and peace of mind.
+        </p>
     </div>
-</div>
 
-<script>
-    document.getElementById('hostingfeatures').classList.add('active')
-</script>
+    <!-- Service Details -->
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6">
+        <!-- Image -->
+        <div class="flex justify-center">
+            <img src="/assets/imgs/Hosting-Service-photo.png" alt="Website Hosting" class="rounded-lg shadow-lg">
+        </div>
+
+        <!-- Text Content -->
+        <div>
+            <!-- Features List -->
+            <div class="mb-6">
+                <p class="flex items-center text-gray-700 text-lg mb-2">
+                    <i class="fa fa-check-circle text-indigo-500 mr-3"></i> Performance Optimization
+                </p>
+                <p class="flex items-center text-gray-700 text-lg mb-2">
+                    <i class="fa fa-check-circle text-indigo-500 mr-3"></i> Security Measures
+                </p>
+                <p class="flex items-center text-gray-700 text-lg">
+                    <i class="fa fa-check-circle text-indigo-500 mr-3"></i> Backup and Recovery
+                </p>
+            </div>
+
+            <!-- Paragraph -->
+            <p class="text-gray-700 leading-relaxed mb-6">
+                At Queue-Development, we optimize server performance, speed, and bandwidth to ensure your website loads
+                quickly,
+                providing a better user experience for visitors. We implement robust security measures, including
+                firewalls,
+                regular backups, and malware scanning, to protect your website from cyber threats and data loss.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                In order to ensure a smooth update process, we regularly back up your website data, offering a layer of
+                protection against data loss.
+            </p>
+            <p class="text-gray-700 mt-4">
+                You can see all Hosting Features in our packages <a href="/pricing"
+                    class="text-indigo-500 hover:underline">here</a>.
+            </p>
+        </div>
+    </div>
+</section>

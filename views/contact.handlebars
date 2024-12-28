@@ -1,41 +1,59 @@
-<section>
-    <div class="contact-text">
-        Enter your info, let's get in touch!
+<section class="bg-gray-50 py-12">
+    <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900">Get in Touch</h2>
+        <p class="text-gray-600 mt-2">Enter your info, and let's connect!</p>
     </div>
-    <div class="container" style="padding-top: 5%;">
-        <div class="contact-form">
-            <form id="contact-form">
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" aria-required="true">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                    <div id="email-text" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" aria-required="true">Phone</label>
-                    <input type="text" class="form-control" id="phone" aria-describedby="phone-number">
-                </div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label" aria-required="true">Message</label>
-            <input type="text" class="form-control" id="message"
-                placeholder="Please Include Preferred Package if Applicable" aria-describedby="message">
-        </div>
 
+    <div class="container mx-auto max-w-lg bg-white rounded-lg shadow-md p-8">
+        <form id="contact-form">
+            <!-- Name Field -->
+            <div class="mb-6">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name"
+                    class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 px-4 py-3">
+            </div>
 
-        <div class="q-flex-center">
-            <button type="submit" class="btn btn-primary btn-lg center" id="Sub">Submit</button>
-        </div>
+            <!-- Email Field -->
+            <div class="mb-6">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com"
+                    class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 px-4 py-3">
+                <p id="email-text" class="text-sm text-gray-500 mt-1">We'll never share your email with anyone else.</p>
+            </div>
 
+            <!-- Phone Field -->
+            <div class="mb-6">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="(555) 555-5555"
+                    class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 px-4 py-3">
+            </div>
+
+            <!-- Message Field -->
+            <div class="mb-6">
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4"
+                    placeholder="Please include preferred package if applicable"
+                    class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 px-4 py-3"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+            <button type="submit" class="relative bg-primaryQ p-6 px-12 rounded-lg shadow-lg overflow-hidden group" id="Sub">
+                <!-- Animated Overlay -->
+                <div
+                    class="absolute inset-0 bg-black transition-transform duration-500 rounded-lg scale-x-0 group-hover:scale-x-100 origin-left">
+                </div>
+                <!-- Text -->
+                <span
+                    class="relative z-10 text-black font-bold rounded-lg group-hover:text-primaryQ transition-colors duration-300">
+                    submit
+                </span>
+            </button>
+            </div>
         </form>
     </div>
-
-
-    </div>
 </section>
+
 
 
 <script>
