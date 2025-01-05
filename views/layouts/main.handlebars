@@ -82,9 +82,17 @@
         <form class="flex flex-col sm:flex-row gap-2">
           <input type="email" placeholder="Email address"
             class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-df8327">
-          <button type="submit" class="bg-df8327 hover:bg-orange-600 text-white px-6 py-2 rounded-md transition">
-            Subscribe
-          </button>
+            <button type="submit"
+                class="relative inline-block bg-df8327 text-white text-md font-semibold px-2 py-1 rounded-lg shadow-lg overflow-hidden group">
+                <!-- Animated Overlay -->
+                <div
+                    class="absolute inset-0 bg-black transition-transform duration-500 rounded-lg scale-x-0 group-hover:scale-x-100 origin-left">
+                </div>
+                <!-- Button Text -->
+                <span class="relative z-10 group-hover:text-df8327 transition-colors duration-300">
+                    Get Started
+                </span>
+            </button>
         </form>
       </div>
     </div>

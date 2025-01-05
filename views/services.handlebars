@@ -8,8 +8,8 @@
     <!-- Services Body -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Service 1: Responsive Websites -->
-        <a
-            class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300" href="/web-features" data-aos="fade-right">
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+            href="/web-features" data-aos="fade-right" id="respWeb">
             <div class="flex items-center">
                 <i class="fa fa-mobile text-indigo-500 text-4xl mr-4"></i>
                 <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">Responsive
@@ -23,8 +23,8 @@
         </a>
 
         <!-- Service 2: SEO -->
-        <a
-            class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300" href="/seo" data-aos="fade-left">
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+            href="/seo" data-aos="fade-left" id="seoBtn">
             <div class="flex items-center">
                 <i class="fa fa-gears text-indigo-500 text-4xl mr-4"></i>
                 <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">SEO</h3>
@@ -38,8 +38,8 @@
         </a>
 
         <!-- Service 3: Email Features -->
-        <a
-            class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300" href="/email-features" data-aos="fade-right">
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+            href="/email-features" data-aos="fade-right" id="emailft">
             <div class="flex items-center">
                 <i class="fa fa-send text-indigo-500 text-4xl mr-4"></i>
                 <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">Email
@@ -53,9 +53,9 @@
         </a>
 
         <!-- Service 4: Hosting -->
-        <a
-            class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300" href="/hosting" data-aos="fade-left">
-            
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+            href="/hosting" data-aos="fade-left" id="hosting">
+
             <div class="flex items-center">
                 <i class="fa fa-server text-indigo-500 text-4xl mr-4"></i>
                 <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">Hosting
@@ -81,3 +81,32 @@
         </p>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const emailft = document.getElementById("emailft");
+        const respWeb = document.getElementById("respWeb");
+        const seoBtn = document.getElementById("seoBtn");
+        const hosting = document.getElementById("hosting");
+
+        function updateAOSAnimation() {
+            if (window.innerWidth < 768) {
+                emailft.setAttribute("data-aos", "fade-up");
+                respWeb.setAttribute("data-aos", "fade-up");
+                seoBtn.setAttribute("data-aos", "fade-up");
+                hosting.setAttribute("data-aos", "fade-up");
+            } else {
+                emailft.setAttribute("data-aos", "fade-right");
+                respWeb.setAttribute("data-aos", "fade-right");
+                seoBtn.setAttribute("data-aos", "fade-left");
+                hosting.setAttribute("data-aos", "fade-left");
+            }
+        }
+
+        // Run the function on load
+        updateAOSAnimation();
+
+        // Update on window resize
+        window.addEventListener("resize", updateAOSAnimation);
+    });
+</script>

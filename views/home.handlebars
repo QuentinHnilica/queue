@@ -58,7 +58,7 @@
 
     <!-- About Section -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 py-16 items-center bg-gray-50 font-serif"
-        data-aos="fade-left">
+        data-aos="fade-left" id="about-section">
         <img src="/assets/imgs/about-us.png" alt="About-Us" class="w-full rounded-lg shadow-lg">
         <div>
             <h4 class="text-3xl font-bold mb-6 text-gray-800">Who We Are</h4>
@@ -181,3 +181,23 @@
         </div>
     </section>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const aboutSection = document.getElementById("about-section");
+
+    function updateAOSAnimation() {
+        if (window.innerWidth < 768) {
+            aboutSection.setAttribute("data-aos", "fade-up");
+        } else {
+            aboutSection.setAttribute("data-aos", "fade-right");
+        }
+    }
+
+    // Run the function on load
+    updateAOSAnimation();
+
+    // Update on window resize
+    window.addEventListener("resize", updateAOSAnimation);
+});
+</script>
