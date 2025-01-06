@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Route to handle subscription
-router.post('/subscribe', async (req, res) => {
+router.post('/newsletter/subscribe', async (req, res) => {
   const { email } = req.body;
 
   if (!email) {
