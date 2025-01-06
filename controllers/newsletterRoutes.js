@@ -1,7 +1,7 @@
 // routes/newsletter.js
 const express = require('express');
 const router = express.Router();
-const Subscriber = require("../modals");
+const Newsletter = require("../modals");
 const nodemailer = require('nodemailer');
 
 // Configure nodemailer
@@ -23,7 +23,7 @@ router.post('/newsletter/subscribe', async (req, res) => {
         return res.status(400).json({ message: 'Email is required.' });
       }
   
-      const subscriber = await Subscriber.create({ email }); // Save email
+      const subscriber = await Newsletter.create({ email }); // Save email
       console.log('Subscriber saved:', subscriber);
   
       await transporter.sendMail({
