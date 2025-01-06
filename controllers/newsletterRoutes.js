@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'support@queuedevelop.com',
-    pass: 'SuperCoolDude85@!',
+    pass: 'E3^Q9GdmABdP',
   },
 });
 
