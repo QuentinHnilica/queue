@@ -30,7 +30,7 @@ router.post('/newsletter/subscribe', async (req, res) => {
       console.log('Subscriber saved:', subscriber);
   
       await transporter.sendMail({
-        from: 'your-email@yourdomain.com',
+        from: 'support@queuedevelop.com',
         to: email,
         subject: 'Thank you for subscribing!',
         text: 'Hi! Thank you for subscribing to our newsletter.',
