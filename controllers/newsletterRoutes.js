@@ -1,7 +1,10 @@
 // routes/newsletter.js
+const {
+    Newsletter,
+    User,
+} = require("../modals");
 const express = require('express');
 const router = express.Router();
-const Newsletter = require("../modals");
 const nodemailer = require('nodemailer');
 
 // Configure nodemailer
