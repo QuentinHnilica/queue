@@ -22,7 +22,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
     rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -49,9 +49,9 @@
       <!-- Logo Section -->
       <div class="flex flex-col items-center md:items-start">
         <a href="/" class="mb-4">
-          <img src="assets/imgs/queue-logo-large.png" alt="Queue Development Logo" class="w-32">
+          <img src="assets/imgs/queue-white.png" alt="Queue Development Logo" class="w-64">
         </a>
-        <p class="text-sm text-gray-400">© 2024 Queue Development, LLC. All rights reserved.</p>
+        <p class="text-sm text-gray-400">© 2025 Queue Development, LLC. All rights reserved.</p>
       </div>
 
       <!-- Services Links -->
@@ -78,23 +78,22 @@
 
       <!-- Newsletter -->
       <div>
-        <h5 class="text-lg font-semibold text-df8327 mb-4">Subscribe to our Newsletter</h5>
+        <h5 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h5>
         <p class="text-sm text-gray-400 mb-4">Monthly digest of what's new and exciting from us.</p>
-        <form class="flex flex-col sm:flex-row gap-2">
-          <input type="email" placeholder="Email address"
-            class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-df8327">
-            <button type="submit"
-                class="relative inline-block bg-df8327 text-white text-md font-semibold px-2 py-1 rounded-lg shadow-lg overflow-hidden group">
-                <!-- Animated Overlay -->
-                <div
-                    class="absolute inset-0 bg-black transition-transform duration-500 rounded-lg scale-x-0 group-hover:scale-x-100 origin-left">
-                </div>
-                <!-- Button Text -->
-                <span class="relative z-10 group-hover:text-df8327 transition-colors duration-300">
-                    Get Started
-                </span>
-            </button>
+        <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
+          <input type="email" id="email" name="email" placeholder="Email address"
+            class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ">
+          <button type="submit"
+            class="relative inline-block bg-primaryQ text-white text-md font-semibold px-2 py-1 rounded-lg shadow-lg overflow-hidden group">
+            <div
+              class="absolute inset-0 bg-black transition-transform duration-500 rounded-lg scale-x-0 group-hover:scale-x-100 origin-left">
+            </div>
+            <span class="relative z-10 group-hover:text-primaryQLight transition-colors duration-300">
+              Get Started
+            </span>
+          </button>
         </form>
+        <p id="newsletterMessage" class="text-sm mt-2"></p>
       </div>
     </div>
 
@@ -130,6 +129,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script> --}}
   <script src="/assets/js/pageChange.js"></script>
+  <script src="/assets/js/newsletter.js"></script>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -138,9 +138,10 @@
 
 </body>
 <style>
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
-}
+  }
 </style>
 
 </html>

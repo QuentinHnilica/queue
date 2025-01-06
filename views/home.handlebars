@@ -23,19 +23,19 @@
     <!-- Home Bullets -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-12 bg-gray-50 font-serif" data-aos="fade-up">
         <div class="text-center md:text-left">
-            <h4 class="text-2xl font-semibold mb-4 text-gray-800">Custom Designs</h4>
+            <h4 class="text-2xl font-semibold mb-4 text-primaryQ">Custom Designs</h4>
             <p class="text-gray-600 leading-relaxed">Your website should stand out. Our team takes the time to
                 understand your unique needs and dreams, crafting a one-of-a-kind site that reflects your brand
                 perfectly.</p>
         </div>
         <div class="text-center md:text-left">
-            <h4 class="text-2xl font-semibold mb-4 text-gray-800">Professional Support</h4>
+            <h4 class="text-2xl font-semibold mb-4 text-primaryQ">Professional Support</h4>
             <p class="text-gray-600 leading-relaxed">Our dedicated support team is committed to ensuring seamless
                 customer experiences. With a responsive and knowledgeable staff, we prioritize timely assistance,
                 troubleshooting, and client satisfaction.</p>
         </div>
         <div class="text-center md:text-left">
-            <h4 class="text-2xl font-semibold mb-4 text-gray-800">No Startup Fees</h4>
+            <h4 class="text-2xl font-semibold mb-4 text-primaryQ">No Startup Fees</h4>
             <p class="text-gray-600 leading-relaxed">No credit card needed to start! We believe in aligning our success
                 with the success of our clients. You do not get billed until your site is live and to your liking.</p>
         </div>
@@ -44,9 +44,10 @@
     <!-- Support Section -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 py-16 items-center bg-white font-serif"
         data-aos="fade-right">
-        <img src="/assets/imgs/59867.jpg" alt="Web-Support" class="w-full rounded-lg shadow-lg mx-auto block">
+        <img src="/assets/imgs/59867.jpg" alt="Web-Support"
+            class="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-lg shadow-lg mx-auto block my-4">
         <div>
-            <h4 class="text-3xl font-bold mb-6 text-gray-800">How Our Team Supports You</h4>
+            <h4 class="text-3xl font-bold mb-6 text-primaryQ">How Our Team Supports You</h4>
             <p class="text-gray-600 mb-6 leading-relaxed">Our support team is your go-to ally throughout your digital
                 journey. From the initial consultation to post-launch, our dedicated team is there to guide you every
                 step of the way.</p>
@@ -58,20 +59,20 @@
 
     <!-- About Section -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 py-16 items-center bg-gray-50 font-serif"
-        data-aos="fade-left" id="about-section">
+        data-aos="fade-left">
         <img src="/assets/imgs/about-us.png" alt="About-Us" class="w-full rounded-lg shadow-lg">
         <div>
-            <h4 class="text-3xl font-bold mb-6 text-gray-800">Who We Are</h4>
+            <h4 class="text-3xl font-bold mb-6 text-primaryQ">Who We Are</h4>
             <p class="text-gray-600 mb-6 leading-relaxed">Queue Development is a dynamic firm dedicated to crafting
                 visually appealing and functionally robust websites for businesses of all sizes. With a focus on user
                 experience and cutting-edge technologies, we specialize in delivering tailored web solutions.</p>
             <div class="flex gap-4">
                 <a href="/about"
-                    class="bg-blue-600 text-white font-medium py-3 px-6 rounded hover:bg-blue-700 transition shadow-lg">
+                    class="bg-primaryQ text-white font-medium py-3 px-6 rounded hover:bg-primaryQLight transition shadow-lg">
                     Learn More
                 </a>
                 <a href="/contact"
-                    class="bg-gray-600 text-white font-medium py-3 px-6 rounded hover:bg-gray-700 transition shadow-lg">
+                    class="bg-primaryQDark text-white font-medium py-3 px-6 rounded hover:bg-primaryQLight transition shadow-lg">
                     Contact
                 </a>
             </div>
@@ -80,7 +81,7 @@
 
     <!-- Services Section -->
     <div class="text-center py-16 bg-white font-serif">
-        <h3 class="text-4xl font-bold mb-12 text-gray-800" data-aos="fade-down">Our Services</h3>
+        <h3 class="text-4xl font-bold mb-12 text-primaryQ" data-aos="fade-down">Our Services</h3>
         <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
             <div class="w-full md:w-1/4">
                 <img src="/assets/imgs/responsive-img.png" alt="Our Services"
@@ -181,23 +182,3 @@
         </div>
     </section>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const aboutSection = document.getElementById("about-section");
-
-    function updateAOSAnimation() {
-        if (window.innerWidth < 768) {
-            aboutSection.setAttribute("data-aos", "fade-up");
-        } else {
-            aboutSection.setAttribute("data-aos", "fade-right");
-        }
-    }
-
-    // Run the function on load
-    updateAOSAnimation();
-
-    // Update on window resize
-    window.addEventListener("resize", updateAOSAnimation);
-});
-</script>

@@ -8,11 +8,11 @@
     <!-- Services Body -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Service 1: Responsive Websites -->
-        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:bg-primaryQLight hover:shadow-lg hover:scale-105 transition-transform duration-300"
             href="/web-features" data-aos="fade-right" id="respWeb">
             <div class="flex items-center">
-                <i class="fa fa-mobile text-indigo-500 text-4xl mr-4"></i>
-                <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">Responsive
+                <i class="fa fa-mobile text-primaryQ text-4xl mr-4 group-hover:text-primaryQDark"></i>
+                <h3 class="text-2xl font-semibold group-hover:text-primaryQDark transition-colors duration-300">Responsive
                     Websites</h3>
             </div>
             <p class="text-gray-700 mt-4">
@@ -23,11 +23,11 @@
         </a>
 
         <!-- Service 2: SEO -->
-        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:bg-primaryQLight hover:shadow-lg hover:scale-105 transition-transform duration-300"
             href="/seo" data-aos="fade-left" id="seoBtn">
             <div class="flex items-center">
-                <i class="fa fa-gears text-indigo-500 text-4xl mr-4"></i>
-                <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">SEO</h3>
+                <i class="fa fa-gears text-primaryQ text-4xl mr-4 group-hover:text-primaryQDark"></i>
+                <h3 class="text-2xl font-semibold group-hover:text-primaryQDark transition-colors duration-300">SEO</h3>
             </div>
             <p class="text-gray-700 mt-4">
                 Our SEO strategies are tailored to boost your website's rankings, driving organic traffic and ensuring
@@ -38,11 +38,11 @@
         </a>
 
         <!-- Service 3: Email Features -->
-        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:bg-primaryQLight hover:shadow-lg hover:scale-105 transition-transform duration-300"
             href="/email-features" data-aos="fade-right" id="emailft">
             <div class="flex items-center">
-                <i class="fa fa-send text-indigo-500 text-4xl mr-4"></i>
-                <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">Email
+                <i class="fa fa-send text-primaryQ text-4xl mr-4 group-hover:text-primaryQDark"></i>
+                <h3 class="text-2xl font-semibold group-hover:text-primaryQDark transition-colors duration-300">Email
                     Features</h3>
             </div>
             <p class="text-gray-700 mt-4">
@@ -53,12 +53,12 @@
         </a>
 
         <!-- Service 4: Hosting -->
-        <a class="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+        <a class="group bg-white p-6 rounded-lg shadow-md hover:bg-primaryQLight hover:shadow-lg hover:scale-105 transition-transform duration-300"
             href="/hosting" data-aos="fade-left" id="hosting">
 
             <div class="flex items-center">
-                <i class="fa fa-server text-indigo-500 text-4xl mr-4"></i>
-                <h3 class="text-2xl font-semibold group-hover:text-indigo-500 transition-colors duration-300">Hosting
+                <i class="fa fa-server text-primaryQ text-4xl mr-4 group-hover:text-primaryQDark"></i>
+                <h3 class="text-2xl font-semibold group-hover:text-primaryQDark transition-colors duration-300">Hosting
                 </h3>
             </div>
             <p class="text-gray-700 mt-4">
@@ -70,10 +70,10 @@
     </div>
 
     <!-- Services Footer -->
-    <div class="text-center mt-12 bg-gray-100 p-6 rounded-lg shadow-md" data-aos="fade-up">
-        <h3 class="text-3xl font-bold text-gray-900">And More!</h3>
-        <p class="text-gray-700 mt-4">
-            Give us a call at <a href="tel:5172922786" class="text-indigo-500 font-semibold hover:underline">(517)
+    <div class="text-center mt-12 bg-[rgba(31,41,55,0.1)] p-6 rounded-lg shadow-md" data-aos="fade-up">
+        <h3 class="text-3xl font-bold text-[rgba(31,41,55)]">And More!</h3>
+        <p class="text-[rgba(31,41,55)] mt-4">
+            Give us a call at <a href="tel:5172922786" class="text-primaryQ font-semibold hover:underline">(517)
                 292-2786</a>
             to discover more about our services and how we can meet your needs. Our friendly team is ready to provide
             you with
@@ -81,32 +81,3 @@
         </p>
     </div>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const emailft = document.getElementById("emailft");
-        const respWeb = document.getElementById("respWeb");
-        const seoBtn = document.getElementById("seoBtn");
-        const hosting = document.getElementById("hosting");
-
-        function updateAOSAnimation() {
-            if (window.innerWidth < 768) {
-                emailft.setAttribute("data-aos", "fade-up");
-                respWeb.setAttribute("data-aos", "fade-up");
-                seoBtn.setAttribute("data-aos", "fade-up");
-                hosting.setAttribute("data-aos", "fade-up");
-            } else {
-                emailft.setAttribute("data-aos", "fade-right");
-                respWeb.setAttribute("data-aos", "fade-right");
-                seoBtn.setAttribute("data-aos", "fade-left");
-                hosting.setAttribute("data-aos", "fade-left");
-            }
-        }
-
-        // Run the function on load
-        updateAOSAnimation();
-
-        // Update on window resize
-        window.addEventListener("resize", updateAOSAnimation);
-    });
-</script>

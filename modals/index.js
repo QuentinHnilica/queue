@@ -3,11 +3,13 @@ const Message = require('./Message')
 const User = require("../modals/user");
 const Posts = require("../modals/posts")
 const MetaData = require("../modals/metadata")
+const Newsletter = require("../modals/newsletter")
 
 // Export models
 module.exports = {
   User,
   Posts,
   MetaData,
-  Message
+  Message,
+  Newsletter
 };
