@@ -1,9 +1,22 @@
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   list-style-type: none;
+}
+
+@font-face {
+  font-family: "Montserrat", sans-serif;
+
+  src: url(.montserrat-font);
 }
 
 *, ::before, ::after {
@@ -1373,6 +1386,10 @@ a{
 
 a:hover{
   color: var(--text-primary-dark);
+}
+
+p,h1,h2,h3,h4,h5,div{
+  font-family: "Montserrat", sans-serif;
 }
 
 .hover\:bg-primaryQDark:hover {
