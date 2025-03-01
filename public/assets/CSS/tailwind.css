@@ -758,8 +758,8 @@ video {
   height: 2rem;
 }
 
-.w-1\/2 {
-  width: 50%;
+.w-4\/5 {
+  width: 80%;
 }
 
 .w-6 {
@@ -776,10 +776,6 @@ video {
 
 .max-w-lg {
   max-width: 32rem;
-}
-
-.max-w-xs {
-  max-width: 20rem;
 }
 
 .grow {
@@ -1205,6 +1201,11 @@ video {
   color: rgb(183 105 27 / var(--tw-text-opacity, 1));
 }
 
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -1277,6 +1278,21 @@ a{
 
 a:hover{
   color: var(--text-primary-dark);
+}
+
+.hover\:bg-primaryQDark:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(183 105 27 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.group:hover .group-hover\:text-primaryQ {
+  --tw-text-opacity: 1;
+  color: rgb(223 131 39 / var(--tw-text-opacity, 1)) !important;
+}
+
+.group:hover .group-hover\:text-primaryQDark {
+  --tw-text-opacity: 1;
+  color: rgb(183 105 27 / var(--tw-text-opacity, 1)) !important;
 }
 
 :root{
@@ -1704,12 +1720,6 @@ nav a:hover{
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-@media (min-width: 640px) {
-  .sm\:max-w-sm {
-    max-width: 24rem;
-  }
-}
-
 @media (min-width: 768px) {
   .md\:block {
     display: block;
@@ -1735,16 +1745,12 @@ nav a:hover{
     display: none;
   }
 
-  .md\:w-1\/4 {
-    width: 25%;
+  .md\:w-2\/5 {
+    width: 40%;
   }
 
-  .md\:w-3\/4 {
-    width: 75%;
-  }
-
-  .md\:max-w-md {
-    max-width: 28rem;
+  .md\:w-3\/5 {
+    width: 60%;
   }
 
   .md\:grid-cols-2 {

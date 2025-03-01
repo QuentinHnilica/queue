@@ -43,6 +43,41 @@ router.post('/newsletter/subscribe', async (req, res) => {
       res.status(500).json({ message: 'Internal server error.' });
     }
   });
+
+
+  router.post('/send-newsletter', async (req, res) => {
+    const { subject, message } = req.body;
+  
+    if (!subject || !message) {
+      return res.status(400).json({ message: 'Subject and message are required.' });
+    }
+  
+    try {
+      // Fetch all subscribers
+      const subscribers = await Subscriber.findAll();
+  
+      if (subscribers.length === 0) {
+        return res.status(400).json({ message: 'No subscribers found.' });
+      }
+  
+      // Send emails in batches
+      const emailPromises = subscribers.map((subscriber) =>
+        transporter.sendMail({
+          from: '"Your Website Name" <your-email@yourdomain.com>',
+          to: subscriber.email,
+          subject,
+          html: `<p>${message}</p>`,
+        })
+      );
+  
+      await Promise.all(emailPromises);
+  
+      res.status(200).json({ message: 'Newsletter sent successfully!' });
+    } catch (error) {
+      console.error('Error sending newsletter:', error);
+      res.status(500).json({ message: 'Internal server error.' });
+    }
+  });
   
 
 module.exports = router;

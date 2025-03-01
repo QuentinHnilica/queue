@@ -15,6 +15,20 @@ a{
 a:hover{
     color: var(--text-primary-dark);
 }
+
+.hover\:bg-primaryQDark:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(183 105 27 / var(--tw-bg-opacity, 1)) !important;
+}
+.group:hover .group-hover\:text-primaryQ {
+    --tw-text-opacity: 1;
+    color: rgb(223 131 39 / var(--tw-text-opacity, 1)) !important;
+  }
+  
+  .group:hover .group-hover\:text-primaryQDark {
+    --tw-text-opacity: 1;
+    color: rgb(183 105 27 / var(--tw-text-opacity, 1)) !important;
+  }
 :root{
     --text-primary: #df8327;
     --text-primary-dark: #b7691b;
