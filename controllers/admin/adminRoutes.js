@@ -9,6 +9,11 @@ const saltRounds = 15;
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const axios = require("axios");
+// const { where } = require("sequelize");
+
+const { CPANEL_TOKEN, CPANEL_USERNAME, CPANEL_URL, AWSTATS } = process.env;
+const awstatsDir = AWSTATS;
 
 router.get("/newUser", async (req, res) => {
   res.render("createUser");
