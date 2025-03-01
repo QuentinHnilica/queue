@@ -1,6 +1,525 @@
-<div>
-    <div>
-        This is hopefully where we can connect some website data and what not.
+<div id="loadingSpinner" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+    <div class="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+</div>
+
+<div id="successNotification" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md hidden">
+    Stats successfully loaded!
+</div>
+
+
+<div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold text-center mt-8 mb-6">Admin Panel</h1>
+
+    <!-- Date range filter -->
+    <div class="flex justify-center items-center gap-4 mb-8">
+        <div class="flex flex-col">
+            <label for="startDate" class="text-sm font-medium mb-1">Start Date</label>
+            <input type="date" id="startDate"
+                class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="flex flex-col">
+            <label for="endDate" class="text-sm font-medium mb-1">End Date</label>
+            <input type="date" id="endDate"
+                class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <button onclick="fetchStats(false)" id="fetchStatsButton"
+            class="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 flex items-center gap-2">
+            <span id="buttonText">Get Stats</span>
+            <div id="buttonSpinner"
+                class="hidden w-4 h-4 border-2 border-white border-dashed rounded-full animate-spin"></div>
+        </button>
+
     </div>
 
+    <!-- Charts -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div>
+            <canvas id="dailyStatsChart" class="w-full h-auto"></canvas>
+        </div>
+        <div>
+            <canvas id="browserStatsChart" class="w-full h-auto"></canvas>
+        </div>
+        <div>
+            <canvas id="deviceTypeStatsChart" class="w-full h-auto"></canvas>
+        </div>
+    </div>
+
+    <!-- Daily Stats -->
+    <h2 class="text-2xl font-semibold mb-4">Daily Stats</h2>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="px-4 py-2 border">Date</th>
+                <th class="px-4 py-2 border">Pages</th>
+                <th class="px-4 py-2 border">Hits</th>
+                <th class="px-4 py-2 border">Bandwidth</th>
+                <th class="px-4 py-2 border">Visits</th>
+            </tr>
+        </thead>
+        <tbody id="dailyStatsTableBody" class="text-center"></tbody>
+    </table>
+
+    <!-- Browser Stats -->
+    <h2 class="text-2xl font-semibold mb-4">Browser Stats</h2>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="px-4 py-2 border">Browser</th>
+                <th class="px-4 py-2 border">Hits</th>
+                <th class="px-4 py-2 border">Pages</th>
+            </tr>
+        </thead>
+        <tbody id="browserStatsTableBody" class="text-center"></tbody>
+    </table>
+
+    <!-- OS Stats -->
+    <h2 class="text-2xl font-semibold mb-4">Operating System Stats</h2>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="px-4 py-2 border">OS</th>
+                <th class="px-4 py-2 border">Hits</th>
+            </tr>
+        </thead>
+        <tbody id="osStatsTableBody" class="text-center"></tbody>
+    </table>
+
+    <!-- File Type Stats -->
+    <h2 class="text-2xl font-semibold mb-4">File Type Stats</h2>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="px-4 py-2 border">File Type</th>
+                <th class="px-4 py-2 border">Hits</th>
+                <th class="px-4 py-2 border">Bandwidth</th>
+            </tr>
+        </thead>
+        <tbody id="fileTypeStatsTableBody" class="text-center"></tbody>
+    </table>
+
+    <!-- Error Stats -->
+    <h2 class="text-2xl font-semibold mb-4">Error Stats</h2>
+    <table class="w-full border-collapse border border-gray-300 mb-8">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="px-4 py-2 border">Error Code</th>
+                <th class="px-4 py-2 border">Hits</th>
+                <th class="px-4 py-2 border">Bandwidth</th>
+            </tr>
+        </thead>
+        <tbody id="errorStatsTableBody" class="text-center"></tbody>
+    </table>
+
+    <!-- Device Type Stats -->
+    <h2 class="text-2xl font-semibold mb-4">Device Type Stats</h2>
+    <table class="w-full border-collapse border border-gray-300">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th class="px-4 py-2 border">Device Type</th>
+                <th class="px-4 py-2 border">Hits</th>
+            </tr>
+        </thead>
+        <tbody id="deviceTypeStatsTableBody" class="text-center"></tbody>
+    </table>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+    async function fetchStats(initialLoad) {
+        const spinner = document.getElementById('loadingSpinner');
+        spinner.classList.remove('hidden'); // Show the spinner
+
+        let startDate = document.getElementById('startDate').value;
+        let endDate = document.getElementById('endDate').value;
+
+        const buttonText = document.getElementById('buttonText');
+        const buttonSpinner = document.getElementById('buttonSpinner');
+
+        buttonText.classList.add('hidden'); // Hide button text
+        buttonSpinner.classList.remove('hidden'); // Show button spinner
+
+        if (initialLoad) {
+            const today = new Date();
+            const oneMonthAgo = new Date();
+            oneMonthAgo.setMonth(today.getMonth() - 1);
+
+            startDate = oneMonthAgo.toISOString().split('T')[0];
+            endDate = today.toISOString().split('T')[0];
+
+            document.getElementById('startDate').value = startDate;
+            document.getElementById('endDate').value = endDate;
+        }
+
+        if (!startDate || !endDate) {
+            alert("Please select both start and end dates.");
+            spinner.classList.add('hidden'); // Hide the spinner
+            return;
+        }
+
+        try {
+            const response = await fetch(`/admin/adminPanel?startDate=${startDate}&endDate=${endDate}`);
+            const data = await response.json();
+
+            console.log("Fetched data:", data);
+
+            // Update tables and charts with the aggregated data
+            updateDailyStatsTable(data.day);
+            updateBrowserStatsTable(data.browser);
+            updateDeviceTypeStatsTable(data.device);
+            updateOsStatsTable(data.os);
+            updateErrorStatsTable(data.errors);
+            updateFileTypeStatsTable(data.filetypes);
+            updateCharts(data);
+        } catch (error) {
+            console.error("Error fetching stats:", error);
+            alert("Error fetching stats. Please try again.");
+        } finally {
+            spinner.classList.add('hidden'); // Hide the spinner after the request completes
+            buttonText.classList.remove('hidden'); // Show button text
+            buttonSpinner.classList.add('hidden'); // Hide button spinner
+        }
+    }
+    function updateDailyStatsTable(dailyStats) {
+        const dailyStatsTableBody = document.getElementById('dailyStatsTableBody');
+        dailyStatsTableBody.innerHTML = '';
+        if (Array.isArray(dailyStats)) {
+            dailyStats.forEach(dayStat => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${dayStat.date}</td>
+                    <td>${dayStat.pages}</td>
+                    <td>${dayStat.hits}</td>
+                    <td>${dayStat.bandwidth}</td>
+                    <td>${dayStat.visits}</td>
+                `;
+                dailyStatsTableBody.appendChild(row);
+            });
+        }
+    }
+
+    function updateBrowserStatsTable(browserStats) {
+        const browserStatsTableBody = document.getElementById('browserStatsTableBody');
+        browserStatsTableBody.innerHTML = '';
+        if (Array.isArray(browserStats) && browserStats.length > 0) {
+            browserStats.forEach(browserStat => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${browserStat.browser}</td>
+                <td>${browserStat.hits}</td>
+                <td>${browserStat.pages}</td>
+            `;
+                browserStatsTableBody.appendChild(row);
+            });
+        }
+    }
+    function updateDeviceTypeStatsTable(deviceStats) {
+        const deviceTypeStatsTableBody = document.getElementById('deviceTypeStatsTableBody');
+        deviceTypeStatsTableBody.innerHTML = '';
+        if (deviceStats) {
+            Object.keys(deviceStats).forEach(deviceType => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${deviceType}</td>
+                    <td>${deviceStats[deviceType]}</td>
+                `;
+                deviceTypeStatsTableBody.appendChild(row);
+            });
+        }
+    }
+
+    function updateOsStatsTable(osStats) {
+        const osStatsTableBody = document.getElementById('osStatsTableBody');
+        osStatsTableBody.innerHTML = '';
+        if (osStats && osStats.length > 0) {
+            osStats.forEach(osStat => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${osStat.os}</td>
+                <td>${osStat.hits}</td>
+            `;
+                osStatsTableBody.appendChild(row);
+            });
+        }
+    }
+
+    function updateFileTypeStatsTable(fileTypeStats) {
+        const fileTypeStatsTableBody = document.getElementById('fileTypeStatsTableBody');
+        fileTypeStatsTableBody.innerHTML = '';
+        if (fileTypeStats && fileTypeStats.length > 0) {
+            fileTypeStats.forEach(fileTypeStat => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${fileTypeStat.type}</td>
+                <td>${fileTypeStat.hits}</td>
+                <td>${fileTypeStat.bandwidth}</td>
+            `;
+                fileTypeStatsTableBody.appendChild(row);
+            });
+        }
+    }
+
+    function updateErrorStatsTable(errorStats) {
+        const errorStatsTableBody = document.getElementById('errorStatsTableBody');
+        errorStatsTableBody.innerHTML = '';
+        if (errorStats && errorStats.length > 0) {
+            errorStats.forEach(errorStat => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${errorStat.errorCode}</td>
+                <td>${errorStat.hits}</td>
+                <td>${errorStat.bandwidth}</td>
+            `;
+                errorStatsTableBody.appendChild(row);
+            });
+        }
+    }
+
+
+    function updateCharts(data) {
+        const dailyStatsChartCtx = document.getElementById('dailyStatsChart').getContext('2d');
+        const browserStatsChartCtx = document.getElementById('browserStatsChart').getContext('2d');
+        const deviceTypeStatsChartCtx = document.getElementById('deviceTypeStatsChart').getContext('2d');
+        const charts = document.querySelectorAll('canvas');
+
+        charts.forEach(chart => {
+            chart.style.opacity = 0; // Start hidden
+            setTimeout(() => {
+                chart.style.transition = 'opacity 0.5s';
+                chart.style.opacity = 1; // Fade in
+            }, 100);
+        });
+
+        // Ensure the charts are destroyed if they exist
+        if (window.dailyStatsChart instanceof Chart) {
+            window.dailyStatsChart.destroy();
+        }
+        if (window.browserStatsChart instanceof Chart) {
+            window.browserStatsChart.destroy();
+        }
+        if (window.deviceTypeStatsChart instanceof Chart) {
+            window.deviceTypeStatsChart.destroy();
+        }
+
+        // Daily Stats Chart
+        if (data.day && data.day.length > 0) {
+            const labels = data.day.map(dayStat => {
+                // Assuming `dayStat.date` is in the format `YYYYMMDD`
+                const dateStr = dayStat.date;
+                return `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}`; // Convert to `YYYY-MM-DD`
+            });
+
+            const visitsData = data.day.map(dayStat => parseInt(dayStat.visits, 10));
+            window.dailyStatsChart = new Chart(dailyStatsChartCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Visits',
+                        data: visitsData,
+                        borderColor: 'rgba(0, 123, 255, 0.7)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1 // Smooth line
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Visits'
+                            }
+                        }
+                    }
+                }
+            });
+
+        }
+
+        // Browser Stats Chart
+        if (data.browser && data.browser.length > 0) {
+            // Extract labels (browser names) and data (hits)
+            const browserLabels = data.browser.map(browserStat => browserStat.browser);
+            const browserData = data.browser.map(browserStat => parseInt(browserStat.hits, 10));
+
+            // Create Browser Stats Chart
+            window.browserStatsChart = new Chart(browserStatsChartCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: browserLabels,
+                    datasets: [{
+                        label: 'Browser Usage',
+                        data: browserData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        } else {
+            console.warn("No browser stats data found for chart.");
+        }
+
+        // Device Stats Chart (Pie Chart)
+        if (data.device) {
+            const deviceLabels = ['Mobile', 'Desktop'];
+            const deviceData = [data.device.mobile, data.device.desktop];
+
+
+
+            // Ensure the chart is destroyed if it exists to avoid duplications
+            if (window.deviceStatsChart instanceof Chart) {
+                window.deviceStatsChart.destroy();
+            }
+
+            // Create Device Stats Chart as a Pie Chart
+            window.deviceStatsChart = new Chart(deviceTypeStatsChartCtx, {
+                type: 'pie',
+                data: {
+                    labels: deviceLabels,
+                    datasets: [{
+                        label: 'Device Usage',
+                        data: deviceData,
+                        backgroundColor: [
+                            'rgba(255, 159, 64, 0.7)',
+                            'rgba(54, 162, 235, 0.7)'
+                        ],
+                        borderColor: 'rgba(0, 0, 0, 0.1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        } else {
+            console.warn("No device stats data found for chart.");
+        }
+    }
+
+    // Fetch stats on initial page load with default dates
+    window.onload = function () {
+        const today = new Date();
+        const startDate = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().split('T')[0];
+        const endDate = today.toISOString().split('T')[0];
+
+        document.getElementById('startDate').value = startDate;
+        document.getElementById('endDate').value = endDate;
+
+        fetchStats(true);
+    };
+
+    const notification = document.getElementById('successNotification');
+notification.classList.remove('hidden'); // Show notification
+setTimeout(() => {
+    notification.classList.add('hidden'); // Hide notification after 3 seconds
+}, 3000);
+</script>
+
+<style>
+    h1,
+    h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        color:white;
+    }
+
+    .filter {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .filter label {
+        margin-right: 5px;
+        font-weight: bold;
+    }
+
+    .filter input {
+        margin-right: 10px;
+    }
+
+    .filter button {
+        padding: 6px 12px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .filter button:hover {
+        background: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        padding: 6px;
+        text-align: center;
+    }
+
+    th {
+        background: #007bff;
+        color: #fff;
+    }
+
+    .chart-container {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .chart-wrapper {
+        width: 22%;
+        min-width: 200px;
+        padding: 10px;
+    }
+
+    .chart {
+        width: 100%;
+        height: auto;
+    }
+    tr td{
+        color: white;
+    }
+</style>
