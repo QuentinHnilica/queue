@@ -451,26 +451,11 @@ router.get('/leads', async (req, res) => {
 });
 
 
-
-router.get('/leads', async (req, res) => {
-  try {
-    const { formName } = req.query;
-    let filter = {};
-    if (formName) filter = { where: { formName } };
-
-    const leads = await Lead.findAll(filter);
-    const formNames = await Lead.findAll({ attributes: ['formName'], group: ['formName'] });
-    res.render('leads', { leads, formNames });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server Error');
-  }
-});
 // Delete lead route
 router.post('/leads/delete/:id', async (req, res) => {
   try {
     await Leads.destroy({ where: { id: req.params.id } });
-    res.redirect('/leads');
+    res.redirect('/admin/leads');
   } catch (err) {
     res.status(500).send('Server Error'); 
   }
