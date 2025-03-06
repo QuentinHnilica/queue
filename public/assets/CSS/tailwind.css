@@ -661,8 +661,12 @@ video {
   z-index: 50;
 }
 
-.m-3 {
-  margin: 0.75rem;
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.col-span-8 {
+  grid-column: span 8 / span 8;
 }
 
 .mx-auto {
@@ -737,10 +741,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
 }
 
 .mt-6 {
@@ -844,8 +844,16 @@ video {
   width: 100%;
 }
 
+.max-w-2xl {
+  max-width: 42rem;
+}
+
 .max-w-3xl {
   max-width: 48rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .max-w-sm {
@@ -899,6 +907,10 @@ video {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1041,6 +1053,11 @@ video {
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gray-100 {
@@ -1406,6 +1423,10 @@ video {
   transition-duration: 150ms;
 }
 
+.duration-200 {
+  transition-duration: 200ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1429,6 +1450,58 @@ a:hover{
 
 p,h1,h2,h3,h4,h5,div{
   font-family: "Montserrat", sans-serif;
+}
+
+/* Ensure Tailwind does not interfere with Quill */
+
+/* Reset Tailwind influence on Quill */
+
+.quill-wrapper .ql-toolbar,
+.quill-wrapper .ql-container {
+  all: revert !important;
+  /* Restore default Quill styling */
+}
+
+/* Ensure proper spacing and alignment */
+
+.quill-wrapper .ql-toolbar {
+  background: #f8f9fa;
+  /* Light gray background */
+  padding: 6px !important;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* Fix Toolbar Button Sizing */
+
+.quill-wrapper .ql-toolbar button,
+.quill-wrapper .ql-toolbar .ql-picker {
+  font-size: 14px !important;
+  height: 28px !important;
+  padding: 6px !important;
+}
+
+/* Fix Toolbar Icons */
+
+.quill-wrapper .ql-toolbar button svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Ensure Editor Text is Proper */
+
+.quill-wrapper .ql-editor {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 12px;
+}
+
+/* Keep the editor properly sized */
+
+.quill-wrapper .ql-container {
+  min-height: 200px;
+  background: white;
+  border-radius: 6px;
 }
 
 .hover\:bg-primaryQDark:hover {
@@ -1793,6 +1866,11 @@ nav a:hover{
 .hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-gray-100:hover {

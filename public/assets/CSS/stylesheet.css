@@ -31,6 +31,48 @@ p,h1,h2,h3,h4,h5,div{
     font-family: "Montserrat", sans-serif;
 }
 
+/* Ensure Tailwind does not interfere with Quill */
+/* Reset Tailwind influence on Quill */
+.quill-wrapper .ql-toolbar,
+.quill-wrapper .ql-container {
+    all: revert !important; /* Restore default Quill styling */
+}
+
+/* Ensure proper spacing and alignment */
+.quill-wrapper .ql-toolbar {
+    background: #f8f9fa; /* Light gray background */
+    padding: 6px !important;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* Fix Toolbar Button Sizing */
+.quill-wrapper .ql-toolbar button,
+.quill-wrapper .ql-toolbar .ql-picker {
+    font-size: 14px !important;
+    height: 28px !important;
+    padding: 6px !important;
+}
+
+/* Fix Toolbar Icons */
+.quill-wrapper .ql-toolbar button svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+/* Ensure Editor Text is Proper */
+.quill-wrapper .ql-editor {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 12px;
+}
+
+/* Keep the editor properly sized */
+.quill-wrapper .ql-container {
+    min-height: 200px;
+    background: white;
+    border-radius: 6px;
+}
 
 
   

@@ -1,6 +1,6 @@
 const loginFormHandler = async (e) => {
 
-  event.preventDefault(); // Prevent default form submission
+  e.preventDefault(); // Prevent default form submission
 
   const userName = document.querySelector("#user-id").value.trim();
   const password = document.querySelector("#password-input").value.trim();

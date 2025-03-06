@@ -2,6 +2,33 @@ const { Message, User, Leads } = require("../modals");
 
 const router = require("express").Router();
 
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+const sharp = require("sharp");
+
+// ✅ Define upload path
+const UPLOADS_DIR = path.join(__dirname, "../public/assets/uploads");
+
+// ✅ Ensure upload directory exists
+
+if (!fs.existsSync(UPLOADS_DIR)) {
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+}
+
+// ✅ Multer Storage: Always save to disk first
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit per file
+  fileFilter: (req, file, cb) => {
+    if (!file.mimetype.startsWith("image/")) {
+      return cb(new Error("Invalid file type"), false);
+    }
+    cb(null, true);
+  },
+}).array("Images", 5); // Allow up to 5 images
+
 router.get("/", async (req, res) => {
   res.render("home");
 });
@@ -107,5 +134,63 @@ router.use((req, res, next) => {
 
   next(); // Proceed to the next middleware or route
 });
+
+router.post("/upload", (req, res) => {
+  upload(req, res, async (err) => {
+    if (err) {
+      console.error("❌ Multer Error:", err);
+      return res
+        .status(400)
+        .json({ error: "Upload failed", details: err.message });
+    }
+
+    if (!req.files || req.files.length === 0) {
+      console.error("❌ No files uploaded.");
+      return res.status(400).json({ error: "No images uploaded" });
+    }
+
+    try {
+      console.log("✅ Files received:", req.files.length);
+
+      // ✅ Process Images Asynchronously (Parallel Processing)
+      const filePaths = await Promise.all(
+        req.files.map(async (file) => {
+          try {
+            const optimizedBuffer = await sharp(file.buffer)
+              .rotate() // Auto-fix orientation
+              .resize(800, 800, { fit: "inside" }) // Resize while keeping aspect ratio
+              .jpeg({ quality: 75 }) // Optimize quality
+              .toBuffer();
+
+            // ✅ Save optimized image
+            const filename = `optimized_${Date.now()}_${file.originalname}`;
+            const filePath = path.join(UPLOADS_DIR, filename);
+            await fs.promises.writeFile(filePath, optimizedBuffer);
+
+            return `/assets/uploads/${filename}`;
+          } catch (error) {
+            console.error("❌ Sharp Processing Error:", error);
+            return null;
+          }
+        })
+      );
+
+      // ✅ Filter out failed uploads
+      const validPaths = filePaths.filter((path) => path !== null);
+
+      if (validPaths.length === 0) {
+        throw new Error("All image processing failed");
+      }
+
+      res.json({ message: "Images uploaded successfully!", paths: validPaths });
+    } catch (error) {
+      console.error("❌ Image Processing Error:", error);
+      res
+        .status(500)
+        .json({ error: "Image processing failed", details: error.message });
+    }
+  });
+});
+
 
 module.exports = router;
