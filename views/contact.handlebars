@@ -6,7 +6,7 @@
 
     <div class="container mx-auto pt-10 px-4 sm:px-0">
         <div class="max-w-3xl mx-auto p-6 sm:p-8 rounded-2xl bg-white shadow-lg">
-            <form id="contactForm">
+            <form id="contact-form">
                 <!-- Name Input -->
                 <div class="mb-6">
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
@@ -64,6 +64,7 @@
 
 
     document.getElementById("Sub").addEventListener('click', () => {
+        document.querySelector('.text-center').innerHTML = ''
         document.getElementById('contact-form').innerHTML = '<h3>Thank you for reaching out, a support agent will be in touch shortly!</h3>'
 
     })
