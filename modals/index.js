@@ -4,6 +4,7 @@ const User = require("../modals/user");
 const Posts = require("../modals/posts")
 const MetaData = require("../modals/metadata")
 const Newsletter = require("../modals/newsletter")
+const Leads = require("../modals/leads")
 
 // Export models
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   Posts,
   MetaData,
   Message,
-  Newsletter
+  Newsletter,
+  Leads,
 };

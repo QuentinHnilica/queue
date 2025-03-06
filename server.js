@@ -5,6 +5,7 @@ const exphbs = require("express-handlebars");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const cors = require("cors");
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, UPLOADSDIR, VIEWSFOLDER } = process.env;
 const fetchMetaData = require('./controllers/Middleware/metaDataMiddleware')
@@ -23,6 +24,12 @@ const hbs = exphbs.create({
     json: function (context) {
       return JSON.stringify(context);
     },
+
+    ifEquals: function(arg1, arg2, options) {
+      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    },
+
+
     isSelected: function (categoryId, selectedCategories) {
       return (
         selectedCategories && selectedCategories.includes(categoryId.toString())
@@ -105,6 +112,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
 app.use(express.static(UPLOADSDIR));
+app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
+  next();
+});
 
 app.use(routes);
 

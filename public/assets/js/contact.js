@@ -38,10 +38,12 @@ const newMessage = async (e) => {
 
   if (theErrors === 0) {
     let newMessage = {
+      formName: "Contact Us",
+      formData:{
       name: name1.value,
       email: email.value,
       phone: phone.value,
-      message: message.value,
+      message: message.value,},
     };
 
     const response = await fetch("/contact/submit", {

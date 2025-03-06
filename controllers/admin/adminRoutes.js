@@ -1,6 +1,7 @@
 const {
     Message,
     User,
+    Leads,
 } = require("../../modals");
 
 const router = require("express").Router();
@@ -427,5 +428,52 @@ function normalizeDate(inputDate) {
   }
   return inputDate.replace(/-/g, ""); // Convert YYYY-MM-DD to YYYYMMDD
 }
+
+
+
+
+//Lead routes
+
+router.get('/leads', async (req, res) => {
+  try {
+    const { formName } = req.query;
+    let filter = {};
+    if (formName) filter = { where: { formName } };
+
+    const leadsDB = await Leads.findAll(filter);
+    const myLeads= leadsDB.map((lead) => lead.get({ plain: true }));
+    const formNamesDB = await Leads.findAll({ attributes: ['formName'], group: ['formName'] });
+    const formNames= formNamesDB.map((fname) => fname.get({ plain: true }));
+    res.render('adminLeads', { myLeads,formNames });
+  } catch (err) {
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+router.get('/leads', async (req, res) => {
+  try {
+    const { formName } = req.query;
+    let filter = {};
+    if (formName) filter = { where: { formName } };
+
+    const leads = await Lead.findAll(filter);
+    const formNames = await Lead.findAll({ attributes: ['formName'], group: ['formName'] });
+    res.render('leads', { leads, formNames });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+// Delete lead route
+router.post('/leads/delete/:id', async (req, res) => {
+  try {
+    await Leads.destroy({ where: { id: req.params.id } });
+    res.redirect('/leads');
+  } catch (err) {
+    res.status(500).send('Server Error'); 
+  }
+});
 
 module.exports = router;
