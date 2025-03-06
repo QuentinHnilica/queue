@@ -114,9 +114,19 @@ app.use(express.static(PUBLICFOLDER));
 app.use(express.static(UPLOADSDIR));
 app.use(cors());
 app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
+  res.setHeader("Content-Security-Policy",
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' https://unpkg.com; " +
+    "style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.jsdelivr.net; " +
+    "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; " +
+    "img-src 'self' data:; " +
+    "connect-src 'self';"
+  );
   next();
 });
+
+
+
 
 app.use(routes);
 
