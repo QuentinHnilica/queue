@@ -5,7 +5,6 @@ const exphbs = require("express-handlebars");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const cors = require("cors");
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, UPLOADSDIR, VIEWSFOLDER } = process.env;
 const fetchMetaData = require('./controllers/Middleware/metaDataMiddleware')
@@ -112,21 +111,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
 app.use(express.static(UPLOADSDIR));
-app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy",
-    "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' https://unpkg.com; " +
-    "style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.jsdelivr.net; " +
-    "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; " +
-    "img-src 'self' data:; " +
-    "connect-src 'self';"
-  );
-  next();
-});
-
-
-
 
 app.use(routes);
 
