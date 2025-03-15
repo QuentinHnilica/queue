@@ -26,3 +26,7 @@ const loginFormHandler = async (e) => {
     }
   }
 };
+document.addEventListener("DOMContentLoaded", function() {
+  const loginButton = document.getElementById("login_form");
+  loginButton.addEventListener("click", loginFormHandler);
+});
