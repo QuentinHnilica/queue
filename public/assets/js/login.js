@@ -14,7 +14,6 @@ const loginFormHandler = async (e) => {
       });
 
       if (response.ok) {
-        alert("YouLoggedIn!")
         document.location.replace("/admin");
       } else {
         const errorMsg = await response.text();
