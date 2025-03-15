@@ -450,6 +450,15 @@ router.get('/leads', async (req, res) => {
   }
 });
 
+// router.get('/leads/view/:id', async(req, res) =>{
+//   try {
+//     const formNameDB = Leads.findOne({where: {id: req.params.id}});
+
+//   }
+//   catch(err){
+//     res.status(500).send('Server Error')
+//   }
+// })
 
 // Delete lead route
 router.post('/leads/delete/:id', async (req, res) => {
