@@ -12,19 +12,7 @@
     font-family: 'Montserrat', sans-serif;
     list-style-type: none;
 }
-html,body{
-    height: 100%;
-    margin: 0;
-}
-#page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* vh is viewport height */
-}
 
-#content-wrap {
-    flex: 1;  /* flex-grow, allows this div to expand to fill available space */
-}
 @font-face {
     font-family: "Montserrat", sans-serif;
     src: url(.montserrat-font);

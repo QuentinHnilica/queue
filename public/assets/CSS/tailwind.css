@@ -13,23 +13,6 @@
   list-style-type: none;
 }
 
-html,body{
-  height: 100%;
-  margin: 0;
-}
-
-#page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  /* vh is viewport height */
-}
-
-#content-wrap {
-  flex: 1;
-  /* flex-grow, allows this div to expand to fill available space */
-}
-
 @font-face {
   font-family: "Montserrat", sans-serif;
 
@@ -144,7 +127,9 @@ html,body{
   --tw-contain-style:  ;
 }
 
-/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
