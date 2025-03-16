@@ -11,7 +11,7 @@
   <meta name="description" content="Web Development For Small Businesses">
   <meta name="keywords"
     content="Web Development Services, Custom Website Design, Buisness Website, Willaimston, MI, Michigan, SEO, Cloud Hosting">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link href="/assets/CSS/tailwind.css" rel="stylesheet">
 
   <link rel="icon" href="/assets/imgs/queue-logo-sm.png">
@@ -23,9 +23,10 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
     rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -136,7 +137,21 @@
   <script>
     AOS.init();
   </script>
+  <script>
+    (function () {
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://yourserver.com/queue-ranker"; // Update with your actual hosted app URL
+      iframe.style.position = "fixed";
+      iframe.style.bottom = "0";
+      iframe.style.right = "0";
+      iframe.style.width = "400px";
+      iframe.style.height = "600px";
+      iframe.style.border = "none";
+      iframe.style.zIndex = "9999";
 
+      document.body.appendChild(iframe);
+    })();
+  </script>
 </body>
 <style>
   html,
