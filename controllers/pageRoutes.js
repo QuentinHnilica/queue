@@ -61,6 +61,10 @@ router.get("/hosting", async (req, res) => {
   res.render("hostingfeatures");
 });
 
+router.get("/queue-ranker", async (req, res) => {
+  res.render("ranker");
+});
+
 router.get("/web-features", async (req, res) => {
   res.render("webfeatures");
 });
