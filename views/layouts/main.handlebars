@@ -137,21 +137,27 @@
   <script>
     AOS.init();
   </script>
-  <script>
-    (function () {
-      const iframe = document.createElement("iframe");
-      iframe.src = "https://queuedevelop.com/queue-ranker"; // Update with your actual hosted app URL
-      iframe.style.position = "fixed";
-      iframe.style.bottom = "0";
-      iframe.style.right = "0";
-      iframe.style.width = "400px";
-      iframe.style.height = "600px";
-      iframe.style.border = "none";
-      iframe.style.zIndex = "9999";
+<script>
+(function() {
+    fetch("https://queuetracker.com/api/config")  // Fetch iframe settings
+    .then(response => response.json())
+    .then(config => {
+        const iframe = document.createElement("iframe");
+        iframe.src = config.url; // Load the tool inside an iframe
+        iframe.style.position = "fixed";
+        iframe.style.bottom = config.bottom || "0";
+        iframe.style.right = config.right || "0";
+        iframe.style.width = config.width || "400px";
+        iframe.style.height = config.height || "600px";
+        iframe.style.border = "none";
+        iframe.style.zIndex = "9999";
+        document.body.appendChild(iframe);
+    })
+    .catch(error => console.error("Failed to load widget:", error));
+})();
+</script>
 
-      document.body.appendChild(iframe);
-    })();
-  </script>
+
 </body>
 <style>
   html,
