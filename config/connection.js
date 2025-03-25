@@ -3,8 +3,8 @@ require("dotenv").config();
 
 const sequelize = new Sequelize(process.env.SQLDBNAME, process.env.SQLUSER, process.env.SQLPASS, {
   host: process.env.SQLHOST,
-  port: 5432,
-  dialect: "postgres",
+  port: process.env.SQLPORT,
+  dialect: process.env.SQLDIALECT,
   dialectOptions: {
     ssl: {
       require: true,
@@ -14,3 +14,4 @@ const sequelize = new Sequelize(process.env.SQLDBNAME, process.env.SQLUSER, proc
 });
 
 module.exports = sequelize;
+ 
