@@ -1,0 +1,197 @@
+<div
+  class="bg-gray-800 text-white flex items-center justify-center min-h-screen p-4"
+>
+  <div class="flex flex-col md:flex-row items-center w-full max-w-6xl">
+    <!-- Form Section -->
+    <div
+      class="w-full md:w-1/2 p-6 bg-gray-900 rounded-2xl shadow-2xl border border-gray-700"
+    >
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">Schedule A Consultation</h2>
+      <form action="#" method="POST" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-white font-semibold" for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-white font-semibold" for="email">Contact
+              Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-white font-semibold" for="phone">Phone
+              Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+              required
+            />
+          </div>
+          <div>
+            <label
+              class="block text-white font-semibold"
+              for="business-name"
+            >Business Name</label>
+            <input
+              type="text"
+              id="business-name"
+              name="business-name"
+              class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label
+              class="block text-white font-semibold"
+              for="established"
+            >Years in Business</label>
+            <input
+              type="number"
+              id="established"
+              name="established"
+              min="0"
+              class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-white font-semibold" for="employees">Number
+              of Employees</label>
+            <input
+              type="number"
+              id="employees"
+              name="employees"
+              min="1"
+              class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+              required
+            />
+          </div>
+        </div>
+
+<div class="relative">
+    <label for="business-type" class="block text-white font-semibold">Type of Business</label>
+    <div class="mt-2 w-full p-3 bg-gray-800 border border-gray-600 rounded-lg shadow-sm relative">
+        <div class="text-white p-2 cursor-pointer" id="dropdown-trigger">
+            <span id="selected-option">Select a type</span>
+            <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">▼</span>
+        </div>
+        <ul id="dropdown-options" class="absolute hidden bg-gray-800 border border-gray-600 text-white w-full mt-1 rounded-lg shadow-lg z-10">
+            <li class="p-2 cursor-pointer hover:bg-primaryQ" data-value="retail">Retail</li>
+            <li class="p-2 cursor-pointer hover:bg-primaryQ" data-value="service">Service</li>
+            <li class="p-2 cursor-pointer hover:bg-primaryQ" data-value="manufacturing">Manufacturing</li>
+            <li class="p-2 cursor-pointer hover:bg-primaryQ" data-value="other">Other</li>
+        </ul>
+    </div>
+</div>
+
+
+        <div>
+          <label class="block text-white font-semibold" for="description">Brief
+            Business Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="3"
+            class="mt-2 w-full p-3 border rounded-lg bg-gray-800 border-gray-600 shadow-sm focus:ring-primaryQ"
+            required
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="relative bg-primaryQ p-4 px-10 rounded-lg overflow-hidden group w-full"
+        >
+          <div
+            class="absolute inset-0 bg-black transition-transform rounded-lg duration-500 scale-x-0 group-hover:scale-x-100 origin-left"
+          ></div>
+          <span
+            class="relative z-10 text-black font-bold rounded-lg group-hover:text-primaryQ transition-colors duration-300"
+          >Submit</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Image Section -->
+    <div class="w-full md:w-1/2 flex items-center justify-center p-6">
+      <img
+        src="/assets/imgs/ourservices_homepage-01-01.webp"
+        alt="book-a-consultation"
+        class="rounded-2xl shadow-xl w-full h-auto max-h-screen object-cover"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+/* Custom dropdown styles */
+#dropdown-trigger {
+    padding-right: 30px; /* space for the arrow */
+    position: relative;
+}
+
+#dropdown-options {
+    display: none; /* Hidden by default */
+    left: 0; /* Aligns the dropdown to the left of the parent */
+    right: 0; /* Ensures it aligns with the parent container */
+    position: absolute;
+}
+
+#dropdown-options li:hover {
+    background-color: #ff6600 !important;
+    color: white !important;
+}
+
+/* Show dropdown on click */
+#dropdown-options.show {
+    display: block;
+}
+
+
+
+
+</style>
+
+<script>
+    document.getElementById('dropdown-trigger').addEventListener('click', function () {
+    const dropdown = document.getElementById('dropdown-options');
+    dropdown.classList.toggle('show');
+});
+
+const options = document.querySelectorAll('#dropdown-options li');
+options.forEach(option => {
+    option.addEventListener('click', function () {
+        const selectedOption = document.getElementById('selected-option');
+        selectedOption.textContent = this.textContent;
+        const dropdown = document.getElementById('dropdown-options');
+        dropdown.classList.remove('show');
+    });
+});
+
+// Close dropdown if clicked outside
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('#dropdown-trigger')) {
+        document.getElementById('dropdown-options').classList.remove('show');
+    }
+});
+
+</script>

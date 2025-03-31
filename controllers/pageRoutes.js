@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
   res.render("home");
 });
 
-router.get("/about", async (req, res) => {
+router.get("/about-us", async (req, res) => {
   res.render("about");
 });
 
@@ -41,8 +41,8 @@ router.get("/contact", async (req, res) => {
   res.render("contact");
 });
 
-router.get("/pricing", async (req, res) => {
-  res.render("pricing");
+router.get("/Book-A-Demo", async (req, res) => {
+  res.render("packageForm");
 });
 
 router.get("/services", async (req, res) => {
