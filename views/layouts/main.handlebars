@@ -51,52 +51,48 @@
   {{{body}}}
 
   <footer class="bg-gray-800 text-gray-300 py-10">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
       <!-- Logo Section -->
       <div class="flex flex-col items-center md:items-start">
         <a href="/" class="mb-4">
-          <img src="/assets/imgs/queue-white.png" alt="Queue Development Logo" class="w-64">
+          <img src="/assets/imgs/queue-white.png" alt="Queue Development Logo" class="w-48 md:w-64">
         </a>
         <p class="text-sm text-gray-400">© 2025 Queue Development, LLC. All rights reserved.</p>
       </div>
 
       <!-- Services Links -->
       <div>
-        <h5 class="text-lg font-semibold text-df8327 mb-4">Services</h5>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Services</h3>
         <ul class="space-y-2">
-          <li><a href="/web-features" class="hover:text-df8327 transition">Website Design</a></li>
-          <li><a href="/email-features" class="hover:text-df8327 transition">Email Features</a></li>
-          <li><a href="/hosting" class="hover:text-df8327 transition">Hosting</a></li>
-          <li><a href="/seo" class="hover:text-df8327 transition">SEO</a></li>
+          <li><a href="/web-features" class="hover:text-primaryQ transition">Website Design</a></li>
+          <li><a href="/email-features" class="hover:text-primaryQ transition">Email Features</a></li>
+          <li><a href="/hosting" class="hover:text-primaryQ transition">Hosting</a></li>
+          <li><a href="/seo" class="hover:text-primaryQ transition">SEO</a></li>
         </ul>
       </div>
 
       <!-- Info Links -->
       <div>
-        <h5 class="text-lg font-semibold text-df8327 mb-4">Info</h5>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Info</h3>
         <ul class="space-y-2">
-          <li><a href="/about" class="hover:text-df8327 transition">About Us</a></li>
-          <li><a href="/pricing" class="hover:text-df8327 transition">Pricing</a></li>
-          <li><a href="/services" class="hover:text-df8327 transition">Services</a></li>
-          <li><a href="/contact" class="hover:text-df8327 transition">Contact</a></li>
+          <li><a href="/about" class="hover:text-primaryQ transition">About Us</a></li>
+          <li><a href="/pricing" class="hover:text-primaryQ transition">Pricing</a></li>
+          <li><a href="/services" class="hover:text-primaryQ transition">Services</a></li>
+          <li><a href="/contact" class="hover:text-primaryQ transition">Contact</a></li>
         </ul>
       </div>
 
       <!-- Newsletter -->
       <div>
-        <h5 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h5>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h3>
         <p class="text-sm text-gray-400 mb-4">Monthly digest of what's new and exciting from us.</p>
         <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
           <input type="email" id="email" name="email" placeholder="Email address"
-            class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ">
+            class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ bg-gray-700 text-white">
           <button type="submit"
-            class="relative inline-block bg-primaryQ text-white text-md font-semibold px-2 py-1 rounded-lg shadow-lg overflow-hidden group">
-            <div
-              class="absolute inset-0 bg-black transition-transform duration-500 rounded-lg scale-x-0 group-hover:scale-x-100 origin-left">
-            </div>
-            <span class="relative z-10 group-hover:text-primaryQLight transition-colors duration-300">
-              Get Started
-            </span>
+            class="relative bg-primaryQ text-white text-md font-semibold px-4 py-2 rounded-lg shadow-lg transition hover:bg-opacity-80">
+            Get Started
           </button>
         </form>
         <p id="newsletterMessage" class="text-sm mt-2"></p>
@@ -105,19 +101,21 @@
 
     <!-- Footer Bottom Section -->
     <div class="mt-8 border-t border-gray-700 pt-4">
-      <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
-        <div class="flex space-x-4">
-          <a href="/accessibility" class="hover:text-df8327 transition">Accessibility</a>
-          <span>|</span>
-          <a href="/terms" class="hover:text-df8327 transition">Terms and Conditions</a>
-          <span>|</span>
-          <a href="/privacy" class="hover:text-df8327 transition">Privacy Statement</a>
-          <span>|</span>
-          <a href="/policy" class="hover:text-df8327 transition">Policy</a>
+      <div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-sm text-center">
+        <div class="flex flex-wrap justify-center md:justify-start space-x-4">
+          <a href="/accessibility" class="hover:text-primaryQ transition">Accessibility</a>
+          <span class="hidden md:inline">|</span>
+          <a href="/terms" class="hover:text-primaryQ transition">Terms and Conditions</a>
+          <span class="hidden md:inline">|</span>
+          <a href="/privacy" class="hover:text-primaryQ transition">Privacy Statement</a>
+          <span class="hidden md:inline">|</span>
+          <a href="/policy" class="hover:text-primaryQ transition">Policy</a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 
   <style>
     .text-df8327 {
