@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "20": "^3.1.9",
+    "20": "^1.0.0",
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
@@ -24,18 +24,21 @@
     "postgres": "^3.4.5",
     "sequelize": "^6.12.0-beta.1",
     "sharp": "^0.33.5",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "daisyui": "^4.12.0"
   },
   "scripts": {
     "test": "echo",
     "start": "node server.js",
+    "go": "nodemon devbox.js -e js,css,html,handlebars",
     "dev": "nodemon server.js",
     "format": "npx prettier . --write",
     "seed": "node ./seed/seed.js",
-    "build:css": "npx tailwindcss -i ./public/assets/CSS/stylesheet.css -o ./public/assets/CSS/tailwind.css --watch"
+    "build:css": "npx tailwindcss -i ./public/assets/CSS/stylesheet.css -o ./public/assets/CSS/tailwind.css"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.24",
     "nodemon": "^3.1.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
