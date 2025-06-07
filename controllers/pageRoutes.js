@@ -92,6 +92,10 @@ router.get("/privacy", async (req, res) => {
   res.render("privacy");
 });
 
+router.get("/pricing", async (req, res) => {
+  res.render("pricing");
+});
+
 router.get("/policy", async (req, res) => {
   res.render("policy");
 });

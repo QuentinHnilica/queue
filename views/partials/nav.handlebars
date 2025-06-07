@@ -17,11 +17,30 @@
     <!-- Menu content centered on desktop, toggles on mobile -->
     <div class="hidden w-full lg:flex lg:w-auto lg:flex-grow" id="menu">
       <ul class="flex-grow mt-4 lg:mt-0 justify-center text-center lg:flex">
+        <li x-data="{ open: false }" class="relative">
+          <a href="#" @click.prevent="open = !open" @click.away="open = false"
+            class="inline-flex items-center text-gray-700 hover:text-df8327 px-2 py-2 transition">
+            Products
+            <svg class="w-4 h-4 ml-1 mt-[2px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <ul x-show="open" x-transition
+            class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+            <li><a href="/products/web-development"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Website Development</a></li>
+            <li><a href="/products/graphic-design"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Graphic Design</a></li>
+            <li><a href="/products/webtools"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">WebTools</a></li>
+            <li><a href="/products/web-support" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Web
+                Support</a></li>
+
+          </ul>
+        </li>
+
         <li>
           <a class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition" href="/Book-A-Demo">Consultation</a>
-        </li>
-        <li>
-          <a class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition" href="/services">Services</a>
         </li>
         <li>
           <a class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition" href="/about-us">About</a>
@@ -55,3 +74,4 @@
     menu.classList.toggle('hidden');
   }
 </script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
