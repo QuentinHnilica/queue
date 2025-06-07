@@ -1,16 +1,33 @@
 <nav class="bg-gray-100 border-b border-gray-300">
-  <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center px-4 py-3">
+  <div
+    class="container mx-auto flex flex-col lg:flex-row justify-between items-center px-4 py-3"
+  >
     <!-- Logo aligned left on desktop -->
     <a href="/" class="self-center lg:self-start">
-      <img src="/assets/imgs/logo-nav.png" alt="Logo" class="w-full max-w-xs">
+      <img src="/assets/imgs/logo-nav.png" alt="Logo" class="w-full max-w-xs" />
     </a>
 
     <!-- Mobile menu button -->
     <button
       class="inline-block lg:hidden text-df8327 bg-gray-200 hover:bg-gray-300 p-2 rounded focus:outline-none transition duration-300"
-      onclick="toggleMenu()" role="button" id="mobile-nav" aria-label="Nav-Toggler">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      onclick="toggleMenu()"
+      role="button"
+      id="mobile-nav"
+      aria-label="Nav-Toggler"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        ></path>
       </svg>
     </button>
 
@@ -40,26 +57,53 @@
         </li>
 
         <li>
-          <a class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition" href="/Book-A-Demo">Consultation</a>
+          <a
+            class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition"
+            href="/Book-A-Demo"
+          >Consultation</a>
         </li>
         <li>
+<<<<<<< HEAD
           <a class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition" href="/about-us">About</a>
+=======
+          <a
+            class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition"
+            href="/services"
+          >Services</a>
         </li>
         <li>
-          <a class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition" href="/contact">Contact Us</a>
+          <a
+            class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition"
+            href="/about-us"
+          >About</a>
+>>>>>>> c0807723ce9a4581dae72afea442015019800a10
         </li>
+        <li>
+          <a
+            class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition"
+            href="/contact"
+          >Contact Us</a>
+        </li>
+        {{! <li>
+          <a
+            class="inline-block text-gray-700 hover:text-df8327 px-2 py-2 transition"
+            href="/portfolio"
+          >Portfolio</a>
+        </li> }}
       </ul>
 
       <!-- Contact links -->
       <div class="lg:flex lg:flex-initial">
         <ul class="list-reset items-center">
           <li class="flex flex-col items-center">
-            <a class="block lg:inline-block text-df8327 hover:text-black px-4 py-2 transition"
-              href="tel:9892631273">(989)
-              263-1273</a>
-            <a href="mailto:support@queuedevelop.com"
-              class="block lg:inline-block text-df8327 hover:text-black px-4 py-2 transition"><i
-                class="fa fa-envelope-o"></i>
+            <a
+              class="block lg:inline-block text-df8327 hover:text-black px-4 py-2 transition"
+              href="tel:9892631273"
+            >(989) 263-1273</a>
+            <a
+              href="mailto:support@queuedevelop.com"
+              class="block lg:inline-block text-df8327 hover:text-black px-4 py-2 transition"
+            ><i class="fa fa-envelope-o"></i>
               Support</a>
           </li>
         </ul>
@@ -69,9 +113,15 @@
 </nav>
 
 <script>
+<<<<<<< HEAD
   function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.classList.toggle('hidden');
   }
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+=======
+  function toggleMenu() { const menu = document.getElementById('menu');
+  menu.classList.toggle('hidden'); }
+</script>
+>>>>>>> c0807723ce9a4581dae72afea442015019800a10

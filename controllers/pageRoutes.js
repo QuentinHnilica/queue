@@ -69,6 +69,10 @@ router.get("/web-features", async (req, res) => {
   res.render("webfeatures");
 });
 
+router.get("/portfolio", async (req, res) => {
+  res.render("portfolio");
+});
+
 router.post("/contact/submit", async (req, res) => {
   try {
     console.log(req.body);
@@ -207,6 +211,5 @@ router.post("/upload", (req, res) => {
     }
   });
 });
-
 
 module.exports = router;
