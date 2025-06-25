@@ -45,9 +45,14 @@ router.get("/Book-A-Demo", async (req, res) => {
   res.render("packageForm");
 });
 
-router.get("/services", async (req, res) => {
+router.get("/products/web-development", async (req, res) => {
   res.render("services");
 });
+
+
+// router.get("/services", async (req, res) => {
+//   res.render("services");
+// });
 
 router.get("/seo", async (req, res) => {
   res.render("seofeatures");
