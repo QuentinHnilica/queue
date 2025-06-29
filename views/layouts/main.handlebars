@@ -15,7 +15,7 @@
   <meta name="msvalidate.01" content="F87740C031D4B03D40B6B698429D775F" />
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link href="/assets/CSS/tailwind.css" rel="stylesheet">
-  
+
 
   <link rel="icon" href="/assets/imgs/queue-logo-sm.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,6 +32,16 @@
     rel="stylesheet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HRSQ6G4T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-G4HRSQ6G4T');
+  </script>
 
 </head>
 
@@ -54,70 +64,70 @@
   {{{body}}}
 
   <footer class="bg-gray-800 text-gray-300 py-10">
-  <div class="container mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-      <!-- Logo Section -->
-      <div class="flex flex-col items-center md:items-start">
-        <a href="/" class="mb-4">
-          <img src="/assets/imgs/queue-white.png" alt="Queue Development Logo" class="w-48 md:w-64">
-        </a>
-        <p class="text-sm text-gray-400">© 2025 Queue Development, LLC. All rights reserved.</p>
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+        <!-- Logo Section -->
+        <div class="flex flex-col items-center md:items-start">
+          <a href="/" class="mb-4">
+            <img src="/assets/imgs/queue-white.png" alt="Queue Development Logo" class="w-48 md:w-64">
+          </a>
+          <p class="text-sm text-gray-400">© 2025 Queue Development, LLC. All rights reserved.</p>
+        </div>
+
+        <!-- Services Links -->
+        <div>
+          <h3 class="text-lg font-semibold text-primaryQ mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="/web-features" class="hover:text-primaryQ transition">Website Design</a></li>
+            <li><a href="/email-features" class="hover:text-primaryQ transition">Email Features</a></li>
+            <li><a href="/hosting" class="hover:text-primaryQ transition">Hosting</a></li>
+            <li><a href="/seo" class="hover:text-primaryQ transition">SEO</a></li>
+          </ul>
+        </div>
+
+        <!-- Info Links -->
+        <div>
+          <h3 class="text-lg font-semibold text-primaryQ mb-4">Info</h3>
+          <ul class="space-y-2">
+            <li><a href="/about-us" class="hover:text-primaryQ transition">About Us</a></li>
+
+            <li><a href="/services" class="hover:text-primaryQ transition">Services</a></li>
+            <li><a href="/contact" class="hover:text-primaryQ transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h3 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h3>
+          <p class="text-sm text-gray-400 mb-4">Monthly digest of what's new and exciting from us.</p>
+          <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
+            <input type="email" id="email" name="email" placeholder="Email address"
+              class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ bg-gray-700 text-white">
+            <button type="submit"
+              class="relative bg-primaryQ text-white text-md font-semibold px-4 py-2 rounded-lg shadow-lg transition hover:bg-opacity-80">
+              Get Started
+            </button>
+          </form>
+          <p id="newsletterMessage" class="text-sm mt-2"></p>
+        </div>
       </div>
 
-      <!-- Services Links -->
-      <div>
-        <h3 class="text-lg font-semibold text-primaryQ mb-4">Services</h3>
-        <ul class="space-y-2">
-          <li><a href="/web-features" class="hover:text-primaryQ transition">Website Design</a></li>
-          <li><a href="/email-features" class="hover:text-primaryQ transition">Email Features</a></li>
-          <li><a href="/hosting" class="hover:text-primaryQ transition">Hosting</a></li>
-          <li><a href="/seo" class="hover:text-primaryQ transition">SEO</a></li>
-        </ul>
-      </div>
-
-      <!-- Info Links -->
-      <div>
-        <h3 class="text-lg font-semibold text-primaryQ mb-4">Info</h3>
-        <ul class="space-y-2">
-          <li><a href="/about-us" class="hover:text-primaryQ transition">About Us</a></li>
-          
-          <li><a href="/services" class="hover:text-primaryQ transition">Services</a></li>
-          <li><a href="/contact" class="hover:text-primaryQ transition">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div>
-        <h3 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h3>
-        <p class="text-sm text-gray-400 mb-4">Monthly digest of what's new and exciting from us.</p>
-        <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
-          <input type="email" id="email" name="email" placeholder="Email address"
-            class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ bg-gray-700 text-white">
-          <button type="submit"
-            class="relative bg-primaryQ text-white text-md font-semibold px-4 py-2 rounded-lg shadow-lg transition hover:bg-opacity-80">
-            Get Started
-          </button>
-        </form>
-        <p id="newsletterMessage" class="text-sm mt-2"></p>
-      </div>
-    </div>
-
-    <!-- Footer Bottom Section -->
-    <div class="mt-8 border-t border-gray-700 pt-4">
-      <div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-sm text-center">
-        <div class="flex flex-wrap justify-center md:justify-start space-x-4">
-          <a href="/accessibility" class="hover:text-primaryQ transition">Accessibility</a>
-          <span class="hidden md:inline">|</span>
-          <a href="/terms" class="hover:text-primaryQ transition">Terms and Conditions</a>
-          <span class="hidden md:inline">|</span>
-          <a href="/privacy" class="hover:text-primaryQ transition">Privacy Statement</a>
-          <span class="hidden md:inline">|</span>
-          <a href="/policy" class="hover:text-primaryQ transition">Policy</a>
+      <!-- Footer Bottom Section -->
+      <div class="mt-8 border-t border-gray-700 pt-4">
+        <div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-sm text-center">
+          <div class="flex flex-wrap justify-center md:justify-start space-x-4">
+            <a href="/accessibility" class="hover:text-primaryQ transition">Accessibility</a>
+            <span class="hidden md:inline">|</span>
+            <a href="/terms" class="hover:text-primaryQ transition">Terms and Conditions</a>
+            <span class="hidden md:inline">|</span>
+            <a href="/privacy" class="hover:text-primaryQ transition">Privacy Statement</a>
+            <span class="hidden md:inline">|</span>
+            <a href="/policy" class="hover:text-primaryQ transition">Policy</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 
   <style>
@@ -138,7 +148,7 @@
   <script>
     AOS.init();
   </script>
-<script src="https://queueranker.com/widget.js"></script>
+  <script src="https://queueranker.com/widget.js"></script>
 
 
 </body>
@@ -148,5 +158,5 @@
     overflow-x: hidden;
   }
 </style>
-   
+
 </html>
