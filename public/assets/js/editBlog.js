@@ -2,7 +2,7 @@ var form = document.querySelector(".edit-blog-form");
 var blogBannerImg;
 
 const updateBlogPost = async (id, status) => {
-  const yourPost = quill.root.innerHTML;
+  const yourPost = document.querySelector('.ql-editor').innerHTML
   const subject = document.getElementById("subject").value.trim();
   const author = document.getElementById("username").value.trim();
   const seoExcerpt = document.getElementById("seoExcerpt").value.trim(); // new SEO excerpt field
@@ -29,8 +29,7 @@ const updateBlogPost = async (id, status) => {
 
   if (response.ok) {
     alert(
-      `Successfully ${
-        status === false ? "saved as draft" : "updated"
+      `Successfully ${status === false ? "saved as draft" : "updated"
       } blog post`
     );
     window.location.href = "/admin/blogpostList";

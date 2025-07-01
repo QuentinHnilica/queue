@@ -3,7 +3,7 @@ const saveDraft = document.getElementById("saveDraft");
 var blogBannerImg;
 
 const makePost = async (status) => {
-  const yourPost = quill.root.innerHTML;
+  const yourPost = document.querySelector('.ql-editor').innerHTML
   const subject = document.getElementById("newSubject").value.trim();
   const author = document.getElementById("authorName").value.trim();
   const seoExcerpt = document.getElementById("seoExcerpt").value.trim();
@@ -35,8 +35,7 @@ const makePost = async (status) => {
 
   if (response.ok) {
     alert(
-      `Blog Post Successfully ${
-        status === "false" ? "Saved as Draft" : "Created"
+      `Blog Post Successfully ${status === "false" ? "Saved as Draft" : "Created"
       }!`
     );
   } else {
