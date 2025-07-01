@@ -45,6 +45,47 @@ router.get("/blogpostList", async (req, res) => {
     }
 });
 
+// DELETE /blogpostList/:id
+router.delete('/blogpostList/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deleted = await Posts.destroy({
+      where: { PostId: id }
+    });
+
+    if (deleted) {
+      res.status(200).json({ message: 'Blog post deleted successfully.' });
+    } else {
+      res.status(404).json({ message: 'Blog post not found.' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to delete blog post.', error });
+  }
+});
+
+router.put('/blogpostList/:id/toggle', async (req, res) => {
+  const { id } = req.params;
+  const { active } = req.body;
+
+  try {
+    const updated = await Posts.update(
+      { active: active },
+      { where: { PostId: id } }
+    );
+
+    if (updated) {
+      res.status(200).json({ message: 'Post status updated successfully.' });
+    } else {
+      res.status(404).json({ message: 'Post not found.' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to update post status.', error });
+  }
+});
+
 
 // edit specfic blog page route
 router.get("/blogpost/:id", async (req, res) => {
