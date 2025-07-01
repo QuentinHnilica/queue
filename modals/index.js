@@ -5,6 +5,7 @@ const Posts = require("../modals/posts")
 const MetaData = require("../modals/metadata")
 const Newsletter = require("../modals/newsletter")
 const Leads = require("../modals/leads")
+const EmailBlast = require("./emailBlasts")
 
 // Export models
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   Message,
   Newsletter,
   Leads,
+  EmailBlast,
 };

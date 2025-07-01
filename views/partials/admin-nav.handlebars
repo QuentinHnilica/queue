@@ -15,6 +15,7 @@
         <a href="/admin/blogpostList" class="nav-btn">Blog Tool</a>
         <a href="/admin/metaData" class="nav-btn">MetaData Tool</a>
         <a href="/admin/leads" class="nav-btn">Lead Settings</a>
+        <a href="/admin/email-blasts" class="nav-btn">Email Blast</a>
         <a href="#" id="logout" class="nav-btn">Logout</a>
     </nav>
 
@@ -24,14 +25,16 @@
     </button>
 
     <!-- Mobile Dropdown -->
-    <div class="absolute top-16 left-0 w-full bg-gray-800 flex flex-col items-center gap-2 py-4 hidden" id="mobile-menu">
+    <div class="absolute top-16 left-0 w-full bg-gray-800 flex flex-col items-center gap-2 py-4 hidden"
+        id="mobile-menu">
         <a href="/admin/" class="nav-btn">Admin Home</a>
         <a href="/admin/newUser" class="nav-btn">Create User</a>
         <a href="/" class="nav-btn">View Site</a>
         <a href="/admin/slideshow" class="nav-btn">Slideshow</a>
         <a href="/admin/blogpostList" class="nav-btn">Blog Tool</a>
         <a href="/admin/metaData" class="nav-btn">MetaData Tool</a>
-                <a href="/admin/leads" class="nav-btn">Lead Settings</a>
+        <a href="/admin/leads" class="nav-btn">Lead Settings</a>
+        <a href="/admin/email-blasts" class="nav-btn">Email Blast</a>
         <a href="#" id="logout" class="nav-btn">Logout</a>
     </div>
 </header>
@@ -45,6 +48,7 @@
         font-weight: 600;
         transition: background 0.3s;
     }
+
     .nav-btn:hover {
         background-color: #e97f1c;
         color: white;
@@ -52,7 +56,7 @@
 </style>
 
 <script>
-    document.getElementById("mobile-menu-btn").addEventListener("click", function() {
+    document.getElementById("mobile-menu-btn").addEventListener("click", function () {
         document.getElementById("mobile-menu").classList.toggle("hidden");
     });
 </script>

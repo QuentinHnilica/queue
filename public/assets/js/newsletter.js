@@ -21,7 +21,7 @@ newsForm.addEventListener('submit', async (e) => {
     if (response.ok) {
       newsMessage.textContent = 'Subscription successful! Check your email.';
       newsMessage.className = 'text-green-500';
-      form.reset();
+      newsForm.reset();
     } else {
       newsMessage.textContent = data.message || 'Subscription failed.';
       newsMessage.className = 'text-red-500';

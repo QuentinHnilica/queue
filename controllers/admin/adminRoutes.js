@@ -2,6 +2,7 @@ const {
     Message,
     User,
     Leads,
+    EmailBlast
 } = require("../../modals");
 
 const router = require("express").Router();
@@ -467,6 +468,55 @@ router.post('/leads/delete/:id', async (req, res) => {
     res.redirect('/admin/leads');
   } catch (err) {
     res.status(500).send('Server Error'); 
+  }
+});
+
+//EmailBlast Routes
+router.post('/email-blasts', async (req, res) => {
+  const { subject, content } = req.body;
+
+  try {
+    // Fetch all subscribers
+    const subscribers = await Subscriber.findAll({ where: { subscribed: true } });
+
+    // Send email to each subscriber
+    for (const sub of subscribers) {
+      await transporter.sendMail({
+        from: 'support@queuedevelop.com',
+        to: sub.email,
+        subject: subject,
+        html: content
+      });
+    }
+
+    // Save blast record
+    await EmailBlast.create({
+      subject: subject,
+      content: content,
+      status: 'sent'
+    });
+
+    res.status(200).json({ message: 'Email blast sent successfully.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to send email blast.', error });
+  }
+});
+
+router.get('/email-blasts', async (req, res) => {
+  const blasts = await EmailBlast.findAll({ order: [['createdAt', 'DESC']] });
+  res.render('adminEmailBlasts', { blasts }); // adjust view accordingly
+});
+
+router.delete('/email-blasts/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await EmailBlast.destroy({ where: { id: id } });
+    res.status(200).json({ message: 'Email blast deleted successfully.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to delete email blast.', error });
   }
 });
 
