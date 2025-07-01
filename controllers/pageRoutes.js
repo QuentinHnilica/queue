@@ -8,7 +8,7 @@ const fs = require("fs");
 const sharp = require("sharp");
 
 // ✅ Define upload path
-const UPLOADS_DIR = path.join(__dirname, "../public/assets/uploads");
+const UPLOADS_DIR = path.join("/assets/uploads", "uploads");
 
 // ✅ Ensure upload directory exists
 
