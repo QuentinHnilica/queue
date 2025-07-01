@@ -1,48 +1,46 @@
-const newPost = document.getElementById('submitPost')
-var blogBannerImg
+const newPost = document.getElementById('submitPost');
+const saveDraft = document.getElementById('saveDraft');
+var blogBannerImg;
 
-const makePost = async () => {
-    const yourPost = document.querySelector('.ql-editor').innerHTML
-    const subject = document.getElementById('newSubject').value.trim()
-    const author = document.getElementById('authorName').value.trim()
-    const date = new Date()
-    const timeStamp = date.toDateString()
+const makePost = async (status) => {
+    const yourPost = document.querySelector('.ql-editor').innerHTML;
+    const subject = document.getElementById('newSubject').value.trim();
+    const author = document.getElementById('authorName').value.trim();
+    const seoExcerpt = document.getElementById('seoExcerpt').value.trim(); // new SEO excerpt input
+    const date = new Date();
+    const timeStamp = date.toDateString();
 
-    if (blogBannerImg != null) {
-        const newPostObj = {
-            username: author,
-            PostContent: yourPost,
-            subject: subject,
-            date: timeStamp,
-            banner: blogBannerImg
-        }
-        console.log(newPostObj)
-
-
-        const response = await fetch('/admin/newPost', {
-            method: "POST",
-            body: JSON.stringify(newPostObj),
-            headers: { 'Content-Type': 'application/json' }
-        })
-
-        if (response.ok) {
-            alert("Blog Post Sucessfully Created!")
-        }
-        else {
-            alert(response.statusText)
-        }
-
-    }
-    else{
-        alert('Add Banner Image')
+    if (!blogBannerImg) {
+        alert('Add Banner Image');
+        return;
     }
 
+    const newPostObj = {
+        username: author,
+        PostContent: yourPost,
+        subject: subject,
+        excerpt: seoExcerpt, // include seo_excerpt in post data
+        date: timeStamp,
+        banner: blogBannerImg,
+        active: status // 'published' or 'draft'
+    };
 
+    console.log(newPostObj);
 
-}
+    const response = await fetch('/admin/newPost', {
+        method: "POST",
+        body: JSON.stringify(newPostObj),
+        headers: { 'Content-Type': 'application/json' }
+    });
 
+    if (response.ok) {
+        alert(`Blog Post Successfully ${status === 'false' ? 'Saved as Draft' : 'Created'}!`);
+    } else {
+        alert(response.statusText);
+    }
+};
 
-const uploadBtn = document.querySelector('#uploadBtn')
+const uploadBtn = document.querySelector('#uploadBtn');
 
 uploadBtn.addEventListener('click', async function (event) {
     event.preventDefault(); // Prevent form from submitting the traditional way
@@ -68,16 +66,10 @@ uploadBtn.addEventListener('click', async function (event) {
 
         if (response.ok) {
             alert('Image uploaded successfully!');
-            // Use result.path to reference the uploaded image
-            console.log(result.paths); // Add this to your img table or product modal
-
-            // Example: You can update a hidden input field or add the path to a modal form
             const imagePath = result.paths[0];
-            blogBannerImg = imagePath; //set global to add to db
+            blogBannerImg = imagePath; // set global to add to db
             document.getElementById('imageFilePath').src = imagePath; // show img
-            document.querySelector('.blog-banner-showcase').classList.add('show')
-
-
+            document.querySelector('.blog-banner-showcase').classList.add('show');
         } else {
             alert('Failed to upload image.');
         }
@@ -87,4 +79,6 @@ uploadBtn.addEventListener('click', async function (event) {
     }
 });
 
-newPost.addEventListener('click', makePost)
+// Event listeners for publish and draft buttons
+newPost.addEventListener('click', () => makePost(true));
+saveDraft.addEventListener('click', () => makePost(false));

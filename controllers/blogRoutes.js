@@ -15,7 +15,7 @@ const fs = require("fs");
 router.get("/blog", async (req, res) => {
     try {
         //get all blog posts
-        const blogDB = await Posts.findAll({})
+        const blogDB = await Posts.findAll({ where: { active: true } })
 
         // Convert Sequelize instances to plain JavaScript objects
         const blogPosts = blogDB.map((post) => post.get({ plain: true }));
@@ -36,21 +36,30 @@ router.get("/blog", async (req, res) => {
 router.get("/blogpost/:id", async (req, res) => {
     try {
         const blogDB = await Posts.findByPk(req.params.id);
-    
+
         // instance of product to plain JavaScript objects
         const blogPost = blogDB.get({ plain: true });
-        
-        const blogPostUrl = 'https://queue-sandbox.xyz/blogpost/'+req.params.id
-        console.log(blogPost);
-        res.render("blogPage", {
-          blogPost,
-          blogPostUrl,
-          title: res.locals.metaTitle,
-          keywords: res.locals.metaKeywords
-        });
-      } catch (error) {
+
+        if (blogPost.active) {
+
+
+
+
+            const blogPostUrl = 'https://queuedevelop.com/blogpost/' + req.params.id
+            console.log(blogPost);
+            res.render("blogPage", {
+                blogPost,
+                blogPostUrl,
+                title: res.locals.metaTitle,
+                keywords: res.locals.metaKeywords
+            });
+        }
+        else {
+            res.render("notFound")
+        }
+    } catch (error) {
         res.status(400).json(error);
-      }
+    }
 });
 
 

@@ -31,6 +31,16 @@ Posts.init(
         banner:{
             type: DataTypes.STRING,
             allowNull: false
+        },
+        active:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },
+        excerpt:{
+            type: DataTypes.STRING,
+            allowNull: false,
+
         }
     },
     {
