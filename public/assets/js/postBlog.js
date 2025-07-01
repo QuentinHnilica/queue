@@ -3,12 +3,14 @@ const saveDraft = document.getElementById("saveDraft");
 var blogBannerImg;
 
 const makePost = async (status) => {
-  const yourPost = quill.root.innerHTML;
+  const yourPost = document.querySelector(".ql-editor").innerHTML;
   const subject = document.getElementById("newSubject").value.trim();
   const author = document.getElementById("authorName").value.trim();
   const seoExcerpt = document.getElementById("seoExcerpt").value.trim();
   const date = new Date();
   const timeStamp = date.toDateString();
+
+  console.log(yourPost);
 
   if (!blogBannerImg) {
     alert("Add Banner Image");

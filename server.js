@@ -6,8 +6,18 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, UPLOADSDIR, VIEWSFOLDER } = process.env;
-const fetchMetaData = require('./controllers/Middleware/metaDataMiddleware')
+const {
+  PAYPAL_CLIENT_ID,
+  PAYPAL_CLIENT_SECRET,
+  PARTIALSDIR,
+  LAYOUTDIR,
+  PUBLICFOLDER,
+  VIEWSFOLDER,
+} = process.env;
+
+const UPLOADSDIR = process.env.UPLOADSDIR || "./public/uploads";
+
+const fetchMetaData = require("./controllers/Middleware/metaDataMiddleware");
 const app = express();
 
 const sequelize = require("./config/connection");
@@ -24,10 +34,9 @@ const hbs = exphbs.create({
       return JSON.stringify(context);
     },
 
-    ifEquals: function(arg1, arg2, options) {
-      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    ifEquals: function (arg1, arg2, options) {
+      return arg1 == arg2 ? options.fn(this) : options.inverse(this);
     },
-
 
     isSelected: function (categoryId, selectedCategories) {
       return (
@@ -67,22 +76,22 @@ const hbs = exphbs.create({
     },
     ifCond: function (v1, operator, v2, options) {
       switch (operator) {
-        case '==':
-          return (v1 == v2) ? options.fn(this) : options.inverse(this);
-        case '===':
-          return (v1 === v2) ? options.fn(this) : options.inverse(this);
-        case '!=':
-          return (v1 != v2) ? options.fn(this) : options.inverse(this);
-        case '!==':
-          return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-        case '<':
-          return (v1 < v2) ? options.fn(this) : options.inverse(this);
-        case '<=':
-          return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-        case '>':
-          return (v1 > v2) ? options.fn(this) : options.inverse(this);
-        case '>=':
-          return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case "==":
+          return v1 == v2 ? options.fn(this) : options.inverse(this);
+        case "===":
+          return v1 === v2 ? options.fn(this) : options.inverse(this);
+        case "!=":
+          return v1 != v2 ? options.fn(this) : options.inverse(this);
+        case "!==":
+          return v1 !== v2 ? options.fn(this) : options.inverse(this);
+        case "<":
+          return v1 < v2 ? options.fn(this) : options.inverse(this);
+        case "<=":
+          return v1 <= v2 ? options.fn(this) : options.inverse(this);
+        case ">":
+          return v1 > v2 ? options.fn(this) : options.inverse(this);
+        case ">=":
+          return v1 >= v2 ? options.fn(this) : options.inverse(this);
         default:
           return options.inverse(this);
       }
@@ -106,7 +115,7 @@ app.use(session(sess));
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
-app.use(fetchMetaData)
+app.use(fetchMetaData);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
@@ -203,10 +212,10 @@ const createOrder = async (cart, amt, tax) => {
               currency_code: "USD",
               value: amt.toFixed(2),
             },
-            tax_total:{
-              currency_code: 'USD',
+            tax_total: {
+              currency_code: "USD",
               value: tax.toFixed(2),
-            }
+            },
           },
         },
         items: cart.myCartData.map((item) => {
@@ -303,10 +312,6 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
   }
 });
 
-
-
-
-
 app.use((req, res, next) => {
   res.status(404).render("notFound");
 });
@@ -314,4 +319,3 @@ app.use((req, res, next) => {
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
-

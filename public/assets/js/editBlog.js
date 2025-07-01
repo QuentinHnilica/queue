@@ -2,11 +2,12 @@ var form = document.querySelector(".edit-blog-form");
 var blogBannerImg;
 
 const updateBlogPost = async (id, status) => {
-  const yourPost = quill.root.innerHTML;
+  const yourPost = document.getElementById("editor").innerHTML;
   const subject = document.getElementById("subject").value.trim();
   const author = document.getElementById("username").value.trim();
   const seoExcerpt = document.getElementById("seoExcerpt").value.trim(); // new SEO excerpt field
 
+  console.log(yourPost);
   var newPostObj = {
     username: author,
     PostContent: yourPost,
