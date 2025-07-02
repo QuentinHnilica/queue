@@ -17,7 +17,16 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 }
 
 // ✅ Multer Storage: Always save to disk first
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, UPLOADS_DIR);
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, "upload_" + uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit per file
