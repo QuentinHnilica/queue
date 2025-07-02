@@ -119,7 +119,7 @@ app.use(fetchMetaData);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLICFOLDER));
-app.use(express.static(UPLOADSDIR));
+app.use("/uploads", express.static(path.join(UPLOADSDIR)));
 
 app.use(routes);
 
