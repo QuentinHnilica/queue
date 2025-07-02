@@ -193,18 +193,26 @@ router.post("/upload", (req, res) => {
       const filePaths = await Promise.all(
         req.files.map(async (file) => {
           try {
-            const optimizedBuffer = await sharp(file.buffer)
-              .rotate() // Auto-fix orientation
-              .resize(800, 800, { fit: "inside" }) // Resize while keeping aspect ratio
-              .jpeg({ quality: 75 }) // Optimize quality
+            const optimizedFileName = "optimized_" + file.filename;
+            const optimizedPath = path.join(UPLOADS_DIR, optimizedFileName);
+
+            // Read the file into a buffer first
+            const fileBuffer = await fs.promises.readFile(file.path);
+
+            // Process in memory
+            const optimizedBuffer = await sharp(fileBuffer)
+              .rotate()
+              .resize(800, 800, { fit: "inside" })
+              .jpeg({ quality: 75 })
               .toBuffer();
 
-            // ✅ Save optimized image
-            const filename = `optimized_${Date.now()}_${file.originalname}`;
-            const filePath = path.join(UPLOADS_DIR, filename);
-            await fs.promises.writeFile(filePath, optimizedBuffer);
+            // Save the optimized buffer
+            await fs.promises.writeFile(optimizedPath, optimizedBuffer);
 
-            return `/assets/uploads/${filename}`;
+            // Now unlink safely — no file locking
+            await fs.promises.unlink(file.path);
+
+            return `/uploads/${optimizedFileName}`; // change this in your route
           } catch (error) {
             console.error("❌ Sharp Processing Error:", error);
             return null;
