@@ -52,12 +52,10 @@
                 </div>
 
                 <!-- Quill Editor -->
-                <div class="max-w-2xl mx-auto bg-white shadow-md rounded-md p-4">
-                    <label class="block text-gray-700 font-semibold mb-2">Blog Content</label>
-                    <div class="quill-wrapper">
-                        <div id="BlogPostBox"></div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-semibold mb-2">Blog Content</label>
+                        <div id="BlogPostBox" class="border border-gray-300 rounded-md"></div>
                     </div>
-                </div>
 
                 <!-- Submit and Draft Buttons -->
                 <div class="flex justify-end space-x-4 mt-4">
@@ -82,6 +80,7 @@
 
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
     var toolbarOptions = [
         // Text Formatting
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons for bold, italic, underline, strikethrough
@@ -111,11 +110,12 @@
         // Remove Formatting
         ['clean']                                          // remove formatting button
     ];
-    var quill = new Quill('#BlogPostBox', {
+    window.quill = new Quill('#BlogPostBox', {
         theme: 'snow',
         modules: {
             toolbar: {
                 container: toolbarOptions,
+
 
                 handlers: {
                     image: imageHandler,
@@ -124,7 +124,7 @@
 
         }
     });
-
+});
     function imageHandler() {
         var input = document.createElement('input');
         input.setAttribute('type', 'file');
