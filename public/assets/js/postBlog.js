@@ -3,7 +3,7 @@ const saveDraft = document.getElementById("saveDraft");
 var blogBannerImg;
 
 const makePost = async (status) => {
-  const yourPost = document.querySelector(".ql-editor").innerHTML;
+  const yourPost = quill.root.innerHTML.trim();
   const subject = document.getElementById("newSubject").value.trim();
   const author = document.getElementById("authorName").value.trim();
   const seoExcerpt = document.getElementById("seoExcerpt").value.trim();
