@@ -53,7 +53,7 @@ imageUpdater.addEventListener("change", async function (event) {
   }
 
   for (const file of imageUpdater.files) {
-    formData.append("productImages", file);
+    formData.append("Images", file);
   }
 
   try {
