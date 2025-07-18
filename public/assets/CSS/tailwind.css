@@ -3317,11 +3317,6 @@ div {
   font-family: "Montserrat", sans-serif;
 }
 
-select,
-input[type="text"] {
-  background-color: aliceblue;
-}
-
 /* Ensure Tailwind does not interfere with Quill */
 
 /* Reset Tailwind influence on Quill */
