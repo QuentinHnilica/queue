@@ -18,7 +18,7 @@ router.get("/blog", async (req, res) => {
     const blogDB = await Posts.findAll({
       where: { active: true },
       // Option A: order by a date column (replace 'postedDate' with your actual field)
-      order: [["date", "DESC"]],
+      order: [["PostId", "DESC"]],
     });
 
     // Convert Sequelize instances to plain objects
