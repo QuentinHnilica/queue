@@ -13,22 +13,26 @@ const fs = require("fs");
 
 // adding blog list page route
 router.get("/blog", async (req, res) => {
-    try {
-        //get all blog posts
-        const blogDB = await Posts.findAll({ where: { active: true } })
+  try {
+    // get all active blog posts, newest first
+    const blogDB = await Posts.findAll({
+      where: { active: true },
+      // Option A: order by a date column (replace 'postedDate' with your actual field)
+      order: [["date", "DESC"]],
+    });
 
-        // Convert Sequelize instances to plain JavaScript objects
-        const blogPosts = blogDB.map((post) => post.get({ plain: true }));
+    // Convert Sequelize instances to plain objects
+    const blogPosts = blogDB.map((post) => post.get({ plain: true }));
 
-        console.log(blogPosts)
-        res.render("blog", {
-            blogPosts,
-            title: res.locals.metaTitle,
-            keywords: res.locals.metaKeywords
-        });
-    } catch (err) {
-        res.status(400).json(err.message);
-    }
+    console.log(blogPosts);
+    res.render("blog", {
+      blogPosts,
+      title: res.locals.metaTitle,
+      keywords: res.locals.metaKeywords,
+    });
+  } catch (err) {
+    res.status(400).json(err.message);
+  }
 });
 
 
