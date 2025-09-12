@@ -62,6 +62,10 @@ router.get("/shiawassee20", async (req, res) => {
   res.render("shaiawasseecoupon");
 });
 
+router.get("/pride", async (req, res) => {
+  res.render("pride");
+});
+
 // router.get("/services", async (req, res) => {
 //   res.render("services");
 // });
