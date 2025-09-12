@@ -63,6 +63,10 @@
   {{!-- Render regular nav for non-admin routes --}}
   {{> nav }}
   {{/if}}
+  {{> pride-nav }}
+  {{#if (includes currentPath "/admin")}}
+
+  {{/if}}
 
   {{{body}}}
 
