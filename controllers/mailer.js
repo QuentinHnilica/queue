@@ -2,7 +2,7 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 
-// ---------- tiny helpers ----------
+/* ------------------------- tiny helpers ------------------------- */
 function mask(s) {
   if (!s) return "(empty)";
   const t = s.trim();
@@ -19,15 +19,53 @@ function escapeHtml(s) {
   );
 }
 function toLabel(key) {
-  // split camelCase / snake_case -> "Title Case"
-  const s = key.replace(/[_-]+/g, " ").replace(/([a-z0-9])([A-Z])/g, "$1 $2");
+  const s = String(key)
+    .replace(/[_-]+/g, " ")
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2");
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
-function isObject(v) {
-  return v && typeof v === "object" && !Array.isArray(v);
+function isPlainObject(v) {
+  return Object.prototype.toString.call(v) === "[object Object]";
+}
+function normalizeKey(k) {
+  return String(k)
+    .toLowerCase()
+    .replace(/[\s_-]+/g, "");
 }
 
-// ---------- env + transport ----------
+/* --------- robust JSON parsing from wrapper strings --------- */
+function tryParseJsonLoose(raw) {
+  if (raw == null || typeof raw !== "string") return null;
+  let s = raw.trim();
+
+  if (/%7b|%7d|%22/i.test(s)) {
+    try {
+      s = decodeURIComponent(s);
+    } catch {}
+  }
+  s = s.replace(/&quot;|&#34;/g, '"');
+
+  const candidates = [];
+  candidates.push(s);
+  const first = s.indexOf("{");
+  const last = s.lastIndexOf("}");
+  if (first !== -1 && last > first) candidates.push(s.slice(first, last + 1));
+  const frag = s.match(/\{[\s\S]*?\}/g);
+  if (frag) candidates.push(...frag);
+
+  for (const c of candidates) {
+    try {
+      return JSON.parse(c);
+    } catch {
+      try {
+        return JSON.parse(c.replace(/\\"/g, '"'));
+      } catch {}
+    }
+  }
+  return null;
+}
+
+/* ------------------ env + transporter (465 SMTPS) ------------------ */
 const smtpUser = (process.env.SMTP_USER || "").trim();
 const smtpPass = (process.env.SMTP_PASS || "").trim();
 const fromAddr = smtpUser;
@@ -39,10 +77,8 @@ console.log(
   mask(smtpPass),
   mask(fromAddr)
 );
-
-if (!smtpUser || !smtpPass) {
+if (!smtpUser || !smtpPass)
   throw new Error("SMTP_USER/SMTP_PASS not set (or blank/whitespace).");
-}
 
 const transporter = nodemailer.createTransport({
   host: "mail.privateemail.com",
@@ -56,16 +92,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// (Optional) Verify once at boot
 transporter
   .verify()
   .then(() => console.log("[MAIL] SMTP verify OK"))
   .catch((e) => console.error("[MAIL] SMTP verify FAIL:", e));
 
-// ---------- brand config (yours) ----------
+/* ------------------------- brand settings ------------------------- */
 const BRAND = {
   brandName: "Queue Dev Lead",
-  logoUrl: "/assets/imgs/queue-logo-sm.png", // prefer absolute URL or use CID attachment
+  logoUrl: "/assets/imgs/queue-logo-sm.png", // use absolute URL for real email clients, or CID
   primary: "#df8327",
   textColor: "#0f172a",
   muted: "#475569",
@@ -74,12 +109,55 @@ const BRAND = {
   footerText: "This notification was sent automatically by your website.",
 };
 
-// ---------- normalization so ANY form works ----------
+/* -------------------- normalization so ANY form works -------------------- */
 function normalizeLead(raw = {}) {
-  // Flatten one level and copy
   const lead = raw?.toJSON ? raw.toJSON() : { ...raw };
 
-  // Common aliases -> canonical keys
+  // 1) Merge wrapper OBJECTS (e.g., formData: {...})
+  for (const [k, v] of Object.entries({ ...lead })) {
+    const nk = normalizeKey(k);
+    if (
+      isPlainObject(v) &&
+      (nk === "formdata" ||
+        nk === "payload" ||
+        nk === "data" ||
+        nk === "fields")
+    ) {
+      Object.assign(lead, v);
+      delete lead[k];
+    }
+  }
+
+  // 2) Parse and merge wrapper STRINGS that contain JSON
+  for (const [k, v] of Object.entries({ ...lead })) {
+    if (typeof v === "string") {
+      const parsed = tryParseJsonLoose(v);
+      if (parsed && isPlainObject(parsed)) {
+        Object.assign(lead, parsed);
+        const nk = normalizeKey(k);
+        if (
+          nk === "formdata" ||
+          nk === "payload" ||
+          nk === "data" ||
+          nk === "fields"
+        ) {
+          delete lead[k];
+        }
+      }
+    }
+  }
+
+  // 3) If the whole object is a single JSON string, parse it
+  if (Object.keys(lead).length === 1) {
+    const onlyVal = Object.values(lead)[0];
+    const parsed = tryParseJsonLoose(onlyVal);
+    if (parsed && isPlainObject(parsed)) {
+      for (const k of Object.keys(lead)) delete lead[k];
+      Object.assign(lead, parsed);
+    }
+  }
+
+  // 4) Aliases -> canonical
   const aliasMap = {
     full_name: "name",
     fullName: "name",
@@ -96,21 +174,14 @@ function normalizeLead(raw = {}) {
     description_text: "description",
   };
   for (const [k, v] of Object.entries({ ...lead })) {
-    if (aliasMap[k] && lead[aliasMap[k]] == null) {
-      lead[aliasMap[k]] = v;
-    }
+    if (aliasMap[k] && lead[aliasMap[k]] == null) lead[aliasMap[k]] = v;
   }
 
-  // Add a fallback source
   if (!lead.source) lead.source = "contact/consult form";
-
   return lead;
 }
 
-// Build ordered entries for the details table.
-// 1) prioritized keys if present
-// 2) then every other key (except ignored)
-// Values that are empty/whitespace are skipped.
+/* ---------------- build ordered rows for the details table ---------------- */
 function buildDetailsRows(lead) {
   const PRIORITY = [
     "name",
@@ -125,24 +196,33 @@ function buildDetailsRows(lead) {
     "budget",
     "timeline",
   ];
-  const IGNORE = new Set([
-    "message", // rendered separately
-    "source", // shown in header area
-    "submitted", // we add our own Submitted timestamp
+
+  // case/space/underscore-insensitive ignore list
+  const IGNORE_NORM = new Set([
+    "message",
+    "source",
+    "submitted",
     "timestamp",
-    "createdAt",
-    "updatedAt",
+    "createdat",
+    "updatedat",
     "id",
     "_id",
     "__v",
-    "g-recaptcha-response",
+    "grecaptcharesponse",
+    "formdata",
+    "formname",
+    "form_name",
+    "formnametext",
+    "form_name_text",
+    "payload",
+    "data",
+    "fields",
   ]);
 
-  // helper to stringify non-primitive values safely
   const fmtValue = (v) => {
     if (v == null) return "";
     if (Array.isArray(v)) return v.join(", ");
-    if (isObject(v)) {
+    if (isPlainObject(v)) {
       try {
         return JSON.stringify(v);
       } catch {
@@ -154,35 +234,36 @@ function buildDetailsRows(lead) {
 
   const rows = [];
 
-  // 1) prioritized keys
+  // 1) priority first
   for (const key of PRIORITY) {
     if (lead[key] != null && String(lead[key]).trim() !== "") {
       rows.push([key, fmtValue(lead[key])]);
     }
   }
 
-  // 2) remaining keys
+  // 2) then everything else
   for (const [k, v] of Object.entries(lead)) {
-    if (IGNORE.has(k)) continue;
+    const nk = normalizeKey(k);
+    if (IGNORE_NORM.has(nk)) continue;
     if (PRIORITY.includes(k)) continue;
     const sv = fmtValue(v);
     if (sv.trim() === "") continue;
     rows.push([k, sv]);
   }
 
-  // De-dup any duplicates that slipped in
+  // de-dup by normalized key
   const seen = new Set();
   const deduped = [];
   for (const [k, v] of rows) {
-    if (seen.has(k)) continue;
-    seen.add(k);
+    const nk = normalizeKey(k);
+    if (seen.has(nk)) continue;
+    seen.add(nk);
     deduped.push([k, v]);
   }
-
   return deduped;
 }
 
-// ---------- renderer (dynamic fields) ----------
+/* ------------------------ HTML/Text email renderer ------------------------ */
 function renderLeadEmail(_lead, brand = {}) {
   const B = { ...BRAND, ...brand };
   const lead = normalizeLead(_lead);
@@ -196,7 +277,8 @@ function renderLeadEmail(_lead, brand = {}) {
     lead.name || lead.full_name || lead.email || "your website contact form"
   }`;
 
-  const detailsRows = buildDetailsRows(lead); // [['name','Quentin'], ['email','...'], ...]
+  const detailsRows = buildDetailsRows(lead);
+  const hasDetails = detailsRows.length > 0;
 
   const maybeLogoHtml =
     B.logoUrl && /^https?:\/\//i.test(B.logoUrl)
@@ -207,33 +289,49 @@ function renderLeadEmail(_lead, brand = {}) {
           B.textColor
         };">${esc(B.brandName)}</div>`;
 
-  const htmlDetails = detailsRows
-    .map(([key, value]) => {
-      const label = toLabel(key);
-      // special links for email/phone
-      const valueHtml =
-        key.toLowerCase() === "email"
-          ? `<a href="mailto:${esc(value)}" style="color:${B.primary};">${esc(
-              value
-            )}</a>`
-          : key.toLowerCase() === "phone"
-          ? `<a href="tel:${esc(
-              String(value).replace(/[^0-9+]/g, "")
-            )}" style="color:${B.primary};">${esc(value)}</a>`
-          : esc(value);
+  const htmlDetails = hasDetails
+    ? detailsRows
+        .map(([key, value]) => {
+          const label = toLabel(key);
+          const valueHtml =
+            key.toLowerCase() === "email"
+              ? `<a href="mailto:${esc(value)}" style="color:${
+                  B.primary
+                };">${esc(value)}</a>`
+              : key.toLowerCase() === "phone"
+              ? `<a href="tel:${esc(
+                  String(value).replace(/[^0-9+]/g, "")
+                )}" style="color:${B.primary};">${esc(value)}</a>`
+              : esc(value);
 
-      return `
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #e2e8f0;width:180px;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${B.textColor};" class="dm-text dm-border">
-          ${label}
-        </td>
-        <td style="padding:10px 0;border-top:1px solid #e2e8f0;font:400 14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${B.textColor};" class="dm-text dm-border">
-          ${valueHtml}
-        </td>
-      </tr>
-    `;
-    })
-    .join("");
+          return `
+          <tr>
+            <td style="padding:10px 0;border-top:1px solid #e2e8f0;width:180px;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${B.textColor};" class="dm-text dm-border">
+              ${label}
+            </td>
+            <td style="padding:10px 0;border-top:1px solid #e2e8f0;font:400 14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${B.textColor};" class="dm-text dm-border">
+              ${valueHtml}
+            </td>
+          </tr>
+        `;
+        })
+        .join("")
+    : "";
+
+  const rawDump = !hasDetails
+    ? `<div style="margin:14px 0 22px;">
+         <div style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${
+           B.muted
+         };margin:0 0 6px;" class="dm-muted">Raw Submission</div>
+         <pre style="white-space:pre-wrap;word-wrap:break-word;font:400 12px/1.6 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:${
+           B.textColor
+         };background:${
+        B.bg
+      };padding:12px 14px;border-radius:10px;border:1px solid #e2e8f0;" class="dm-text dm-bg dm-border">
+${esc(JSON.stringify(_lead?.toJSON ? _lead.toJSON() : _lead, null, 2))}
+         </pre>
+       </div>`
+    : "";
 
   const html = `
   <!doctype html>
@@ -291,21 +389,25 @@ function renderLeadEmail(_lead, brand = {}) {
                   )}.
                 </p>
 
-                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;margin:0 0 16px;">
-                  ${htmlDetails}
-                  <tr>
-                    <td style="padding:10px 0;border-top:1px solid #e2e8f0;width:180px;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${
-                      B.textColor
-                    };" class="dm-text dm-border">
-                      Submitted
-                    </td>
-                    <td style="padding:10px 0;border-top:1px solid #e2e8f0;font:400 14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${
-                      B.textColor
-                    };" class="dm-text dm-border">
-                      ${escapeHtml(new Date().toLocaleString())}
-                    </td>
-                  </tr>
-                </table>
+                ${
+                  hasDetails
+                    ? `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;margin:0 0 16px;">
+                         ${htmlDetails}
+                         <tr>
+                           <td style="padding:10px 0;border-top:1px solid #e2e8f0;width:180px;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${
+                             B.textColor
+                           };" class="dm-text dm-border">
+                             Submitted
+                           </td>
+                           <td style="padding:10px 0;border-top:1px solid #e2e8f0;font:400 14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:${
+                             B.textColor
+                           };" class="dm-text dm-border">
+                             ${escapeHtml(new Date().toLocaleString())}
+                           </td>
+                         </tr>
+                       </table>`
+                    : rawDump
+                }
 
                 ${
                   lead.message
@@ -362,46 +464,35 @@ function renderLeadEmail(_lead, brand = {}) {
   </body>
   </html>`.trim();
 
-  const lines = [];
-  for (const [key, value] of detailsRows) {
-    lines.push(`${toLabel(key)}: ${value}`);
-  }
+  const textLines = detailsRows.map(([k, v]) => `${toLabel(k)}: ${v}`);
   const text = [
     "You have a new lead",
     `Source: ${lead.source || "contact/consult form"}`,
     "",
-    ...lines,
+    ...(hasDetails
+      ? textLines
+      : [
+          "(Raw Submission follows)",
+          JSON.stringify(_lead?.toJSON ? _lead.toJSON() : _lead, null, 2),
+        ]),
     "",
-    "Message:",
-    (lead.message || "").trim(),
-    "",
+    ...(lead.message ? ["Message:", (lead.message || "").trim(), ""] : []),
     `Submitted: ${new Date().toISOString()}`,
   ].join("\n");
 
   return { subject, html, text };
 }
 
-// ---------- public API ----------
-async function sendLeadNotification({ clientEmail, lead }) {
-  const safeLead = normalizeLead(lead);
-
-  const { subject, html, text } = renderLeadEmail(safeLead, BRAND);
-
-  // If your logo is relative, you can embed it as CID instead:
-  // const attachments = [{
-  //   filename: "queue-logo-sm.png",
-  //   path: "/absolute/server/path/to/assets/imgs/queue-logo-sm.png",
-  //   cid: "brandlogo@queue" // use <img src="cid:brandlogo@queue">
-  // }];
-
+/* ----------------------------- public API ----------------------------- */
+async function sendLeadNotification({ clientEmail, lead, brand }) {
+  const { subject, html, text } = renderLeadEmail(lead, brand);
   return transporter.sendMail({
     from: fromAddr,
     to: clientEmail || process.env.CLIENT_NOTIFY_EMAIL,
-    replyTo: safeLead.email || undefined,
+    replyTo: (lead && (lead.email || lead?.toJSON?.().email)) || undefined,
     subject,
     text,
     html,
-    // attachments,
   });
 }
 
