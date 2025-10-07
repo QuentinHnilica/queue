@@ -7,6 +7,8 @@ const path = require("path");
 const fs = require("fs");
 const sharp = require("sharp");
 
+const { sendLeadNotification } = require("./mailer");
+
 // ✅ Define upload path
 const UPLOADS_DIR = path.join("/mnt/data", "uploads");
 
@@ -96,17 +98,32 @@ router.get("/portfolio", async (req, res) => {
 
 router.post("/contact/submit", async (req, res) => {
   try {
-    console.log(req.body);
-    const newMess = await Leads.create(req.body);
+    // (Optional) normalize source so your email shows where it came from
+    const payload = { ...req.body, source: "contact" };
+    const newMess = await Leads.create(payload);
+
+    // try to email the client; don't fail the lead creation if email breaks
+    sendLeadNotification({
+      clientEmail: process.env.CLIENT_NOTIFY_EMAIL,
+      lead: newMess.toJSON ? newMess.toJSON() : newMess,
+    }).catch((e) => console.error("Lead email failed:", e));
+
     res.status(200).json(newMess);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
 router.post("/consult/submit", async (req, res) => {
   try {
-    console.log(req.body);
-    const newMess = await Leads.create(req.body);
+    const payload = { ...req.body, source: "consult" };
+    const newMess = await Leads.create(payload);
+
+    sendLeadNotification({
+      clientEmail: process.env.CLIENT_NOTIFY_EMAIL,
+      lead: newMess.toJSON ? newMess.toJSON() : newMess,
+    }).catch((e) => console.error("Lead email failed:", e));
+
     res.status(200).json(newMess);
   } catch (err) {
     res.status(400).json(err);
