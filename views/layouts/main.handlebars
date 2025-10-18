@@ -64,26 +64,25 @@
 
 <body class="bg-gray-100 text-gray-900">
 
-  {{#if (includes currentPath "/admin")}}
-  {{#if isLoggedIn }}
-  {{!-- Render admin nav if user is logged in --}}
-  {{> admin-nav }}
+{{!-- Admin Section (protected) --}}
+{{#if (includes currentPath "/admin")}}
+  {{#if isLoggedIn}}
+    
+    {{> admin-nav}}
+    <div class="main-content pl-0 md:pl-64 transition-all ">
+      {{{body}}}
+    </div>
   {{else}}
-  {{!-- Render regular nav if user is not logged in but accessing admin route --}}
-  {{> nav }}
-  {{/if}}
-  {{else}}
-
-  {{!-- Render regular nav for non-admin routes --}}
-  {{> nav }}
-
-
+    {{{body}}} {{!-- This should be your admin login page --}}
   {{/if}}
 
+{{!-- Public Section (unprotected) --}}
+{{else}}
+  {{> nav}}
   {{{body}}}
 
-
-{{> footer}}
+  {{> footer}}
+{{/if}}
 
   <style>
     .text-df8327 {

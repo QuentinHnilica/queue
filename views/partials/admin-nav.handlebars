@@ -1,65 +1,103 @@
-<header class="bg-gray-800 px-6 py-4 flex items-center justify-between">
+<div data-theme="queueAdminPanel">
+  <aside class="admin-sidebar bg-base-100 text-primary-content flex flex-col h-screen fixed left-0 top-0 w-64 shadow-lg transition-all duration-300 z-50 transform -translate-x-full md:translate-x-0">
     <!-- Logo -->
-    <div class="logo">
-        <a href="/">
-            <img src="/assets/imgs/queue-logo-sm.png" alt="Your Logo" class="w-24" />
-        </a>
+    <div class="logo bg-white p-4 border-b border-base-200">
+      <img
+        src="/assets/imgs/queue.webp"
+        alt="Your Logo"
+        class="w-24 hover:opacity-90 transition-opacity duration-0 mx-auto"
+      />
     </div>
 
     <!-- Navigation Links -->
-    <nav class="hidden md:flex gap-3">
-        <a href="/admin/" class="nav-btn">Admin Home</a>
-        <a href="/admin/newUser" class="nav-btn">Create User</a>
-        <a href="/" class="nav-btn">View Site</a>
-        <a href="/admin/slideshow" class="nav-btn">Slideshow</a>
-        <a href="/admin/blogpostList" class="nav-btn">Blog Tool</a>
-        <a href="/admin/metaData" class="nav-btn">MetaData Tool</a>
-        <a href="/admin/leads" class="nav-btn">Lead Settings</a>
-        <a href="/admin/email-blasts" class="nav-btn">Email Blast</a>
-        <a href="#" id="logout" class="nav-btn">Logout</a>
+    <nav class="flex-1 overflow-y-auto p-4 space-y-2">
+      <a href="/admin/" class="sidebar-btn btn btn-primary w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-home mr-2"></i> Admin Home
+      </a>
+      <a href="/admin/email-blasts" class="sidebar-btn btn btn-primary w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-home mr-2"></i> Email Blasts
+      </a>
+      <a href="/admin/newUser" class="sidebar-btn btn btn-primary w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-user-plus mr-2"></i> Create User
+      </a>
+      <a href="/" class="sidebar-btn btn btn-neutral w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-eye mr-2"></i> View Site
+      </a>
+      <a href="/admin/metaData" class="sidebar-btn btn btn-primary w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-tags mr-2"></i> MetaData Tool
+      </a>
+      <a href="/admin/leads" class="sidebar-btn btn btn-primary w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-users mr-2"></i> Lead Settings
+      </a>
+        <a href="/admin/blogpostList" class="sidebar-btn btn btn-primary w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-users mr-2"></i> Blog Tool
+      </a>
     </nav>
 
-    <!-- Mobile Menu Button -->
-    <button class="md:hidden text-white text-2xl focus:outline-none" id="mobile-menu-btn">
-        ☰
-    </button>
-
-    <!-- Mobile Dropdown -->
-    <div class="absolute top-16 left-0 w-full bg-gray-800 flex flex-col items-center gap-2 py-4 hidden"
-        id="mobile-menu">
-        <a href="/admin/" class="nav-btn">Admin Home</a>
-        <a href="/admin/newUser" class="nav-btn">Create User</a>
-        <a href="/" class="nav-btn">View Site</a>
-        <a href="/admin/slideshow" class="nav-btn">Slideshow</a>
-        <a href="/admin/blogpostList" class="nav-btn">Blog Tool</a>
-        <a href="/admin/metaData" class="nav-btn">MetaData Tool</a>
-        <a href="/admin/leads" class="nav-btn">Lead Settings</a>
-        <a href="/admin/email-blasts" class="nav-btn">Email Blast</a>
-        <a href="#" id="logout" class="nav-btn">Logout</a>
+    <!-- Logout Button -->
+    <div class="p-4 border-t border-base-200">
+      <a href="#" id="logout" class="sidebar-btn btn btn-error w-full justify-start hover:bg-accent hover:text-base-100 transition-color duration-0 ease-in-out hover:translate-x-1 hover:border-neutral">
+        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+      </a>
     </div>
-</header>
 
-<style>
-    .nav-btn {
-        background-color: #df8327;
-        color: black;
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: background 0.3s;
-    }
+    <!-- Mobile Menu Toggle -->
+    <button class="btn btn-circle md:hidden absolute -right-12 items-center place-content-center top-0 text-2xl bg-base-100 p-2 rounded-l-lg" id="sidebar-toggle">
+      ☰
+    </button>
+  </aside>
 
-    .nav-btn:hover {
-        background-color: #e97f1c;
-        color: white;
-    }
-</style>
+  <!-- Overlay for mobile -->
+  <div class="sidebar-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden" id="sidebar-overlay"></div>
+  </div>
+</div>
 
 <script>
-    document.getElementById("mobile-menu-btn").addEventListener("click", function () {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
-    });
-</script>
+    console.log("brother")
+ // Cache elements
+  const sidebar = document.querySelector('.admin-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const toggleBtn = document.getElementById('sidebar-toggle');
 
+  // Set initial state (hidden on mobile)
+  if (window.innerWidth < 768) {
+    sidebar.classList.add('-translate-x-full');
+    sidebar.classList.remove('translate-x-0');
+    overlay.classList.add('hidden');
+  }
+
+  // Toggle sidebar on button click
+  toggleBtn.addEventListener('click', function() {
+    sidebar.classList.toggle('-translate-x-full');
+    sidebar.classList.toggle('translate-x-0');
+    overlay.classList.toggle('hidden');
+  });
+
+  // Close when clicking overlay
+  overlay.addEventListener('click', closeSidebar);
+
+  // Close when clicking navigation links (mobile only)
+  document.querySelectorAll('.sidebar-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (window.innerWidth < 768) {
+        setTimeout(closeSidebar, 100); // Smooth transition
+      }
+    });
+  });
+
+  function closeSidebar() {
+    sidebar.classList.add('-translate-x-full');
+    sidebar.classList.remove('translate-x-0');
+    overlay.classList.add('hidden');
+  }
+
+  // Handle page navigation
+  window.addEventListener('beforeunload', closeSidebar);
+
+  // For SPAs (if applicable)
+  if (typeof window.routeChangeEvent !== 'undefined') {
+    window.addEventListener('routeChangeEvent', closeSidebar);
+  }
+</script>
 
 <script src="/assets/js/logout.js"></script>

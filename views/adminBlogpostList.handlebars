@@ -1,46 +1,49 @@
-<div class="admin-blog-list">
-  <h1>All Blog Posts</h1>
+<div data-theme="queueAdminPanel">
+    <div class="flex items-center justify-center py-20 px-6 min-h-screen bg-gradient-to-r from-base-100 to-primary/20">
+  <div class="admin-blog-list">
+    <h1>All Blog Posts</h1>
 
-  <div class="blog-actions">
-    <a href="/admin/blogTool" class="create-button">Create New Blog Post</a>
+    <div class="blog-actions">
+      <a href="/admin/blogTool" class="create-button">Create New Blog Post</a>
+    </div>
+
+    <table class="blog-table">
+      <thead>
+        <tr>
+          <th>Post ID</th>
+          <th>Username</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Is Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each blogPosts}}
+        <tr>
+          <td>{{this.PostId}}</td>
+          <td>{{this.username}}</td>
+          <td>{{this.subject}}</td>
+          <td>{{this.date}}</td>
+          <td>
+            <label class="switch">
+              <input type="checkbox" {{#if this.active}}checked{{/if}}
+                onchange="toggleDraft({{this.PostId}}, this.checked)">
+
+              <span class="slider round"></span>
+            </label>
+          </td>
+          <td class="actions-cell">
+            <a href="/admin/blogpost/{{this.PostId}}" class="edit-button">Edit</a>
+            <button class="delete-button" onclick="deletePost({{this.PostId}})">Delete</button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
-
-  <table class="blog-table">
-    <thead>
-      <tr>
-        <th>Post ID</th>
-        <th>Username</th>
-        <th>Subject</th>
-        <th>Date</th>
-        <th>Is Active</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each blogPosts}}
-      <tr>
-        <td>{{this.PostId}}</td>
-        <td>{{this.username}}</td>
-        <td>{{this.subject}}</td>
-        <td>{{this.date}}</td>
-        <td>
-          <label class="switch">
-            <input type="checkbox" {{#if this.active}}checked{{/if}}
-              onchange="toggleDraft({{this.PostId}}, this.checked)">
-
-            <span class="slider round"></span>
-          </label>
-        </td>
-        <td class="actions-cell">
-          <a href="/admin/blogpost/{{this.PostId}}" class="edit-button">Edit</a>
-          <button class="delete-button" onclick="deletePost({{this.PostId}})">Delete</button>
-        </td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
 </div>
-
+</div>
 
 <script>
   async function deletePost(postId) {

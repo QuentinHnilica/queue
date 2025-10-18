@@ -1,44 +1,45 @@
-<div class="admin-edit-blog">
-  <h1>Edit Blog Post</h1>
+<div data-theme="queueAdminPanel">
+  <div class="admin-edit-blog">
+    <h1>Edit Blog Post</h1>
 
-  <div class="edit-blog-form">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" value="{{blogPost.username}}" required>
-    </div>
+    <div class="edit-blog-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="{{blogPost.username}}" required>
+      </div>
 
-    <div class="form-group">
-      <label for="subject">Subject</label>
-      <input type="text" id="subject" name="subject" value="{{blogPost.subject}}" required>
-    </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" value="{{blogPost.subject}}" required>
+      </div>
 
-    <div class="form-group">
-      <label for="seoExcerpt">SEO Excerpt</label>
-      <input type="text" id="seoExcerpt" name="seoExcerpt" value="{{blogPost.excerpt}}"
-        placeholder="Enter SEO meta description (max ~160 characters)">
-      <p class="text-gray-500 text-sm mt-1">This will appear as the meta description for this post in search engines.
-      </p>
-    </div>
+      <div class="form-group">
+        <label for="seoExcerpt">SEO Excerpt</label>
+        <input type="text" id="seoExcerpt" name="seoExcerpt" value="{{blogPost.excerpt}}"
+          placeholder="Enter SEO meta description (max ~160 characters)">
+        <p class="text-gray-500 text-sm mt-1">This will appear as the meta description for this post in search engines.
+        </p>
+      </div>
 
-    <div class="form-group">
-      <label for="banner">Banner Image</label>
-      <input type="file" id="banner" name="banner">
-      <img src="{{blogPost.banner}}" alt="Current Banner" class="current-banner">
-    </div>
+      <div class="form-group">
+        <label for="banner">Banner Image</label>
+        <input type="file" id="banner" name="banner">
+        <img src="{{blogPost.banner}}" alt="Current Banner" class="current-banner">
+      </div>
 
-    <div class="form-group">
-      <label for="PostContent">Content</label>
-      <div id="editor">{{{blogPost.PostContent}}}</div>
-      <input type="hidden" id="PostContent" name="PostContent">
-    </div>
+      <div class="form-group">
+        <label for="PostContent">Content</label>
+        <div id="editor">{{{blogPost.PostContent}}}</div>
+        <input type="hidden" id="PostContent" name="PostContent">
+      </div>
 
-    <div class="form-actions">
-      <button class="save-button" onclick="updateBlogPost({{blogPost.PostId}}, true)">Save Changes</button>
-      <button class="draft-button" onclick="updateBlogPost({{blogPost.PostId}}, false)">Save as Draft</button>
-      <a href="/admin/bloglist" class="cancel-button">Cancel</a>
+      <div class="form-actions">
+        <button class="save-button" onclick="updateBlogPost({{blogPost.PostId}}, true)">Save Changes</button>
+        <button class="draft-button" onclick="updateBlogPost({{blogPost.PostId}}, false)">Save as Draft</button>
+        <a href="/admin/bloglist" class="cancel-button">Cancel</a>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <script src="/assets/js/editBlog.js"></script>
