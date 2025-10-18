@@ -1,57 +1,70 @@
-const { User, Posts } = require("../modals");
-const router = require("express").Router();
-const { Op } = require("sequelize"); // <-- important
+const {
+    User,
+    Posts,
+} = require("../modals");
 
-// BLOG LIST (server-side search + pagination)
+const router = require("express").Router();
+const bcrypt = require("bcrypt");
+const saltRounds = 15;
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
+
+// adding blog list page route
 router.get("/blog", async (req, res) => {
   try {
-    const page = Math.max(1, parseInt(req.query.page || "1", 10));
-    const pageSize = 12;
-    const q = (req.query.q || "").trim();
-
-    // WHERE: active + optional LIKE search
-    const where = { active: true };
-    if (q) {
-      where[Op.or] = [
-        { subject: { [Op.like]: `%${q}%` } },
-        { username: { [Op.like]: `%${q}%` } },
-        { PostContent: { [Op.like]: `%${q}%` } },
-      ];
-    }
-
-    // ORDER: prefer 'date' if your model has it; otherwise fallback to PostId
-    const order =
-      Posts.rawAttributes && Posts.rawAttributes.date
-        ? [["date", "DESC"]]
-        : [["PostId", "DESC"]];
-
-    const { rows, count } = await Posts.findAndCountAll({
-      where,
-      order,
-      offset: (page - 1) * pageSize,
-      limit: pageSize,
+    // get all active blog posts, newest first
+    const blogDB = await Posts.findAll({
+      where: { active: true },
+      // Option A: order by a date column (replace 'postedDate' with your actual field)
+      order: [["PostId", "DESC"]],
     });
 
-    const blogPosts = rows.map((r) => r.get({ plain: true }));
-    const totalPages = Math.max(1, Math.ceil(count / pageSize));
+    // Convert Sequelize instances to plain objects
+    const blogPosts = blogDB.map((post) => post.get({ plain: true }));
 
+    console.log(blogPosts);
     res.render("blog", {
       blogPosts,
-      q,
-      baseUrl: process.env.BASE_URL || "https://queuedevelop.com",
-      pagination: {
-        prev: page > 1 ? page - 1 : null,
-        next: page < totalPages ? page + 1 : null,
-        pages: Array.from({ length: totalPages }, (_, i) => ({
-          num: i + 1,
-          active: i + 1 === page,
-        })),
-      },
+      title: res.locals.metaTitle,
+      keywords: res.locals.metaKeywords,
     });
   } catch (err) {
-    console.error(err);
     res.status(400).json(err.message);
   }
 });
+
+
+// adding specfic blog page route
+router.get("/blogpost/:id", async (req, res) => {
+    try {
+        const blogDB = await Posts.findByPk(req.params.id);
+
+        // instance of product to plain JavaScript objects
+        const blogPost = blogDB.get({ plain: true });
+
+        if (blogPost.active) {
+
+
+
+
+            const blogPostUrl = 'https://queuedevelop.com/blogpost/' + req.params.id
+            console.log(blogPost);
+            res.render("blogPage", {
+                blogPost,
+                blogPostUrl,
+                title: res.locals.metaTitle,
+                keywords: res.locals.metaKeywords
+            });
+        }
+        else {
+            res.render("notFound")
+        }
+    } catch (error) {
+        res.status(400).json(error);
+    }
+});
+
 
 module.exports = router;
