@@ -1,30 +1,31 @@
-// Required modules
-const { MetaData } = require('../../modals'); // Assuming you have a Sequelize model called MetaData
+// middleware/fetchMetaData.js
+const { MetaData } = require("../../modals"); // make sure this path is correct
 
-// Middleware to fetch meta data from the database before rendering a page
 async function fetchMetaData(req, res, next) {
+  try {
+    // Normalize path to a pageName like 'home', 'pricing', 'service-area'
+    let pageName = req.path.replace(/^\/+|\/+$/g, ""); // trim leading/trailing slashes
+    if (!pageName) pageName = "home";
 
-    console.log("firingMiddleware")
-    var pageName = req.path.replace('/', ''); // Assuming the page name matches the route
-    if (req.path == '/'){
-        pageName = "home"
-    }
+    const meta = await MetaData.findOne({ where: { pageName } });
 
-    try {
-        const metaData = await MetaData.findOne({ where: { pageName: pageName } });
-        if (metaData) {
-            res.locals.metaTitle = metaData.title;
-            res.locals.metaKeywords = metaData.Keywords;
-        } else {
-            res.locals.metaTitle = 'Rig';
-            res.locals.metaKeywords = 'Bert';
-        }
-    } catch (error) {
-        console.error('Error fetching meta data from database:', error);
-    }
+    // Set locals to match your template keys
+    res.locals.title = meta?.title || "Queue Development | Owosso, MI";
+    res.locals.description =
+      meta?.description ||
+      "Driveway-safe dumpster rentals serving Flint, Grand Blanc, and surrounding Michigan areas. Fast delivery, clear pricing.";
+    res.locals.keywords =
+      meta?.keywords ||
+      "dumpster rental Flint, dumpster Genesee County, driveway safe dumpster, 10 yard dumpster, 15 yard dumpster";
+  } catch (err) {
+    console.error("Error fetching meta data from database:", err);
+    // Sensible fallbacks
+    res.locals.title = "Pride Dumpster Rentals";
+    res.locals.description = "Driveway-safe dumpster rentals in Michigan.";
+    res.locals.keywords = "dumpster rental, roll-off, junk removal";
+  }
 
-    next();
+  next();
 }
 
-// Export the middleware for use in other files
 module.exports = fetchMetaData;

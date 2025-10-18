@@ -8,7 +8,7 @@ const router = require("express").Router();
 
 //Blog Tool Routes
 router.get("/blogTool", async (req, res) => {
-    res.render("blogAdmin");
+    res.render("adminBlogPoster");
 });
 
 

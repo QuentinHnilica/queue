@@ -39,8 +39,6 @@ router.get("/blog", async (req, res) => {
       blogPosts,
       q,
       baseUrl: process.env.BASE_URL || "https://queuedevelop.com",
-      title: res.locals.metaTitle,
-      keywords: res.locals.metaKeywords,
       pagination: {
         prev: page > 1 ? page - 1 : null,
         next: page < totalPages ? page + 1 : null,

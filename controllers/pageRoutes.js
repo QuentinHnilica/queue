@@ -79,8 +79,7 @@ router.get("/", async (req, res, next) => {
     const latestPosts = await fetchLatestPosts(3);
     res.render("home", {
       latestPosts,
-      title: res.locals.metaTitle,
-      keywords: res.locals.metaKeywords,
+
     });
   } catch (err) {
     next(err);

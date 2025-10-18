@@ -18,7 +18,7 @@ const { CPANEL_TOKEN, CPANEL_USERNAME, CPANEL_URL, AWSTATS } = process.env;
 const awstatsDir = AWSTATS;
 
 router.get("/newUser", async (req, res) => {
-  res.render("createUser");
+  res.render("adminCreateUser");
 });
 
 router.post("/logout", (req, res) => {
