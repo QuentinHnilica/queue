@@ -1,56 +1,376 @@
-<section class="bg-gray-50 py-12">
-    <!-- Service Header -->
-    <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold text-gray-900">Responsive Websites</h2>
-        <p class="text-lg text-gray-600 mt-4">
-            Elevate your online presence with responsive designs that look stunning and perform flawlessly on all
-            devices.
+<section class="bg-gray-50 py-12 text-gray-800">
+  <!-- Header -->
+  <div class="text-center mb-12 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Responsive Websites</h2>
+    <p class="text-lg text-gray-600 mt-4">
+      Elevate your brand with fast, accessible, mobile-first sites that look stunning and perform flawlessly on every device.
+    </p>
+  </div>
+
+  <!-- Hero / Intro: matches your About “Mission” card style -->
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row lg:space-x-6 items-center bg-white shadow-md rounded-lg p-8 mb-12 transition-transform hover:scale-105">
+      <div class="lg:w-1/2">
+        <img src="/assets/imgs/ourservices_homepage-01-01.webp" alt="Responsive website mockups"
+             class="rounded-lg shadow-lg">
+      </div>
+      <div class="lg:w-1/2 mt-6 lg:mt-0">
+        <h3 class="text-3xl font-semibold text-primaryQ mb-4">Built for real users, not just screen sizes</h3>
+        <p class="text-gray-700 leading-relaxed">
+          We craft responsive experiences that adapt beautifully to phones, tablets, and desktops—without sacrificing speed,
+          accessibility, or conversion. Design systems, semantic HTML, and Core Web Vitals are baked in from day one.
         </p>
-    </div>
 
-    <!-- Service Details -->
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6">
-        <!-- Image -->
-        <div class="flex justify-center">
-            <img src="/assets/imgs/ourservices_homepage-01-01.webp" alt="Responsive Websites" class="rounded-lg">
-        </div>
-
-        <!-- Text Content -->
-        <div>
-            <!-- Features List -->
-            <div class="mb-6">
-                <p class="flex items-center text-gray-700 text-lg mb-2">
-                    <i class="fa fa-check-circle  text-#2e5374 mr-3"></i> Cross-Device Compatibility
-                </p>
-                <p class="flex items-center text-gray-700 text-lg mb-2">
-                    <i class="fa fa-check-circle  text-#2e5374 mr-3"></i> Improved User Experience
-                </p>
-                <p class="flex items-center text-gray-700 text-lg">
-                    <i class="fa fa-check-circle  text-#2e5374 mr-3"></i> Faster Page Loading
-                </p>
+        <!-- Key benefits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Cross-device perfection</p>
+              <p class="text-gray-600 text-sm">Layouts that flex cleanly from 320px to 4K.</p>
             </div>
-
-            <!-- Paragraph -->
-            <p class="text-gray-700 leading-relaxed mb-6">
-                Our responsive design enhances user experience by providing easy navigation, readable text, and
-                optimized images
-                regardless of the device used, resulting in higher user satisfaction. A responsive website adapts to
-                various screen
-                sizes, ensuring a consistent and user-friendly experience across devices such as desktops, laptops,
-                tablets, and
-                smartphones.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-                Our websites are designed to load quickly on all devices, contributing to a positive user experience and
-                potentially
-                improving search engine rankings as site speed is a ranking factor.
-            </p>
-            <p class="text-gray-700 mt-4">
-                You can see all Email Features in our packages <a href="/pricing"
-                    class=" text-#2e5374 hover:underline">here</a>.
-            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Core Web Vitals</p>
+              <p class="text-gray-600 text-sm">Real-world speed that helps SEO and UX.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Accessible by default</p>
+              <p class="text-gray-600 text-sm">WCAG-minded components and patterns.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Easy to manage</p>
+              <p class="text-gray-600 text-sm">Reusable blocks and a tidy CMS/editor flow.</p>
+            </div>
+          </div>
         </div>
+
+        <p class="text-gray-700 mt-6">
+          See how features map to each package
+          <a href="/pricing" class="text-primaryQ hover:underline">here</a>.
+        </p>
+      </div>
     </div>
+  </div>
+
+  <!-- Feature Band (brand gradient like “Our Core Values”) -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white">
+    <div class="container mx-auto px-6 py-10">
+      <h3 class="text-3xl font-bold text-center mb-6">What’s included</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Responsive UI &amp; Layout</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>Mobile-first grid &amp; fluid media</li>
+            <li>Component library &amp; design tokens</li>
+            <li>Dark mode &amp; motion-reduced states</li>
+          </ul>
+        </div>
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Performance &amp; SEO</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>Core Web Vitals optimization</li>
+            <li>Image/CDN strategy (AVIF/WebP)</li>
+            <li>Semantic HTML &amp; structured data</li>
+          </ul>
+        </div>
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Accessibility &amp; QA</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>WCAG-aware components &amp; focus states</li>
+            <li>Keyboard &amp; screen-reader checks</li>
+            <li>Cross-browser/device test matrix</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold text-center mb-8">How we work</h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">1</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Discover</h4>
+        <p class="text-gray-700 mt-2">Goals, audience, content audit, and brand guidelines.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">2</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Design</h4>
+        <p class="text-gray-700 mt-2">Wireframes → polished UI with responsive states and tokens.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">3</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Build</h4>
+        <p class="text-gray-700 mt-2">Semantic HTML, Tailwind components, CMS/editor setup.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">4</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Launch &amp; Iterate</h4>
+        <p class="text-gray-700 mt-2">Cross-browser QA, performance pass, and continuous improvements.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deliverables & Outcomes -->
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+        <h3 class="text-2xl font-semibold text-primaryQ mb-4">What you’ll get</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <ul class="space-y-2">
+            <li>Responsive component library</li>
+            <li>Design tokens (colors, type, spacing)</li>
+            <li>CMS/editor blocks &amp; docs</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>Performance and accessibility report</li>
+            <li>Schema markup plan</li>
+            <li>Launch checklist &amp; training</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+        <h3 class="text-2xl font-semibold text-primaryQ mb-4">Expected outcomes</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Consistent UX from mobile to desktop</li>
+          <li>Improved Lighthouse &amp; Core Web Vitals</li>
+          <li>Higher engagement and conversions</li>
+          <li>Fewer regressions via reusable components</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study teaser (brand gradient band, compact & balanced) -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white mt-12">
+    <div class="container mx-auto px-6 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+        <!-- Left: content-filled card -->
+        <div class="md:col-span-3 bg-white p-5 rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform duration-300 hover:scale-105 group">
+          <p class="text-sm font-medium text-primaryQ">Case Study</p>
+          <h4 class="mt-1 text-xl font-semibold group-hover:text-primaryQ transition-colors">
+            Retail brand lifts mobile conversions by 29%
+          </h4>
+
+          <!-- KPI chips -->
+          <div class="mt-3 flex flex-wrap gap-2 text-sm">
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> +29% mobile CVR
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> LCP 4.1s → 2.3s
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> 95% CWV pass rate
+            </span>
+          </div>
+
+          <!-- Quick wins -->
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Image optimization (AVIF/WebP), lazy-loading, and responsive art-direction.
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Component refactor to semantic, keyboard-friendly patterns.
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Critical CSS + font strategy to reduce layout shift.
+            </li>
+          </ul>
+
+          <blockquote class="mt-4 border-l-4 border-primaryQ/30 pl-3 text-gray-700 italic">
+            “The site feels instant on mobile now. Our bounce rate dropped within the first week.”
+          </blockquote>
+
+          <a href="/contact" class="text-primaryQ hover:underline mt-3 inline-block">Contact For More Details →</a>
+        </div>
+
+        <!-- Right: simple comparison bar chart (inline SVG, hover-grow) -->
+        <figure class="md:col-span-2 w-full rounded-lg border border-white/20 bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105">
+          <figcaption class="text-sm text-gray-600 mb-2">Before vs After (mobile)</figcaption>
+          <svg viewBox="0 0 520 260" role="img" aria-labelledby="respChartTitle respChartDesc" class="w-full h-auto">
+            <title id="respChartTitle">Before/After responsive improvements</title>
+            <desc id="respChartDesc">Bars show reduction in LCP and increase in mobile conversions.</desc>
+            <defs>
+              <style>
+                .axis { stroke:#e5e7eb; stroke-width:1 }
+                .label { fill:#6b7280; font: 12px/1 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial }
+                figure:hover svg g.grow { transform: scale(1.02); transform-origin: 50% 50%; transition: transform .25s ease; }
+                @media (prefers-reduced-motion: reduce) { figure:hover svg g.grow { transform:none; } }
+              </style>
+              <linearGradient id="bar" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="currentColor" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="currentColor" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+
+            <!-- axes -->
+            <path d="M60 20 V220 M60 220 H500" class="axis"/>
+            <text x="10" y="224" class="label">0</text>
+            <text x="8" y="184" class="label">25</text>
+            <text x="8" y="144" class="label">50</text>
+            <text x="8" y="104" class="label">75</text>
+            <text x="2" y="64"  class="label">100</text>
+
+            <!-- Bars -->
+            <g class="grow">
+              <!-- LCP (lower is better) represented inverted to % improvement -->
+              <g class="text-primaryQ">
+                <text x="95" y="238" class="label" fill="#374151">LCP</text>
+                <!-- Before ~ 4.1s -> ~45% (lower is worse so shorter %); After ~ 2.3s -> ~78% -->
+                <rect x="90" y="140" width="40" height="80" fill="url(#bar)"/>
+                <rect x="150" y="84" width="40" height="136" fill="url(#bar)"/>
+              </g>
+
+              <!-- Conversions (higher is better) -->
+              <g color="#16a34a">
+                <text x="305" y="238" class="label" fill="#374151">Mobile CVR</text>
+                <!-- Before ~ baseline 100 -> 50%; After +29% -> ~65% -->
+                <rect x="300" y="120" width="40" height="100" fill="currentColor" opacity=".8"/>
+                <rect x="360" y="88"  width="40" height="132" fill="currentColor" opacity=".8"/>
+              </g>
+
+              <!-- Legends -->
+              <g>
+                <rect x="410" y="26" width="12" height="12" rx="2" class="text-primaryQ" fill="currentColor" opacity=".9"/>
+                <text x="428" y="36" class="label" fill="#374151">After</text>
+                <rect x="410" y="46" width="12" height="12" rx="2" fill="#9ca3af" opacity=".9"/>
+                <text x="428" y="56" class="label" fill="#374151">Before</text>
+              </g>
+
+              <!-- Grey “before” overlays behind colored bars -->
+              <rect x="90"  y="100" width="40" height="120" fill="#9ca3af" opacity=".45"/>
+              <rect x="150" y="120" width="40" height="100" fill="#9ca3af" opacity=".45"/>
+              <rect x="300" y="140" width="40" height="80"  fill="#9ca3af" opacity=".45"/>
+              <rect x="360" y="120" width="40" height="100" fill="#9ca3af" opacity=".45"/>
+            </g>
+          </svg>
+          <figcaption class="mt-2 text-xs text-gray-500">Illustrative values; plug in your real metrics.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages teaser -->
+  <div class="container mx-auto px-6 mt-12">
+    <div class="rounded-lg bg-white shadow-md p-6 md:p-8 transition-transform hover:scale-105">
+      <h3 class="text-2xl font-semibold text-gray-900">Packages</h3>
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Starter</p>
+          <p class="text-gray-600 mt-1">One-pager or microsite</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Responsive build &amp; launch</li>
+            <li>Basic performance pass</li>
+            <li>1 round of revisions</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Growth</p>
+          <p class="text-gray-600 mt-1">SMB site (5–12 pages)</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Component library + tokens</li>
+            <li>Image strategy &amp; schema</li>
+            <li>QA across devices/browsers</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Scale</p>
+          <p class="text-gray-600 mt-1">Large or headless</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Design system &amp; docs</li>
+            <li>Advanced performance budget</li>
+            <li>Ongoing support</li>
+          </ul>
+        </div>
+      </div>
+      <a href="/pricing" class="mt-4 inline-flex items-center text-primaryQ hover:underline">See full pricing →</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold text-center mb-8">Responsive FAQs</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Will my site be accessible?</summary>
+        <p class="mt-3 text-gray-700">Yes—semantic HTML, keyboard navigation, visible focus states, and WCAG-aware color contrast are standard.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">How do you ensure speed?</summary>
+        <p class="mt-3 text-gray-700">We set a performance budget, optimize images/fonts, minimize JS, and measure with field data (LCP/CLS/INP).</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Do you support CMSs?</summary>
+        <p class="mt-3 text-gray-700">Yep—headless/CMS setups with clean editor blocks and guardrails to prevent regressions.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Can you migrate my current site?</summary>
+        <p class="mt-3 text-gray-700">We migrate content, preserve URLs where possible, and set redirects to safeguard SEO.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- CTA (matches Contact card vibe) -->
+  <div class="container mx-auto px-6">
+    <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+      <div class="flex items-center mb-6">
+        <div class="bg-primaryQ text-white p-6 rounded-full shadow-md transition-transform hover:scale-125">
+          <!-- device icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.75 17L9 20h6l-.75-3M3 5h18M6 8h12v8H6z"/>
+          </svg>
+        </div>
+        <h3 class="text-3xl font-semibold text-primaryQ ml-4">Let’s make your site shine on every screen</h3>
+      </div>
+      <p class="text-gray-700">We’ll review your current site and send a quick plan for speed, UX, and responsive wins.</p>
+      <a href="#book-a-demo" class="mt-6 inline-block text-primaryQ hover:underline">Book a demo →</a>
+    </div>
+  </div>
+
+  <!-- JSON-LD (Service) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Responsive Website Design & Development",
+    "provider": { "@type": "Organization", "name": "Queue Development LLC", "url": "https://queuedevelop.com" },
+    "serviceType": "Web Design",
+    "areaServed": "US",
+    "description": "Mobile-first, accessible, fast websites using modern stacks and Core Web Vitals best practices.",
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "USD", "url": "https://queuedevelop.com/pricing" }
+  }
+  </script>
 </section>
 
- {{> bookADemo }}
+<!-- Anchor for your form -->
+<a id="book-a-demo" class="sr-only" aria-hidden="true"></a>
+{{> bookADemo }}

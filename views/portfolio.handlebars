@@ -1,223 +1,356 @@
-<div class="min-h-screen container mx-auto px-4 py-12">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Rag Frog Revival -->
-    <div>
-      <!-- Wrapper div -->
-      <article
-        class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
-      >
-        <div class="relative h-72">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-primaryQ to-transparent z-10"
-          ></div>
-          <h1
-            class="absolute bottom-4 left-6 text-2xl font-bold text-white z-20"
-          >
-            Rag Frog Revival
-          </h1>
+<!-- PORTFOLIO -->
+<section class="bg-gray-50 py-12 text-gray-800">
+  <!-- Header -->
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Recent Work</h1>
+      <p class="text-lg text-gray-600 mt-4">
+        A few projects we’ve launched—focused on speed, SEO, and outcomes. Click “More info” to see goals, stack, and results.
+      </p>
+    </div>
+
+    <!-- Masonry via CSS columns (single container) -->
+    <div class="columns-1 md:columns-2 lg:columns-3 gap-8 [column-fill:_balance]">
+      <!-- Rag Frog Revival -->
+      <article class="group relative mb-8 break-inside-avoid overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-300">
+        <!-- Cover w/ hover motion -->
+        <div class="relative h-72 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-primaryQ/90 via-primaryQ/10 to-transparent z-10"></div>
+          <h2 class="absolute bottom-4 left-6 text-2xl font-bold text-white z-20 drop-shadow">Rag Frog Revival</h2>
           <img
-            alt="Rag Frog Revival"
             src="/assets/imgs/ragFrogPortfolio.webp"
-            class="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
+            alt="Rag Frog Revival website preview"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1 group-hover:brightness-110" />
         </div>
 
-        <div class="collapse border-t border-gray-100">
-          <input type="checkbox" id="collapse-ragfrog" class="peer" />
-          <label
-            for="collapse-ragfrog"
-            class="collapse-title text-lg font-medium text-gray-800 px-6 py-4 hover:bg-gray-50 cursor-pointer flex items-center justify-between"
-          >
-            <span>More info</span>
-            <svg
-              class="w-5 h-5 transition-transform duration-200 peer-checked:rotate-180"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
+        <!-- Quick chips -->
+        <div class="px-6 py-4 flex flex-wrap gap-2">
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Ecommerce</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Node.js</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Tailwind</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Stripe</span>
+        </div>
+
+        <!-- Collapsible -->
+        <details class="group border-t border-gray-100 open:rounded-b-xl">
+          <summary class="list-none px-6 py-4 cursor-pointer flex items-center justify-between hover:bg-gray-50">
+            <span class="text-lg font-medium text-gray-900">More info</span>
+            <svg class="w-5 h-5 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
-          </label>
-          <div class="collapse-content bg-gray-50 px-6 pb-6">
-            <p class="text-gray-600 my-4">
-              Rag Frog Revival is a boutique ecommerce brand specializing in the
-              artful upcycling of textiles and forgotten goods, transforming
-              pre-loved materials into unique, sustainable treasures. Each piece
-              is thoughtfully reimagined to blend eco-conscious craftsmanship
-              with playful charm, offering one-of-a-kind finds for the
-              discerning, earth-friendly shopper.
+          </summary>
+
+          <div class="px-6 pb-6 bg-gray-50 space-y-4">
+            <p class="text-gray-700">
+              A boutique brand that upcycles textiles into one-off, sustainable pieces. We delivered a fast storefront
+              with accessible UI and SEO-ready product templates to support organic growth.
             </p>
-            <a
-              href=""
-              class="inline-flex items-center text-primaryQ font-medium hover:text-primaryQ/80 transition-colors"
-            >
-              Visit Project
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 ml-1"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="rounded-lg bg-white border border-gray-200 p-4">
+                <h3 class="font-semibold text-gray-900">What we built</h3>
+                <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Dynamic product catalog w/ variants &amp; tags</li>
+                  <li>Checkout + tax/shipping rules (Stripe)</li>
+                  <li>Blog + lookbook (editor-friendly)</li>
+                  <li>Image optimization (AVIF/WebP)</li>
+                </ul>
+              </div>
+              <div class="rounded-lg bg-white border border-gray-200 p-4">
+                <h3 class="font-semibold text-gray-900">Expected outcomes</h3>
+                <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Higher add-to-cart from faster pages</li>
+                  <li>Search visibility for brand &amp; category</li>
+                  <li>Shorter time-to-publish for new drops</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-2">
+              <a href="https://ragfrogrevival.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primaryQ font-medium hover:underline">Visit Project →</a>
+              <span class="text-xs text-gray-500">Launch: 2024</span>
+            </div>
           </div>
-        </div>
+        </details>
       </article>
-    </div>
 
-    <!-- Splyr -->
-    <div>
-      <!-- Wrapper div -->
-      <article
-        class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
-      >
-        <div class="relative h-72">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-primaryQ to-transparent z-10"
-          ></div>
-          <h1
-            class="absolute bottom-4 left-6 text-2xl font-bold text-white z-20"
-          >
-            Splyr
-          </h1>
+      <!-- Pride Dumpster Rentals -->
+      <article class="group relative mb-8 break-inside-avoid overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-300">
+        <div class="relative h-72 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-primaryQ/90 via-primaryQ/10 to-transparent z-10"></div>
+          <h2 class="absolute bottom-4 left-6 text-2xl font-bold text-white z-20 drop-shadow">Pride Dumpster Rentals</h2>
           <img
-            alt="Splyr"
-            src="/assets/imgs/spylerPortfolio.webp"
-            class="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
+            src="/assets/imgs/pride-portfolio.png"
+            alt="Pride Dumpster Rentals website preview"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1 group-hover:brightness-110" />
         </div>
 
-        <div class="collapse border-t border-gray-100">
-          <input type="checkbox" id="collapse-splyr" class="peer" />
-          <label
-            for="collapse-splyr"
-            class="collapse-title text-lg font-medium text-gray-800 px-6 py-4 hover:bg-gray-50 cursor-pointer flex items-center justify-between"
-          >
-            <span>More info</span>
-            <svg
-              class="w-5 h-5 transition-transform duration-200 peer-checked:rotate-180"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
+        <div class="px-6 py-4 flex flex-wrap gap-2">
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Local Service</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Express/Node</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Tailwind</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Local SEO</span>
+        </div>
+
+        <details class="group border-t border-gray-100 open:rounded-b-xl">
+          <summary class="list-none px-6 py-4 cursor-pointer flex items-center justify-between hover:bg-gray-50">
+            <span class="text-lg font-medium text-gray-900">More info</span>
+            <svg class="w-5 h-5 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
-          </label>
-          <div class="collapse-content bg-gray-50 px-6 pb-6">
-            <p class="text-gray-600 my-4">
-              Splyr specializes in connecting businesses with high-quality
-              manufacturers and suppliers across international markets.
-            </p>
-            <a
-              href="#"
-              class="inline-flex items-center text-primaryQ font-medium hover:text-primaryQ/80 transition-colors"
-            >
-              Visit Project
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 ml-1"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
+          </summary>
 
-    <!-- Atta Plumbing -->
-    <div>
-      <!-- Wrapper div -->
-      <article
-        class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
-      >
-        <div class="relative h-72">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-primaryQ to-transparent z-10"
-          ></div>
-          <h1
-            class="absolute bottom-4 left-6 text-2xl font-bold text-white z-20"
-          >
-            Atta Plumbing
-          </h1>
+          <div class="px-6 pb-6 bg-gray-50 space-y-6">
+            <p class="text-gray-700">
+              Pride offers fast, affordable roll-off dumpsters with online booking and transparent pricing. We built
+              location-aware service pages, a friction-free quote flow, and strong local SEO to win map pack visibility.
+            </p>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 px-3 py-1">▲ 3× Map Pack impressions</span>
+              <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 px-3 py-1">▲ +42% organic calls</span>
+              <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 px-3 py-1">▲ −28% bounce rate</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="rounded-lg bg-white border border-gray-200 p-4">
+                <h3 class="font-semibold text-gray-900">Deliverables</h3>
+                <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                  <li>City + county service pages (unique copy)</li>
+                  <li>Quote flow (mobile-first, &lt; 60s to submit)</li>
+                  <li>GMB optimization + review prompts</li>
+                  <li>Schema: LocalBusiness, FAQ, Service</li>
+                  <li>Performance budget + CDN caching</li>
+                </ul>
+              </div>
+              <figure class="rounded-lg bg-white border border-gray-200 p-4 transition-transform duration-300 hover:scale-105">
+                <figcaption class="text-sm text-gray-600 mb-2">90-day local performance</figcaption>
+                <svg viewBox="0 0 520 220" class="w-full h-auto" role="img" aria-labelledby="prideChartTitle prideChartDesc">
+                  <title id="prideChartTitle">Local SEO results</title>
+                  <desc id="prideChartDesc">Area line for impressions, dashed line for calls growth.</desc>
+                  <defs>
+                    <linearGradient id="prideFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="currentColor" stop-opacity=".18"/>
+                      <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                    </linearGradient>
+                    <style>.axis{stroke:#e5e7eb;stroke-width:1}.label{fill:#6b7280;font:12px/1 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial}</style>
+                  </defs>
+                  <path d="M50 20V200M50 200H490" class="axis"/>
+                  <text x="12" y="204" class="label">0</text>
+                  <text x="0" y="164" class="label">25</text>
+                  <text x="-6" y="124" class="label">50</text>
+                  <text x="-6" y="84"  class="label">75</text>
+                  <text x="-12" y="44" class="label">100</text>
+                  <g class="text-primaryQ">
+                    <path fill="url(#prideFill)" d="M50,185 L100,176 L150,165 L200,150 L250,136 L300,122 L350,108 L400,95 L450,86 L490,78 L490,200 L50,200 Z"/>
+                    <path fill="none" stroke="currentColor" stroke-width="2.5" d="M50,185 L100,176 L150,165 L200,150 L250,136 L300,122 L350,108 L400,95 L450,86 L490,78"/>
+                  </g>
+                  <g color="#16a34a">
+                    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 4" d="M50,196 L100,192 L150,188 L200,181 L250,173 L300,165 L350,157 L400,150 L450,144 L490,139"/>
+                  </g>
+                </svg>
+                <figcaption class="mt-1 text-xs text-gray-500">Illustrative data—plug in GA4/GMB numbers.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rounded-lg bg-white border border-gray-200 p-4">
+              <h3 class="font-semibold text-gray-900">Stack</h3>
+              <p class="text-sm text-gray-700 mt-2">Express, Tailwind, SSR, edge caching, schema.org, GSC + GA4, automated sitemap + robots.</p>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <a href="https://pridedumpsterrentals.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primaryQ font-medium hover:underline">Visit Project →</a>
+              <span class="text-xs text-gray-500">Launch: 2024</span>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <!-- Atta Plumbing -->
+      <article class="group relative mb-8 break-inside-avoid overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-gray-100 hover:shadow-xl transition-all duration-300">
+        <div class="relative h-72 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-t from-primaryQ/90 via-primaryQ/10 to-transparent z-10"></div>
+          <h2 class="absolute bottom-4 left-6 text-2xl font-bold text-white z-20 drop-shadow">Atta Plumbing</h2>
           <img
-            alt="Atta Plumbing"
             src="/assets/imgs/attaplumbingPortfolio.webp"
-            class="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
+            alt="Atta Plumbing website preview"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1 group-hover:brightness-110" />
         </div>
 
-        <div class="collapse border-t border-gray-100">
-          <input type="checkbox" id="collapse-atta" class="peer" />
-          <label
-            for="collapse-atta"
-            class="collapse-title text-lg font-medium text-gray-800 px-6 py-4 hover:bg-gray-50 cursor-pointer flex items-center justify-between"
-          >
-            <span>More info</span>
-            <svg
-              class="w-5 h-5 transition-transform duration-200 peer-checked:rotate-180"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </label>
-          <div class="collapse-content bg-gray-50 px-6 pb-6">
-            <p class="text-gray-600 my-4">
-              Atta Plumbing delivers expert plumbing solutions with precision,
-              reliability, and unmatched craftsmanship. From routine maintenance
-              to complex installations, our licensed professionals ensure
-              seamless service, lasting results, and peace of mind for every
-              homeowner and business.
-            </p>
-            <a
-              href="https://www.attaplumbing.com/"
-              class="inline-flex items-center text-primaryQ font-medium hover:text-primaryQ/80 transition-colors"
-            >
-              Visit Project
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 ml-1"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </div>
+        <div class="px-6 py-4 flex flex-wrap gap-2">
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Home Services</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Node.js</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">Tailwind</span>
+          <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700">GSC/GA4</span>
         </div>
+
+        <details class="group border-t border-gray-100 open:rounded-b-xl">
+          <summary class="list-none px-6 py-4 cursor-pointer flex items-center justify-between hover:bg-gray-50">
+            <span class="text-lg font-medium text-gray-900">More info</span>
+            <svg class="w-5 h-5 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+
+          <div class="px-6 pb-6 bg-gray-50 space-y-4">
+            <p class="text-gray-700">
+              Licensed pros with a reputation for precision. We implemented structured data, service-area pages, and
+              a performance budget to lift conversions and organic visibility.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="rounded-lg bg-white border border-gray-200 p-4">
+                <h3 class="font-semibold text-gray-900">Focus</h3>
+                <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Service menu &amp; financing info</li>
+                  <li>Reviews + trust badges</li>
+                  <li>After-hours contact path</li>
+                </ul>
+              </div>
+              <div class="rounded-lg bg-white border border-gray-200 p-4">
+                <h3 class="font-semibold text-gray-900">SEO</h3>
+                <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                  <li>FAQ/How-to content</li>
+                  <li>LocalBusiness schema</li>
+                  <li>Sitemap + redirects</li>
+                </ul>
+              </div>
+              <div class="rounded-lg bg-white border border-gray-200 p-4">
+                <h3 class="font-semibold text-gray-900">Perf</h3>
+                <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Image/CDN optimization</li>
+                  <li>Metrics: LCP/TBT budget</li>
+                  <li>Server-side rendering</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <a href="https://attaplumbing.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primaryQ font-medium hover:underline">Visit Project →</a>
+              <span class="text-xs text-gray-500">Launch: 2023</span>
+            </div>
+          </div>
+        </details>
       </article>
     </div>
   </div>
-</div>
+
+  <!-- Brand gradient case-study band -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white mt-12">
+    <div class="container mx-auto px-6 py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+        <!-- Left narrative -->
+        <div class="lg:col-span-3 bg-white p-6 rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <p class="text-sm font-medium text-primaryQ">Case Study</p>
+          <h3 class="mt-1 text-2xl font-semibold group-hover:text-primaryQ transition-colors">
+            Local services brand wins the map pack in 90 days
+          </h3>
+          <p class="mt-2 text-gray-700">
+            We shipped location-aware pages, fixed crawl traps, and matched content to local intent. The result:
+            stronger map pack coverage and measurably more calls.
+          </p>
+          <!-- KPI Chips -->
+          <div class="mt-3 flex flex-wrap gap-2 text-sm">
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> 3× impressions
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> +42% calls
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> −28% bounce
+            </span>
+          </div>
+          <a href="/contact" class="text-primaryQ hover:underline mt-3 inline-block">Contact For More Details →</a>
+        </div>
+
+        <!-- Right: chart (hover-grow) -->
+        <figure class="lg:col-span-2 w-full rounded-lg border border-white/20 bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105">
+          <figcaption class="text-sm text-gray-600 mb-2">Before/After — local visibility</figcaption>
+          <svg viewBox="0 0 520 240" class="w-full h-auto" role="img" aria-labelledby="portfolioBandTitle portfolioBandDesc">
+            <title id="portfolioBandTitle">Portfolio performance chart</title>
+            <desc id="portfolioBandDesc">Area shows impressions trend; dashed line shows calls trend.</desc>
+            <defs>
+              <linearGradient id="bandFill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="currentColor" stop-opacity=".22"/>
+                <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+              </linearGradient>
+              <style>
+                .axis{stroke:#e5e7eb;stroke-width:1}
+                .label{fill:#6b7280;font:12px/1 system-ui,-apple-system,Inter,Segoe UI}
+              </style>
+            </defs>
+            <path d="M50 20V210M50 210H490" class="axis"/>
+            <text x="14" y="214" class="label">0</text>
+            <text x="2" y="174" class="label">25</text>
+            <text x="-4" y="134" class="label">50</text>
+            <text x="-4" y="94" class="label">75</text>
+            <text x="-10" y="54" class="label">100</text>
+
+            <!-- Area -->
+            <g class="text-primaryQ">
+              <path fill="url(#bandFill)"
+                    d="M50,196 L120,188 L190,175 L260,160 L330,140 L400,118 L470,102 L490,98 L490,210 L50,210 Z"/>
+              <path fill="none" stroke="currentColor" stroke-width="2.5"
+                    d="M50,196 L120,188 L190,175 L260,160 L330,140 L400,118 L470,102 L490,98"/>
+            </g>
+            <!-- Calls -->
+            <g color="#16a34a">
+              <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 4"
+                    d="M50,205 L120,200 L190,194 L260,186 L330,178 L400,170 L470,163 L490,160"/>
+            </g>
+          </svg>
+          <figcaption class="mt-1 text-xs text-gray-500">Example values; replace with GA4/GMB exports.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">How we deliver</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">1</span>
+        <h3 class="mt-4 text-xl font-semibold text-gray-900">Discover</h3>
+        <p class="text-gray-700 mt-2">Goals, audience, competitors, and KPIs. Baseline analytics + SEO.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">2</span>
+        <h3 class="mt-4 text-xl font-semibold text-gray-900">Design</h3>
+        <p class="text-gray-700 mt-2">Accessible components, responsive layouts, conversion-first UX.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">3</span>
+        <h3 class="mt-4 text-xl font-semibold text-gray-900">Build</h3>
+        <p class="text-gray-700 mt-2">Node/Express + Tailwind, SSR for speed, schema, analytics wiring.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">4</span>
+        <h3 class="mt-4 text-xl font-semibold text-gray-900">Launch &amp; improve</h3>
+        <p class="text-gray-700 mt-2">CDN, monitoring, A/B ideas, and content roadmap for organic growth.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="container mx-auto px-6">
+    <div class="rounded-lg bg-white shadow-md p-8 transition-transform hover:scale-105">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-900">Ready to build something great?</h3>
+          <p class="text-gray-700">We’ll review your goals and send a quick plan with timeline and pricing.</p>
+        </div>
+        <a href="/contact" class="inline-flex items-center text-primaryQ hover:underline">Book a consult →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Optional: keep only one <details> open at a time -->
+<script>
+  document.addEventListener('click', (e) => {
+    const d = e.target.closest('details');
+    if (!d) return;
+    // close siblings when one opens
+    if (!d.open) {
+      document.querySelectorAll('details').forEach(x => { if (x !== d) x.removeAttribute('open'); });
+    }
+  });
+</script>

@@ -1,210 +1,634 @@
-<div class="home-box font-sans">
+<!-- Queue Development — Full Homepage (no footer, unique hovers, projects, testimonials, counters, FAQ, estimator, sticky chat) -->
 
-    <div style="display: none;">
-        hello!
+<div class="min-h-screen bg-white text-gray-900">
+  <!-- ===== Scroll progress ===== -->
+  <div id="q-progress" class="fixed inset-x-0 top-0 z-50 h-1 origin-left scale-x-0 bg-[linear-gradient(90deg,#df8327,#eaae73)]"></div>
+
+  <!-- =========================== HERO =========================== -->
+  <header class="relative isolate overflow-hidden group hero-bg" id="q-hero">
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-32 [mask-image:linear-gradient(transparent,black)] bg-gray-50"></div>
+
+    <div class="relative z-10 mx-auto max-w-[86rem] px-6 pt-24 pb-32 text-center">
+      <img src="/assets/imgs/Homepage_banner-01.webp" alt="Queue Development — Professional Websites" class="mx-auto w-full max-w-4xl h-auto drop-shadow-xl transition-transform duration-700 hover:scale-[1.03]" width="1440" height="360" decoding="async" />
+
+      <!-- Rotating wins ticker -->
+      <div class="mx-auto mt-6 max-w-3xl overflow-hidden rounded-full bg-white/85 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm backdrop-blur">
+        <div class="q-ticker flex gap-8 whitespace-nowrap">
+          <span>Launch in weeks, not months</span>
+          <span>Free strategy call</span>
+          <span>Core Web Vitals ready</span>
+          <span>No startup fees</span>
+          <span>Pro email on your domain</span>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-3xl text-lg text-white">Fast, accessible websites built with care — designed to convert and engineered to scale.</p>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <a href="/Book-A-Demo" class="btn-grad">Book a Demo</a>
+        <a href="#estimator" class="btn-grad bg-white">Quick Estimator</a>
+      </div>
     </div>
-    <!-- Hero Section -->
-    <div class="relative bg-cover bg-center text-white text-center py-16"
-        style="background-image: url('/assets/imgs/real-home-back-2.webp');" data-aos="fade-in">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div class="relative z-10">
-            <img src="/assets/imgs/Homepage_banner-01.webp" alt="Affordable-Websites" class="mx-auto my-4 max-w-xlg">
-            <a href="/Book-A-Demo" class="relative bg-primaryQ p-6 px-12 rounded-lg   overflow-hidden group">
-                <!-- Animated Overlay -->
-                <div
-                    class="absolute inset-0 bg-black transition-transform rounded-lg duration-500 scale-x-0 group-hover:scale-x-100 origin-left">
-                </div>
-                <!-- Text -->
-                <span
-                    class="relative z-10 text-black font-bold rounded-lg group-hover:text-primaryQ transition-colors duration-300">
-                    Let's Get Started
-                </span>
-            </a>
+  </header>
 
- 
+  <!-- ===================== VALUE PROPS ==================== -->
+  <section class="relative bg-gray-50 ">
+    <div class="-mt-16 mx-auto max-w-[86rem] px-6 val-prop-sec">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <article class="fx-card group reveal hover:bg-gradient-to-br hover:from-[#fffaf5] hover:to-white"><h2 class="text-lg font-semibold text-primaryQ">Custom Designs</h2><p class="mt-2 text-gray-700">Tailored sites for your brand — not templates. Built for clarity and conversions.</p><span class="fx-underline"></span><a href="/web-features" class="fx-link ripple">Explore features</a></article>
+        <article class="fx-card group reveal hover:shadow-[inset_0_0_22px_rgba(223,131,39,0.18)]"><h2 class="text-lg font-semibold text-primaryQ">Performance First</h2><p class="mt-2 text-gray-700">Core Web Vitals excellence with optimized assets and accessible markup.</p><span class="fx-underline"></span><a href="/seo" class="fx-link ripple">See how we optimize</a></article>
+        <article class="fx-card group reveal hover:rotate-1 hover:scale-[1.02]"><h2 class="text-lg font-semibold text-primaryQ">No Startup Fees</h2><p class="mt-2 text-gray-700">Pay only when live — flexible plans for every business.</p><span class="fx-underline"></span><a href="/Book-A-Demo" class="fx-link ripple">Book free consult</a></article>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===================== ABOUT ==================== -->
+  <section class="bg-gray-50" id="about">
+    <div class="mx-auto grid max-w-[86rem] grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2">
+      <!-- Unique hover: grayscale -> color + slight zoom -->
+      <figure class="reveal rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition duration-500">
+        <div class="fx-aurora rounded-3xl p-[2px]">
+          <img src="/assets/imgs/aboutus_homepage-01.webp" alt="Team working together" class="w-full rounded-[calc(theme(borderRadius.3xl)-2px)] transition-transform duration-700 hover:scale-[1.04]" />
         </div>
+      </figure>
+      <div class="reveal">
+        <h2 class="text-4xl font-bold text-primaryQ">About Queue Development</h2>
+        <p class="mt-5 text-gray-700">We build modern, SEO-friendly websites for small businesses and brands that need more than a template. We’re designers, developers, and partners in your growth.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/contact" class="btn-grad">Contact</a>
+          <a href="/web-features" class="btn-outline">Features</a>
+        </div>
+        <div class="mt-10 flex flex-wrap items-center gap-6 opacity-80 hover:opacity-100 transition">
+          
+          <a href="https://www.designrush.com/agency/profile/queue-development-llc" target="_blank"><img src="/assets/imgs/DesignRush.svg" alt="DesignRush" class="h-12 w-auto" width="220" height="48" loading="lazy" decoding="async" /></a>
+          <a href="https://www.goodfirms.co/company/queue-development-llc" target="_blank"><img src="/assets/imgs/goodfirmprofile.png" alt="GoodFirms" class="h-12 w-auto" width="220" height="48" loading="lazy" decoding="async" /></a>
+          <a href="https://web.shiawasseechamber.org/Website-Development/Queue-Development-LLC-9114" target="_blank"><img src="https://www.shiawasseechamber.org/uploads/1/1/2/0/112066651/shiawassee-logo.png" alt="Queue Develop LLC&nbsp;agency on GoodFirms" class="h-12 w-auto" width="220" height="48" loading="lazy" decoding="async" ></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===================== PROJECTS SHOWCASE ==================== -->
+<section class="bg-white" id="projects">
+  <div class="mx-auto max-w-[86rem] px-6 py-20">
+    <div class="mx-auto  items-center">
+    <div class="mb-8 text-center">
+      <p class="text-xs font-bold tracking-widest text-gray-500 uppercase">Recent Work</p>
+      <h2 class="text-4xl font-bold text-primaryQ mt-1">Our Projects</h2>
+      <p class="mt-3 max-w-3xl mx-auto text-gray-700">
+        A sampling of sites and apps we’ve launched for clients—from high-performing local service websites to
+        custom web applications. Every build is tuned for speed, accessibility, and long-term maintainability.
+      </p>
+    </div>
     </div>
 
 
-    <!-- Home Bullets -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-12 bg-gray-50 font-serif" data-aos="fade-up">
-        <div class="text-center md:text-left">
-            <h4 class="text-2xl font-semibold mb-4 text-primaryQ">Custom Designs</h4>
-            <p class="text-gray-600 leading-relaxed">Your website should stand out. Our team takes the time to
-                understand your unique needs and dreams, crafting a one-of-a-kind site that reflects your brand
-                perfectly.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Unique hovers per tile -->
+      <article class="relative group overflow-hidden rounded-2xl border border-gray-200">
+        <img src="/assets/imgs/attaplumbingPortfolio.webp" alt="Atta Plumbing" class="w-full h-auto transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-4 text-white">
+          <h3 class="text-xl font-semibold">Atta Plumbing</h3>
+          <p class="text-sm">Local service site built for speed & SEO</p>
         </div>
-        <div class="text-center md:text-left">
-            <h4 class="text-2xl font-semibold mb-4 text-primaryQ">Professional Support</h4>
-            <p class="text-gray-600 leading-relaxed">Our dedicated support team is committed to ensuring seamless
-                customer experiences. With a responsive and knowledgeable staff, we prioritize timely assistance,
-                troubleshooting, and client satisfaction.</p>
+      </article>
+
+      <article class="relative group overflow-hidden rounded-2xl border border-gray-200">
+        <img src="/assets/imgs/ragFrogPortfolio.webp" alt="Rag Frog" class="w-full h-auto transition duration-700 group-hover:brightness-110 group-hover:scale-105" />
+        <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-4 text-white">
+          <h3 class="text-xl font-semibold">Rag Frog</h3>
+          <p class="text-sm">Custom web application & branding</p>
         </div>
-        <div class="text-center md:text-left">
-            <h4 class="text-2xl font-semibold mb-4 text-primaryQ">No Startup Fees</h4>
-            <p class="text-gray-600 leading-relaxed">No credit card needed to start! We believe in aligning our success
-                with the success of our clients. You do not get billed until your site is live and to your liking.</p>
+      </article>
+
+      <article class="relative group overflow-hidden rounded-2xl border border-gray-200">
+        <img src="/assets/imgs/pride-portfolio.png" alt="Pride Dumpster Rentals" class="w-full h-auto transition-transform duration-700 group-hover:rotate-1 group-hover:scale-110" />
+        <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 p-4 text-white">
+          <h3 class="text-xl font-semibold">Pride Dumpster Rentals</h3>
+          <p class="text-sm">Local service site built for Mobile Optimization</p>
         </div>
+      </article>
     </div>
 
-    <!-- Support Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 py-16 items-center bg-white font-serif"
-        data-aos="fade-right">
-        <div>
-            <h4 class="text-3xl font-bold mb-6 text-primaryQ">How Our Team Supports You</h4>
-            <p class="text-gray-600 mb-6 leading-relaxed">Our support team is your go-to ally throughout your digital
-                journey. From the initial consultation to post-launch, our dedicated team is there to guide you every
-                step of the way.</p>
-            <p class="text-gray-600 leading-relaxed">We provide hands-on support, answer your questions, and ensure your
-                website not only meets but exceeds your expectations, so you can confidently navigate the online world
-                with our reliable assistance by your side.</p>
-        </div>
-        <img src="/assets/imgs/Homepage_team-01.webp" alt="Web-Support" class="w-full rounded-lg  ">
+    <div class="mt-12 text-center">
+      <a href="/portfolio" class="btn-grad">View Full Portfolio</a>
+    </div>
+  </div>
+</section>
 
+<!-- ===================== SERVICES ==================== -->
+<section class="bg-white">
+  <div class="mx-auto max-w-[86rem] px-6 py-8">
+    <div class="mx-auto items-center">
+      <div class="mb-8 text-center">
+        <p class="text-xs font-bold tracking-widest text-gray-500 uppercase">What We Do</p>
+        <h2 class="text-4xl font-bold text-primaryQ mt-1">Services</h2>
+        <p class="mt-3 max-w-3xl mx-auto text-gray-700">
+          From conversion-focused websites to search optimization, hosting, and professional email—our services are designed
+          to launch quickly, perform fast, and scale with your business. Pick what you need or bundle for the best value.
+        </p>
+      </div>
     </div>
 
-    <!-- About Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 py-16 items-center bg-gray-50 font-serif"
-        data-aos="fade-left">
-        <img src="/assets/imgs/aboutus_homepage-01.webp" alt="About-Us" class="w-full rounded-lg  ">
-        <div>
-            <h4 class="text-3xl font-bold mb-6 text-primaryQ">Who We Are</h4>
-            <p class="text-gray-600 mb-6 leading-relaxed">Queue Development is a dynamic firm dedicated to crafting
-                visually appealing and functionally robust websites for businesses of all sizes. With a focus on user
-                experience and cutting-edge technologies, we specialize in delivering tailored web solutions.</p>
-            <div class="flex gap-4">
-                <a href="/about-us"
-                    class="bg-primaryQ text-white font-medium py-3 px-6 rounded hover:bg-primaryQLight transition  ">
-                    About Us
-                </a>
-                <a href="/contact"
-                    class="bg-primaryQDark text-white font-medium py-3 px-6 rounded hover:bg-primaryQLight transition  ">
-                    Contact
-                </a>
+    <!-- 1-col mobile, 2-col md, 4-col lg -->
+    <div class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Card 1: Responsive Websites — gradient aura + slight skew -->
+      <article class="fx-tile reveal svc-card" style="transition-delay:0ms">
+        <figure class="rounded-2xl overflow-hidden">
+          <div class="svc-aurora rounded-2xl p-[2px] group hover:skew-y-1 transition">
+            <img src="/assets/imgs/ourservices_homepage-01-01.webp" alt="Responsive design illustration"
+                 class="w-full rounded-[calc(theme(borderRadius.2xl)-2px)] transition-transform duration-700 hover:scale-[1.05]" />
+          </div>
+        </figure>
 
+        <div class="svc-body">
+          <h3 class="mt-4 text-xl font-semibold">Responsive Websites</h3>
+          <p class="mt-2 text-gray-700">Mobile-first builds that look great and convert on every device.</p>
+        </div>
+
+        <div class="svc-cta svc-cta--full mt-4 flex flex-wrap gap-3">
+          <a href="/web-features" class="btn-cta-sm">See Features</a>
+          <a href="/Book-A-Demo" class="btn-outline-sm ripple">Get a Quote</a>
+        </div>
+      </article>
+
+      <!-- Card 2: SEO — moving color wash -->
+      <article class="fx-tile reveal svc-card" style="transition-delay:60ms">
+        <figure class="rounded-2xl overflow-hidden">
+          <div class="relative rounded-2xl svc-wash group">
+            <img src="/assets/imgs/SEO-Service-photo-01.webp" alt="SEO strategy"
+                 class="w-full rounded-2xl transition duration-700" />
+            <span class="pointer-events-none absolute inset-0 rounded-2xl svc-wash__overlay"></span>
+          </div>
+        </figure>
+
+        <div class="svc-body">
+          <h3 class="mt-4 text-xl font-semibold">SEO</h3>
+          <p class="mt-2 text-gray-700">Technical & on-page SEO with content guidance to grow organic traffic.</p>
+        </div>
+
+        <div class="svc-cta svc-cta--full mt-4 flex flex-wrap gap-3">
+          <a href="/seo" class="btn-cta-sm">SEO Packages</a>
+          <a href="/Book-A-Demo" class="btn-outline-sm ripple">Free Audit</a>
+        </div>
+      </article>
+
+      <!-- Card 3: Hosting — diagonal stripe shimmer -->
+      <article class="fx-tile reveal svc-card" style="transition-delay:120ms">
+        <figure class="rounded-2xl overflow-hidden">
+          <div class="relative rounded-2xl overflow-hidden svc-stripes group">
+            <img src="/assets/imgs/WebHosting-01.webp" alt="Hosting dashboard"
+                 class="w-full rounded-2xl will-change-transform transition-transform duration-700 group-hover:translate-y-1" />
+          </div>
+        </figure>
+
+        <div class="svc-body">
+          <h3 class="mt-4 text-xl font-semibold">Hosting</h3>
+          <p class="mt-2 text-gray-700">Reliable, scalable hosting with SSL, backups, and monitoring.</p>
+        </div>
+
+        <div class="svc-cta svc-cta--full mt-4 flex flex-wrap gap-3">
+          <a href="/hosting" class="btn-cta-sm">Hosting Plans</a>
+          <a href="/Book-A-Demo" class="btn-outline-sm ripple">Ask a Question</a>
+        </div>
+      </article>
+
+      <!-- Card 4: Email — conic ring pulse -->
+      <article class="fx-tile reveal svc-card" style="transition-delay:180ms">
+        <figure class="rounded-2xl overflow-hidden">
+          <div class="relative rounded-2xl overflow-hidden svc-conic group">
+            <img src="/assets/imgs/Email_tile-01-01.webp" alt="Professional email"
+                 class="w-full rounded-2xl transition-transform duration-700 group-hover:scale-[1.03]" />
+          </div>
+        </figure>
+
+        <div class="svc-body">
+          <h3 class="mt-4 text-xl font-semibold">Professional Email</h3>
+          <p class="mt-2 text-gray-700">Custom addresses on your domain with modern security and routing.</p>
+        </div>
+
+        <div class="svc-cta svc-cta--full mt-4 flex flex-wrap gap-3">
+          <a href="/email-features" class="btn-cta-sm">Email Options</a>
+          <a href="/Book-A-Demo" class="btn-outline-sm ripple">Get a Quote</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===================== BLOG (3 most recent) ==================== -->
+<section class="bg-white" id="blog-latest">
+  <div class="mx-auto max-w-[86rem] px-6 py-16">
+        <div class="mx-auto items-center">
+    <div class="mb-8 text-center">
+      <p class="text-xs font-bold tracking-widest text-gray-500 uppercase">Insights & Updates</p>
+      <h2 class="text-3xl font-bold text-primaryQ mt-1">From the Blog</h2>
+      <p class="mt-3 max-w-3xl mx-auto text-gray-700">
+        Practical tips on strategy, SEO, performance, and product thinking—short reads that help small businesses
+        make better decisions online.
+      </p>
+    </div></div>
+
+    {{#if latestPosts.length}}
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      {{#each latestPosts}}
+      <article class="fx-tile reveal svc-card">
+        <a href="{{url}}" class="block group">
+          <figure class="rounded-2xl overflow-hidden">
+            <div class="relative rounded-2xl overflow-hidden svc-wash">
+              <img src="{{coverImage}}" alt="{{title}}" class="w-full rounded-2xl transition duration-700 group-hover:scale-[1.03]" />
+              <span class="pointer-events-none absolute inset-0 rounded-2xl svc-wash__overlay"></span>
             </div>
-
-            <div class="mt-8 px-4">
-                <p class="text-gray-600 mb-6 center">Check Out Our Partnership Profiles!</p>
-                <div class="overflow-x-auto whitespace-nowrap flex gap-6 py-2 justify-center scrollbar-hide">
-
-                    <a href="https://www.designrush.com/agency/profile/queue-development-llc" target="_blank"><img
-                            src="/assets/imgs/DesignRush.svg" alt="Queue Develop LLC agency on DesignRush"
-                            class="h-24 inline-block" /></a>
-                    <a href="https://www.goodfirms.co/company/queue-development-llc" target="_blank"><img
-                            src="/assets/imgs/goodfirmprofile.png" alt="Queue Develop LLC agency on GoodFirms"
-                            class="h-24 inline-block" /></a>
-                    <a href="https://web.shiawasseechamber.org/Website-Development/Queue-Development-LLC-9114" target="_blank"><img
-                            src="https://www.shiawasseechamber.org/uploads/1/1/2/0/112066651/shiawassee-logo.png" alt="Queue Develop LLC agency on GoodFirms"
-                            class="h-24 inline-block" /></a>
-
-                    
-
-                </div>
-
-            </div>
-        </div>
+          </figure>
+          <h3 class="mt-4 text-xl font-semibold group-hover:text-primaryQ">{{title}}</h3>
+          {{#if excerpt}}<p class="mt-2 text-gray-700">{{excerpt}}</p>{{/if}}
+          <div class="svc-cta svc-cta--full mt-4">
+            <span class="btn-cta-sm inline-block text-center">Read Post</span>
+          </div>
+        </a>
+      </article>
+      {{/each}}
     </div>
+    {{else}}
+      <p class="text-gray-600">No posts yet. Check back soon.</p>
+    {{/if}}
 
-    <!-- Services Section -->
-    <div class="text-center py-16 bg-white font-serif">
-        <h3 class="text-4xl font-bold mb-12 text-primaryQ" data-aos="fade-down">Our Services</h3>
-        <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
-            <div class="w-full md:w-2/5">
-                <img src="/assets/imgs/ourservices_homepage-01.webp" alt="Our Services"
-                    class="rounded-lg  mx-auto w-4/5">
-            </div>
-            <div class="w-full md:w-3/5">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
-                    <a href="/web-features"
-                        class="bg-gray-100 p-8 rounded-lg   group hover:bg-gray-200 transition duration-300"
-                        data-aos="fade-up">
-                        <h4
-                            class="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-primaryQ transition-colors duration-500 ease-in-out relative">
-                            Responsive Sites
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-left"></span>
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-right"></span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed">Our responsive designs ensure a flawless user
-                            experience, allowing your
-                            audience to engage with your content effortlessly on any device.</p>
-                    </a>
-
-                    <!-- Updated SEO tag -->
-                    <a href="/seo" class="bg-gray-100 p-8 rounded-lg   group hover:bg-gray-200 transition duration-300"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <h4
-                            class="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-primaryQ transition-colors duration-500 ease-in-out relative">
-                            SEO
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-left"></span>
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-right"></span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed">Our SEO strategies are tailored to boost your website's
-                            rankings, driving organic traffic and
-                            ensuring your business stands out online.</p>
-                    </a>
-
-                    <!-- Updated Email Features tag -->
-                    <a href="/email-features"
-                        class="bg-gray-100 p-8 rounded-lg   group hover:bg-gray-200 transition duration-300"
-                        data-aos="fade-up" data-aos-delay="200">
-                        <h4
-                            class="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-primaryQ transition-colors duration-500 ease-in-out relative">
-                            Email Features
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-left"></span>
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-right"></span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed">Our email packages allow you to get a tailored email
-                            address registered with your domain, keeping
-                            your online presence unified and organized.</p>
-                    </a>
-
-                    <!-- Updated Hosting tag -->
-                    <a href="/hosting"
-                        class="bg-gray-100 p-8 rounded-lg   group hover:bg-gray-200 transition duration-300"
-                        data-aos="fade-up" data-aos-delay="300">
-                        <h4
-                            class="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-primaryQ transition-colors duration-500 ease-in-out relative">
-                            Hosting
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-left"></span>
-                            <span
-                                class="absolute left-0 right-0 bottom-0 h-0.5 bg-primaryQ scale-x-0 group-hover:scale-x-50 transition-transform duration-500 origin-right"></span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed">Get the most out of your website with our unlimited
-                            bandwidth and customizable options tailored to your needs.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="mt-8">
+      <a href="/blog" class="btn-outline-sm">View all posts</a>
     </div>
+  </div>
+</section>
 
-    <!-- Footer Call-to-Action Section -->
-    <section id="contact" class="py-16 bg-gray-1200 text-gray-200 text-center">
-        <div class="container mx-auto">
-            <!-- Heading -->
-            <h2 class="text-4xl font-bold mb-6 text-df8327">Try Us Out Today</h2>
-            <p class="text-lg mb-6 text-gray-400">Sign up for a free consultation and see how we can elevate your online
-                presence.</p>
 
-            <!-- Call-to-Action Button -->
-            <a href="/Book-A-Demo"
-                class="relative inline-block bg-df8327 text-white text-lg font-semibold px-8 py-4 rounded-lg   overflow-hidden group">
-                <!-- Animated Overlay -->
-                <div
-                    class="absolute inset-0 bg-black transition-transform duration-500 rounded-lg scale-x-0 group-hover:scale-x-100 origin-left">
-                </div>
-                <!-- Button Text -->
-                <span class="relative z-10 group-hover:text-df8327 transition-colors duration-300">
-                    Get Started
-                </span>
-            </a>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-[86rem] px-6 py-20">
+      <div class="mb-10 text-center">
+        <h2 class="text-4xl font-bold text-primaryQ">What Clients Say</h2>
+        <p class="mt-2 text-gray-600">Real results from real businesses.</p>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3" id="q-testimonials">
+        <figure class="rounded-2xl border border-gray-200 p-6 shadow-sm transition hover:-translate-y-1">
+          <blockquote class="text-gray-800">“5 stars! Quentin was creative, responsive, and delivered a beautiful, easy-to-navigate site on time. Great communication throughout the process. Highly recommend!”</blockquote>
+          <figcaption class="mt-4 text-sm text-gray-500">— Local Services Owner</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-gray-200 p-6 shadow-sm transition hover:-translate-y-1">
+          <blockquote class="text-gray-800">“Quentin and his company are absolute miracle workers! I came to him with a website design in mind and he knocked it out of the park! It was more amazing than I ever imagined. He listened to everything I wanted and offered his expertise in other areas I wasn’t familiar with. HIGHLY RECOMMENDED”</blockquote>
+          <figcaption class="mt-4 text-sm text-gray-500">— Startup Founder</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-gray-200 p-6 shadow-sm transition hover:-translate-y-1">
+          <blockquote class="text-gray-800">“Quentin did an amazing job designing my website. He was creative, professional, and really listened to what I wanted. The final site looks fantastic and works perfectly. Highly recommend Quentin!”</blockquote>
+          <figcaption class="mt-4 text-sm text-gray-500">— Retail Manager</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS / COUNTERS ==================== -->
+  <section class="bg-gray-50">
+    <div class="mx-auto max-w-[86rem] px-6 py-16">
+      <div class="grid grid-cols-2 gap-6 text-center md:grid-cols-4" id="q-counters">
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-4xl font-extrabold text-primaryQ" data-count="120">0</div>
+          <p class="mt-2 text-sm text-gray-600">Projects Shipped</p>
         </div>
-    </section>
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-4xl font-extrabold text-primaryQ" data-count="180">0</div>
+          <p class="mt-2 text-sm text-gray-600">Analytic Reports Exported</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-4xl font-extrabold text-primaryQ" data-count="220">0</div>
+          <p class="mt-2 text-sm text-gray-600">Pages Optimized</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-4xl font-extrabold text-primaryQ" data-count="8">0</div>
+          <p class="mt-2 text-sm text-gray-600">Avg. Weeks to Launch</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ==================== -->
+  <section class="bg-white" id="faq">
+    <div class="mx-auto max-w-[86rem] px-6 py-20">
+      <div class="mb-8 text-center">
+        <h2 class="text-3xl font-bold text-primaryQ">FAQ</h2>
+        <p class="mt-2 text-gray-600">Quick answers to common questions.</p>
+      </div>
+<div class="mx-auto max-w-4xl divide-y divide-gray-200" id="q-faq">
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      How fast can we launch?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Most sites launch in 4–8 weeks depending on scope, content readiness, and feedback turnaround. Smaller sites can land faster; larger builds (e-commerce/apps) take longer.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      What do you need from me to get started?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Brand assets (logo, colors), example sites you like, core pages/features, any existing copy or photos, and access to your domain/hosting (if applicable). We’ll send a short checklist after kickoff.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      Do you handle content and photos?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Yes. We include light copy guidance and can provide full copywriting/photography as add-ons. Stock imagery is available when needed.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      What about hosting and professional email?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">We offer reliable hosting with SSL, backups, and monitoring, plus professional email on your domain. Prefer your own host? We can deploy there too.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      How much does a typical project cost?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Pricing depends on pages and features. Most small business sites fall in the low–mid four figures; larger sites/apps are higher. Use our <a href="#estimator" class="text-primaryQ font-semibold">Quick Estimator</a> for a ballpark.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      Can you migrate or redesign my existing site?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Absolutely. We can migrate content, preserve URLs with redirects, and launch with near-zero downtime while improving UX, performance, and SEO.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      Will my site be optimized for SEO and speed?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Yes—semantic markup, meta tags, schema where appropriate, image optimization, caching, and Core Web Vitals best practices. We target 80+ Lighthouse scores when feasible; final scores depend on content, hosting, and third-party scripts.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      What CMS/stack do you use? Can I edit content myself?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">We choose the stack to fit your needs and can provide an editor (e.g., a CMS) so you can update text, images, and blog posts yourself. We also provide quick training.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      How many design revisions are included?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">Each phase includes a focused round of feedback (usually 2–3 iterations). Additional rounds are welcome and billed transparently.</p>
+  </details>
+
+  <details class="group py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+      What happens after launch—support & ownership?<span class="transition group-open:rotate-180">▼</span>
+    </summary>
+    <p class="mt-2 text-gray-700">You own your content and site assets. We offer ongoing maintenance (updates, fixes, enhancements) and are available for new features as you grow.</p>
+  </details>
 </div>
+
+      <div class="mt-8 text-center">
+        <a href="/Book-A-Demo" class="btn-grad">Book a Free Strategy Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INTERACTIVE ESTIMATOR ==================== -->
+  <section class="bg-gray-50" id="estimator">
+    <div class="mx-auto max-w-[86rem] px-6 py-20">
+      <div class="mx-auto max-w-4xl rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <h2 class="text-3xl font-bold text-primaryQ text-center">Quick Project Estimator</h2>
+        <p class="mt-2 text-center text-gray-600">Get a ballpark timeline & cost in under 30 seconds.</p>
+        <form id="q-estimate-form" class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <label class="block">
+            <span class="text-sm font-semibold text-gray-700">Pages</span>
+            <select name="pages" class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 bg-white text-gray-900">
+              <option value="5">Up to 5</option>
+              <option value="10">6–10</option>
+              <option value="20">11–20</option>
+              <option value="30">20+</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm font-semibold text-gray-700">Features</span>
+            <select name="features" class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 bg-white text-gray-900">
+              <option value="basic">Basic (static + forms)</option>
+              <option value="ecom">E‑commerce</option>
+              <option value="app">Custom Web App</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm font-semibold text-gray-700">Branding</span>
+            <select name="branding" class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 bg-white text-gray-900">
+              <option value="provided">Assets Provided</option>
+              <option value="light">Light Refresh</option>
+              <option value="full">Full Identity</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm font-semibold text-gray-700">Copywriting</span>
+            <select name="copy" class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 bg-white text-gray-900">
+              <option value="self">Client Provides</option>
+              <option value="assist">Assisted</option>
+              <option value="full">Full Service</option>
+            </select>
+          </label>
+          <div class="md:col-span-2 mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="rounded-xl bg-white p-4 border border-gray-200 text-center">
+              <div class="text-sm text-gray-600">Estimated Timeline</div>
+              <div id="q-est-time" class="mt-1 text-2xl font-extrabold text-primaryQ">—</div>
+            </div>
+            <div class="rounded-xl bg-white p-4 border border-gray-200 text-center">
+              <div class="text-sm text-gray-600">Estimated Cost</div>
+              <div id="q-est-cost" class="mt-1 text-2xl font-extrabold text-primaryQ">—</div>
+            </div>
+          </div>
+          <div class="md:col-span-2 flex flex-wrap items-center justify-center gap-3 pt-2">
+            <a href="/Book-A-Demo" class="btn-grad">Discuss My Estimate</a>
+            <a href="/contact" class="btn-outline">Contact Sales</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INLINE CONTACT FORM ==================== -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-[86rem] px-6 py-16">
+      <div class="mx-auto max-w-3xl rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <h3 class="text-2xl font-bold text-primaryQ text-center">Tell us about your project</h3>
+        <form id="contact-form" class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <input required type="text" id="name" name="name" placeholder="Your name" class="w-full rounded-lg border border-gray-300 px-4 py-3 bg-white text-gray-900 focus-visible:ring-4 focus-visible:ring-[#df8327]/30" />
+          <input required type="email" id="email" name="email" placeholder="Email" class="w-full rounded-lg border border-gray-300 px-4 py-3 bg-white text-gray-900 focus-visible:ring-4 focus-visible:ring-[#df8327]/30" />
+          <textarea required name="message" id="message" placeholder="What do you need help with?" rows="4" class="w-full md:col-span-2 rounded-lg border border-gray-300 px-4 py-3 bg-white text-gray-900 focus-visible:ring-4 focus-visible:ring-[#df8327]/30"></textarea>
+          <div class="md:col-span-2 flex justify-center">
+            <button class="btn-grad ripple" id="sub" type="submit">Send Message</button>
+          </div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== MID-PAGE CTA =============== -->
+  <section class="bg-gradient-to-r from-black via-gray-800 to-black text-gray-100">
+    <div class="mx-auto max-w-[86rem] px-6 py-10 flex flex-col gap-4 items-center text-center md:flex-row md:text-left md:justify-between">
+      <p class="text-xl font-semibold"><span style="color:#df8327;">Free 20‑minute Strategy Call</span> — see quick wins we can ship in week one.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/Book-A-Demo" class="btn-grad">Book Now</a>
+        <a href="/contact" class="btn-ghost">Ask a Question</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ Styles ============ -->
+<style>
+  /* Reveal */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  }
+  /* Gradient aura */
+  .fx-aurora { position: relative; background: linear-gradient(90deg, #df8327, #b7691b, #eaae73, #df8327); background-size: 300% 100%; transition: transform .4s ease, filter .4s ease; }
+  .fx-aurora:hover, .fx-aurora:focus-within { animation: qGradientSlide 2.5s linear infinite; filter: drop-shadow(0 6px 18px rgba(223,131,39,.25)); }
+  @keyframes qGradientSlide { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+  /* Cards/tiles */
+  .fx-card { position: relative; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.25rem; background: rgba(255,255,255,.92); backdrop-filter: saturate(120%) blur(2px); transition: transform .25s ease, box-shadow .25s ease; }
+  .fx-card:hover { transform: translateY(-4px) rotateX(.2deg); box-shadow: 0 10px 20px rgba(0,0,0,.06); }
+  .fx-underline { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1rem; height: 2px; background: linear-gradient(90deg, transparent, #df8327, transparent); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+  .fx-card:hover .fx-underline { transform: scaleX(1); }
+  .fx-link { display:inline-flex; align-items:center; gap:.25rem; margin-top:.75rem; font-weight:600; color:#df8327; }
+  .fx-link:hover { color:#b7691b; }
+  .fx-tile { border:1px solid #e5e7eb; border-radius: 1rem; padding:1.25rem; transition: transform .25s ease, box-shadow .25s ease; }
+  .fx-tile:hover { transform: translateY(-6px); box-shadow: 0 16px 30px rgba(0,0,0,.08); }
+  /* Buttons */
+  .btn-grad { position:relative; display:inline-block; font-weight:800; color:#fff; border-radius:.9rem; padding:.9rem 1.6rem; background: linear-gradient(#df8327,#df8327) padding-box, linear-gradient(90deg,#df8327,#eaae73) border-box; border:2px solid transparent; transition: transform .15s ease, filter .2s ease; }
+  .btn-grad:hover { transform: translateY(-1px); filter: brightness(.98); }
+  .btn-ghost { display:inline-block; background: rgba(0,0,0,.06); color:#111; font-weight:700; padding:.9rem 1.6rem; border-radius:.9rem; border:2px solid rgba(0,0,0,.08); }
+  .btn-outline { display:inline-block; border:1px solid #e5e7eb; padding:.75rem 1.25rem; border-radius:.75rem; font-weight:600; }
+  .btn-cta-sm { display:inline-block; background:#df8327; color:#fff; font-weight:700; padding:.55rem 1rem; border-radius:.6rem; }
+  .btn-outline-sm { display:inline-block; border:1px solid #df8327; color:#df8327; font-weight:700; padding:.55rem 1rem; border-radius:.6rem; }
+  /* Ticker */
+  .q-ticker { animation: qTicker 16s linear infinite; }
+  @keyframes qTicker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+
+
+<!-- ============ Scripts ============ -->
+
+<script src="/assets/js/homepage-forms.js"></script>
+<script>
+  (function(){
+    // Scroll progress
+    var p=document.getElementById('q-progress');
+    function prog(){var s=window.scrollY||document.documentElement.scrollTop||0;var h=document.documentElement.scrollHeight-window.innerHeight;var t=h>0?Math.min(1,s/h):0;p.style.transform='scaleX('+t+')';}
+    window.addEventListener('scroll',prog,{passive:true}); prog();
+
+    // Reveal-on-scroll
+    try{var els=document.querySelectorAll('.reveal'); if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('is-visible'));}
+      else {var io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}})},{threshold:0.12}); els.forEach(el=>io.observe(el));}}
+    catch(_){}
+
+    // Counters
+    try{var ctr=document.querySelectorAll('#q-counters [data-count]'); if(ctr.length){var started=false; var io2=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!started){started=true; ctr.forEach(n=>{var end=+n.getAttribute('data-count'); var cur=0; var step=Math.ceil(end/60); var id=setInterval(()=>{cur+=step; if(cur>=end){cur=end; clearInterval(id);} n.textContent=cur;},18);}); io2.disconnect();}})},{threshold:0.3}); io2.observe(document.getElementById('q-counters'));}}
+    catch(_){}
+
+    // Estimator
+ try {
+    const form = document.getElementById("q-estimate-form");
+    if (!form) return;
+
+    const outCost = document.getElementById("q-est-cost");
+    const outTime = document.getElementById("q-est-time");
+
+    // Map your values to the internal keys
+    const mapFeature = (v) => ({ basic: "static", ecom: "ecom", app: "app" }[v] || "static");
+    const mapCopy    = (v) => ({ self: "client", assist: "assist", full: "full" }[v] || "client");
+
+    // Convert selected pages (5,10,20,30) into 5-page blocks
+    const toBlocks = (v) => Math.max(1, Math.ceil((parseInt(v || "5", 10)) / 5));
+
+    function calc() {
+      const pagesVal = form.pages?.value || "5";
+      const features = mapFeature((form.features?.value || "basic").toLowerCase());
+      const branding = (form.branding?.value || "provided").toLowerCase();
+      const copy     = mapCopy((form.copy?.value || "self").toLowerCase());
+
+      const blocks = toBlocks(pagesVal);
+
+      // Base: $1,000 up to 5 pages; +$500 per additional 5 pages
+      let total = 1000 + (blocks - 1) * 500;
+
+      // Features
+      if (features === "ecom") total += 1000;
+      else if (features === "app") total += 1500;
+
+      // Branding
+      if (branding === "light") total += 300 * blocks;
+      else if (branding === "full") total += 600 * blocks;
+
+      // Copy
+      if (copy === "assist") total += 100 * blocks;
+      else if (copy === "full") total += 300 * blocks;
+
+      // Time heuristic
+      let weeks = blocks;
+      if (features === "ecom") weeks += 1;
+      if (features === "app") weeks += 3;
+      if (branding === "full") weeks += 1;
+
+      const minW = Math.max(1, weeks);
+      const maxW = minW + 1;
+
+      outCost.textContent = "$" + total.toLocaleString();
+      outTime.textContent = `${minW}–${maxW} wks`;
+    }
+
+    ["change", "input"].forEach((ev) => form.addEventListener(ev, calc));
+    calc();
+  } catch (_) {}
+
+  })();
+  // Blog loader: tries a few JSON endpoints and renders top 3 by date
+    try {
+      const grid = document.getElementById('q-blog-grid');
+      async function fetchAny(urls){
+        for (const u of urls){
+          try { const r = await fetch(u, {headers:{'accept':'application/json'}}); if(r.ok){ return await r.json(); } } catch(e){}
+        }
+        return null;
+      }
+      (async () => {
+        // Preferred schema: [{title, url, excerpt, cover, date}] with ISO date
+        const data = await fetchAny(['/blog.json','/api/blog','/api/posts','/posts.json','/feed.json']);
+        if (!data || !Array.isArray(data) || !grid) return; 
+        const posts = data
+          .map(p => ({
+            title: p.title || p.name || 'Untitled',
+            url: p.url || p.permalink || '#',
+            excerpt: p.excerpt || p.summary || '',
+            cover: p.cover || p.image || '',
+            date: p.date || p.published || p.created || ''
+          }))
+          .sort((a,b)=> new Date(b.date)-new Date(a.date))
+          .slice(0,3);
+        if (!posts.length) return;
+        grid.innerHTML = posts.map(p => `
+          <article class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-1">
+            ${p.cover ? `<img src="${p.cover}" alt="" class="h-40 w-full rounded-xl object-cover">` : '<div class="h-40 w-full rounded-xl bg-gradient-to-br from-gray-200 to-gray-100"></div>'}
+            <h3 class="mt-4 text-lg font-semibold">${p.title}</h3>
+            ${p.date ? `<time class="text-xs text-gray-500">${new Date(p.date).toLocaleDateString()}</time>` : ''}
+            ${p.excerpt ? `<p class="mt-2 text-sm text-gray-600">${p.excerpt}</p>` : ''}
+            <a href="${p.url}" class="mt-3 inline-flex items-center gap-2 font-semibold text-primaryQ">Read more<span aria-hidden>→</span></a>
+          </article>
+        `).join('');
+      })();
+    } catch(_){}
+
+</script>

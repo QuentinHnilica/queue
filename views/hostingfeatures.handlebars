@@ -1,52 +1,365 @@
-<section class="bg-gray-50 py-12">
-    <!-- Service Header -->
-    <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold text-gray-900">Website Hosting</h2>
-        <p class="text-lg text-gray-600 mt-4">
-            Reliable hosting solutions designed for speed, security, and peace of mind.
+<section class="bg-gray-50 py-12 text-gray-800">
+  <!-- Header -->
+  <div class="text-center mb-12 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Website Hosting</h2>
+    <p class="text-lg text-gray-600 mt-4">
+      Reliable, secure hosting engineered for speed, uptime, and peace of mind.
+    </p>
+  </div>
+
+  <!-- Hero / Intro -->
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row lg:space-x-6 items-center bg-white shadow-md rounded-lg p-8 mb-12 transition-transform hover:scale-105">
+      <div class="lg:w-1/2">
+        <img src="/assets/imgs/WebHosting-01.webp" alt="Managed website hosting"
+             class="rounded-lg shadow-lg">
+      </div>
+      <div class="lg:w-1/2 mt-6 lg:mt-0">
+        <h3 class="text-3xl font-semibold text-primaryQ mb-4">Fast, monitored, and fully managed</h3>
+        <p class="text-gray-700 leading-relaxed">
+          We provision, harden, and monitor your stack—so your site stays fast and secure. From global CDN and
+          image optimization to automatic backups and 24/7 alerts, we handle the heavy lifting while you focus
+          on your business.
         </p>
-    </div>
 
-    <!-- Service Details -->
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6">
-        <!-- Image -->
-        <div class="flex justify-center">
-            <img src="/assets/imgs/WebHosting-01.webp" alt="Website Hosting" class="rounded-lg shadow-lg">
-        </div>
-
-        <!-- Text Content -->
-        <div>
-            <!-- Features List -->
-            <div class="mb-6">
-                <p class="flex items-center text-gray-700 text-lg mb-2">
-                    <i class="fa fa-check-circle  text-#2e5374 mr-3"></i> Performance Optimization
-                </p>
-                <p class="flex items-center text-gray-700 text-lg mb-2">
-                    <i class="fa fa-check-circle  text-#2e5374 mr-3"></i> Security Measures
-                </p>
-                <p class="flex items-center text-gray-700 text-lg">
-                    <i class="fa fa-check-circle  text-#2e5374 mr-3"></i> Backup and Recovery
-                </p>
+        <!-- Key benefits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Performance first</p>
+              <p class="text-gray-600 text-sm">CDN, HTTP/2–3, brotli, caching, and tuned runtimes.</p>
             </div>
-
-            <!-- Paragraph -->
-            <p class="text-gray-700 leading-relaxed mb-6">
-                At Queue-Development, we optimize server performance, speed, and bandwidth to ensure your website loads
-                quickly,
-                providing a better user experience for visitors. We implement robust security measures, including
-                firewalls,
-                regular backups, and malware scanning, to protect your website from cyber threats and data loss.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-                In order to ensure a smooth update process, we regularly back up your website data, offering a layer of
-                protection against data loss.
-            </p>
-            <p class="text-gray-700 mt-4">
-                You can see all Hosting Features in our packages <a href="/pricing"
-                    class=" text-#2e5374 hover:underline">here</a>.
-            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Security by default</p>
+              <p class="text-gray-600 text-sm">WAF, DDoS protection, least-privilege access, and MFA.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Backups &amp; restores</p>
+              <p class="text-gray-600 text-sm">Automated snapshots with point-in-time recovery.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">24/7 monitoring</p>
+              <p class="text-gray-600 text-sm">Uptime, SSL, errors, and performance alerts.</p>
+            </div>
+          </div>
         </div>
+
+        <p class="text-gray-700 mt-6">
+          See how hosting features map to each package
+          <a href="/pricing" class="text-primaryQ hover:underline">here</a>.
+        </p>
+      </div>
     </div>
+  </div>
+
+  <!-- Feature Band -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white">
+    <div class="container mx-auto px-6 py-10">
+      <h3 class="text-3xl font-bold text-center mb-6">What’s included</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Performance</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>Global CDN &amp; edge caching</li>
+            <li>HTTP/2–3, TLS 1.3, brotli</li>
+            <li>Image optimization (AVIF/WebP)</li>
+          </ul>
+        </div>
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Security</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>Managed WAF &amp; DDoS protection</li>
+            <li>Automatic SSL &amp; HSTS</li>
+            <li>Isolation, patching, role-based access</li>
+          </ul>
+        </div>
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Reliability</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>Daily backups &amp; retention policy</li>
+            <li>Health checks &amp; auto-healing</li>
+            <li>24/7 monitoring &amp; alerting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold text-center mb-8">How we work</h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">1</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Assess</h4>
+        <p class="text-gray-700 mt-2">Audit current stack, traffic, storage, and SLAs.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">2</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Provision</h4>
+        <p class="text-gray-700 mt-2">Hardened environment, CDN, SSL, deploy pipeline.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">3</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Migrate</h4>
+        <p class="text-gray-700 mt-2">Zero-downtime cutover with thorough validation.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">4</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Monitor</h4>
+        <p class="text-gray-700 mt-2">Health, logs, alerts, backups, and ongoing updates.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deliverables & Outcomes -->
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+        <h3 class="text-2xl font-semibold text-primaryQ mb-4">What you’ll get</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <ul class="space-y-2">
+            <li>Managed hosting environment</li>
+            <li>CDN &amp; caching configuration</li>
+            <li>SSL, WAF, DDoS controls</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>Automated backups &amp; restores</li>
+            <li>Uptime &amp; performance monitoring</li>
+            <li>Runbook &amp; incident playbooks</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+        <h3 class="text-2xl font-semibold text-primaryQ mb-4">Expected outcomes</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Consistently fast pages worldwide</li>
+          <li>Higher uptime and fewer incidents</li>
+          <li>Reduced security and data-loss risk</li>
+          <li>Simpler operations with clear SLAs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study (brand gradient band, compact & balanced) -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white mt-12">
+    <div class="container mx-auto px-6 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+        <!-- Left: content card -->
+        <div class="md:col-span-3 bg-white p-5 rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform duration-300 hover:scale-105 group">
+          <p class="text-sm font-medium text-primaryQ">Case Study</p>
+          <h4 class="mt-1 text-xl font-semibold group-hover:text-primaryQ transition-colors">
+            SaaS brand improves global TTFB and uptime
+          </h4>
+
+          <!-- KPI chips -->
+          <div class="mt-3 flex flex-wrap gap-2 text-sm">
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> −43% median TTFB
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> 99.98% 90-day uptime
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> −61% 5xx errors
+            </span>
+          </div>
+
+          <!-- Wins -->
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Edge cache rules + brotli + HTTP/3 for faster first byte globally.
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              WAF tuning and rate-limiting reduced noisy traffic and errors.
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Health checks with auto-healing prevented long-tail downtime.
+            </li>
+          </ul>
+
+          <blockquote class="mt-4 border-l-4 border-primaryQ/30 pl-3 text-gray-700 italic">
+            “Global customers finally see the app snap to life. Support tickets about slowness basically vanished.”
+          </blockquote>
+
+          <a href="/case-studies" class="text-primaryQ hover:underline mt-3 inline-block">Read case studies →</a>
+        </div>
+
+        <!-- Right: inline SVG chart (hover-grow) -->
+        <figure class="md:col-span-2 w-full rounded-lg border border-white/20 bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105">
+          <figcaption class="text-sm text-gray-600 mb-2">TTFB (ms) — before vs after (lower is better)</figcaption>
+          <svg viewBox="0 0 520 260" role="img" aria-labelledby="hostChartTitle hostChartDesc" class="w-full h-auto">
+            <title id="hostChartTitle">Hosting performance improvement</title>
+            <desc id="hostChartDesc">Bars compare median TTFB before and after optimizations across two regions.</desc>
+            <defs>
+              <style>
+                .axis { stroke:#e5e7eb; stroke-width:1 }
+                .label { fill:#6b7280; font:12px/1 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial }
+                figure:hover svg g.grow { transform: scale(1.02); transform-origin: 50% 50%; transition: transform .25s ease }
+                @media (prefers-reduced-motion: reduce){ figure:hover svg g.grow { transform:none } }
+              </style>
+            </defs>
+
+            <!-- axes -->
+            <path d="M60 20 V220 M60 220 H500" class="axis"/>
+            <text x="18" y="224" class="label">0</text>
+            <text x="12" y="184" class="label">250</text>
+            <text x="12" y="144" class="label">500</text>
+            <text x="6"  y="104" class="label">750</text>
+            <text x="0"  y="64"  class="label">1000</text>
+
+            <!-- Bars (example values) -->
+            <g class="grow">
+              <!-- NA region -->
+              <text x="120" y="238" class="label" fill="#374151">NA</text>
+              <!-- Before ~650ms (gray) -->
+              <rect x="100" y="90" width="40" height="130" fill="#9ca3af" opacity=".45"/>
+              <!-- After ~370ms (primaryQ) -->
+              <rect x="150" y="150" width="40" height="70" class="text-primaryQ" fill="currentColor" opacity=".95"/>
+
+              <!-- EU region -->
+              <text x="330" y="238" class="label" fill="#374151">EU</text>
+              <!-- Before ~780ms -->
+              <rect x="310" y="62" width="40" height="158" fill="#9ca3af" opacity=".45"/>
+              <!-- After ~420ms -->
+              <rect x="360" y="140" width="40" height="80" class="text-primaryQ" fill="currentColor" opacity=".95"/>
+
+              <!-- Legend -->
+              <g>
+                <rect x="410" y="26" width="12" height="12" rx="2" class="text-primaryQ" fill="currentColor" opacity=".95"/>
+                <text x="428" y="36" class="label" fill="#374151">After</text>
+                <rect x="410" y="46" width="12" height="12" rx="2" fill="#9ca3af" opacity=".9"/>
+                <text x="428" y="56" class="label" fill="#374151">Before</text>
+              </g>
+            </g>
+          </svg>
+          <figcaption class="mt-2 text-xs text-gray-500">Illustrative values; plug in your real monitoring data.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages teaser -->
+  <div class="container mx-auto px-6 mt-12">
+    <div class="rounded-lg bg-white shadow-md p-6 md:p-8 transition-transform hover:scale-105">
+      <h3 class="text-2xl font-semibold text-gray-900">Packages</h3>
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Starter</p>
+          <p class="text-gray-600 mt-1">Small sites &amp; blogs</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Global CDN &amp; SSL</li>
+            <li>Daily backups</li>
+            <li>Basic monitoring</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Growth</p>
+          <p class="text-gray-600 mt-1">Business sites</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>WAF &amp; DDoS mitigation</li>
+            <li>Staging + zero-downtime deploys</li>
+            <li>Enhanced monitoring &amp; alerts</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Scale</p>
+          <p class="text-gray-600 mt-1">High-traffic / SaaS</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Edge rules &amp; performance budget</li>
+            <li>Multi-region failover</li>
+            <li>Compliance &amp; runbooks</li>
+          </ul>
+        </div>
+      </div>
+      <a href="/pricing" class="mt-4 inline-flex items-center text-primaryQ hover:underline">See full pricing →</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold text-center mb-8">Hosting FAQs</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Do you support custom domains &amp; SSL?</summary>
+        <p class="mt-3 text-gray-700">Yes—automatic SSL certificates, renewals, and HSTS for every domain you host with us.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">How often are backups taken?</summary>
+        <p class="mt-3 text-gray-700">Daily by default with configurable retention. We also offer on-demand snapshots pre-deployment.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Can you migrate my site?</summary>
+        <p class="mt-3 text-gray-700">We handle zero-downtime migrations, DNS cutovers, and validation in staging before launch.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">What about incidents?</summary>
+        <p class="mt-3 text-gray-700">We monitor 24/7 and follow a clear runbook (notify, mitigate, post-mortem) with transparent updates.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="container mx-auto px-6">
+    <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+      <div class="flex items-center mb-6">
+        <div class="bg-primaryQ text-white p-6 rounded-full shadow-md transition-transform hover:scale-125">
+          <!-- server icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5h18M3 10h18M3 15h18M3 20h18M7 5v15M17 5v15"/>
+          </svg>
+        </div>
+        <h3 class="text-3xl font-semibold text-primaryQ ml-4">Hosting that just works—every day</h3>
+      </div>
+      <p class="text-gray-700">We’ll review your needs and send a quick plan for performance, security, and reliability.</p>
+      <a href="#book-a-demo" class="mt-6 inline-block text-primaryQ hover:underline">Book a demo →</a>
+    </div>
+  </div>
+
+  <!-- JSON-LD (Service) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Managed Website Hosting",
+    "provider": { "@type": "Organization", "name": "Queue Development LLC", "url": "https://queuedevelop.com" },
+    "serviceType": "Website Hosting",
+    "areaServed": "US",
+    "description": "Fast, secure, fully managed hosting with CDN, SSL, WAF, backups, and 24/7 monitoring.",
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "USD", "url": "https://queuedevelop.com/pricing" }
+  }
+  </script>
 </section>
 
- {{> bookADemo }}
+<!-- Anchor for your form -->
+<a id="book-a-demo" class="sr-only" aria-hidden="true"></a>
+{{> bookADemo }}

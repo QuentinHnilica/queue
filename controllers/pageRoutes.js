@@ -1,4 +1,4 @@
-const { Message, User, Leads } = require("../modals");
+const { Message, User, Leads, Posts } = require("../modals");
 
 const router = require("express").Router();
 
@@ -40,8 +40,51 @@ const upload = multer({
   },
 }).array("Images", 5); // Allow up to 5 images
 
-router.get("/", async (req, res) => {
-  res.render("home");
+
+
+
+
+async function fetchLatestPosts(limit = 3) {
+  const rows = await Posts.findAll({
+    where: { active: true },
+    // safest with your current schema: order by id
+    order: [["PostId", "DESC"]],
+    limit,
+    attributes: [
+      "PostId",
+      "subject", // title
+      "excerpt",
+      "banner", // cover image path
+      "date", // string date
+      "username",
+    ],
+    raw: true,
+  });
+
+  // Normalize to fields your homepage expects
+  return rows.map((p) => ({
+    id: p.PostId,
+    title: p.subject,
+    excerpt: p.excerpt || "",
+    coverImage: p.banner || "/assets/imgs/ourservices_homepage-01-01.webp",
+    publishedAt: p.date, // string; consider storing as DATE later
+    author: p.username,
+    // If your post detail route is /blog/:id, link with the id:
+    url: `/blogpost/${p.PostId}`,
+  }));
+}
+
+router.get("/", async (req, res, next) => {
+  try {
+    const latestPosts = await fetchLatestPosts(3);
+    res.render("home", {
+      latestPosts,
+      title: res.locals.metaTitle,
+      keywords: res.locals.metaKeywords,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/about-us", async (req, res) => {
@@ -96,6 +139,15 @@ router.get("/portfolio", async (req, res) => {
   res.render("portfolio");
 });
 
+router.get("/products/web-design", async (req, res) => {
+  res.render("webDesign");
+});
+
+
+router.get("/products/web-applications", async (req, res) => {
+  res.render("webApplications");
+});
+
 router.post("/contact/submit", async (req, res) => {
   try {
     // (Optional) normalize source so your email shows where it came from
@@ -129,6 +181,7 @@ router.post("/consult/submit", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 // Disclosure Routes
 router.get("/privacy", async (req, res) => {
   res.render("privacy");

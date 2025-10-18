@@ -1,8 +1,7 @@
-const sub = document.querySelector("#Sub");
+const sub = document.querySelector("#sub");
 const name1 = document.querySelector("#name");
-const name2 = document.querySelector("#lastName");
 const email = document.querySelector("#email");
-const phone = document.querySelector("#phone");
+
 const message = document.querySelector("#message");
 
 function validateFourm() {
@@ -12,20 +11,10 @@ function validateFourm() {
     errors++;
     name1.placeholder = "Name Must Be Filled";
   }
-    if (name2.value == null || name2.value == "") {
-      errors++;
-      name2.placeholder = "Name Must Be Filled";
-    }
 
   if (email.value == null || email.value == "") {
     errors++;
     email.placeholder = "email Must Be Filled";
-  }
-
-  if (phone.value == null || phone.value.length < 10) {
-    errors++;
-    phone.value = "";
-    phone.placeholder = "phone Must Valid";
   }
 
   if (message.value == null || message.value == "") {
@@ -37,20 +26,18 @@ function validateFourm() {
 }
 
 const newMessage = async (e) => {
-      const form = document.getElementById("contact-form");
   e.preventDefault();
   let theErrors = validateFourm();
   console.log(theErrors);
 
   if (theErrors === 0) {
     let newMessage = {
-      formName: "Contact Us",
-      formData:{
-      firstName: name1.value,
-      lastName: name2.value,
-      email: email.value,
-      phone: phone.value,
-      message: message.value,},
+      formName: "Home-Page-Inquiry",
+      formData: {
+        name: name1.value,
+        email: email.value,
+        message: message.value,
+      },
     };
 
     const response = await fetch("/contact/submit", {
@@ -60,10 +47,8 @@ const newMessage = async (e) => {
     });
 
     if (response.ok) {
-            const header = document.querySelector("section .text-left");
-            if (header) header.innerHTML = "";
-            form.innerHTML =
-              '<h3 class="text-xl font-semibold text-center text-gray-900">Thank you for reaching out — a support agent will be in touch shortly!</h3>';
+        document.getElementById("contact-form").innerHTML =
+          '<div class="mt-6 rounded-2xl border border-green-200 bg-green-50 p-6 text-center shadow-sm"><h3 class="text-xl font-bold text-green-800">Thank you for reaching out, a support agent will be in touch shortly!</h3></div>';
     } else {
       alert(response.statusText);
     }

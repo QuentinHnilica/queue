@@ -1,135 +1,249 @@
-<div class="blog-main">
-    {{#each blogPosts}}
-    <div class="blog-block">
-        <img src="{{this.banner}}" alt="{{this.subject}}-img" class="blog-banner" />
-        <div class="blog-details">
-            <a href="/blogpost/{{this.PostId}}" class="blog-link">
-                <h2 class="blog-title">{{this.subject}}</h2>
-            </a>
-            <p class="blog-author">Author: {{this.username}}</p>
-            <p class="blog-date">{{this.date}}</p>
-            <div class="blog-snippet">
-                {{{this.PostContent}}}
-            </div>
-            <a href="/blogpost/{{this.PostId}}" class="read-more">Read More</a>
-        </div>
-        
+<!-- HERO -->
+<section class="bg-gradient-to-b from-[#df83271a] to-transparent border-b border-gray-200">
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <nav class="text-sm text-gray-500 mb-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-gray-700">Home</a>
+      <span class="mx-1">›</span>
+      <span class="text-gray-700" aria-current="page">Blog</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-semibold text-gray-900">Insights, tutorials, and updates</h1>
+    <p class="mt-2 text-gray-600">Notes from the team on web dev, SaaS, and small-biz growth. New posts every month.</p>
+
+    <div class="mt-4 flex flex-wrap items-center gap-2">
+      <span class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-700">
+        <span id="stat-total">0</span>&nbsp;posts
+      </span>
+      <span class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-700">
+        <span id="stat-authors">0</span>&nbsp;authors
+      </span>
     </div>
-    {{/each}}
+
+    <form class="mt-4 flex gap-2" method="GET" action="/blog">
+      <input id="q" name="q" type="search" value="{{q}}" placeholder="Search posts…"
+             class="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#df8327]/30" />
+      <button type="submit"
+              class="rounded-xl border border-gray-200 bg-white px-4 py-2 text-gray-800 hover:bg-gray-50">
+        Search
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<div class="mx-auto max-w-6xl px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <!-- CONTENT -->
+  <div class="lg:col-span-2">
+    <div id="postGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      {{#each blogPosts}}
+      <article class="group rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden transition hover:-translate-y-1 hover:shadow-md">
+        <a href="/blogpost/{{this.PostId}}" class="block">
+          <img src="{{this.banner}}" alt="{{this.subject}} banner"
+               class="h-48 w-full object-cover">
+        </a>
+        <div class="p-4">
+          <h2 class="text-lg font-semibold text-gray-900 leading-snug">
+            <a href="/blogpost/{{this.PostId}}" class="hover:text-[#df8327]">{{this.subject}}</a>
+          </h2>
+
+          <p class="mt-1 text-sm text-gray-500">
+            By {{this.username}} •
+            <span class="timeago" data-timeago="{{this.date}}">{{this.date}}</span> •
+            <span class="readtime" data-readfrom="{{this.PostId}}">~ min read</span>
+          </p>
+
+          <div class="mt-3 text-gray-700 line-clamp-3">
+            {{{this.PostContent}}}
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <a href="/blogpost/{{this.PostId}}" class="font-medium text-[#df8327] hover:underline">Read More →</a>
+            <button type="button" class="share-copy rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50"
+                    data-url="/blogpost/{{this.PostId}}">Copy link</button>
+            <a class="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50"
+               target="_blank" rel="noopener"
+               href="https://www.linkedin.com/sharing/share-offsite/?url={{../baseUrl}}/blogpost/{{this.PostId}}">Share</a>
+          </div>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+
+    <!-- Show more (client-only) -->
+    <div class="mt-8 flex justify-center">
+      <button id="btnShowMore"
+              class="rounded-xl border border-gray-200 bg-white px-4 py-2 text-gray-800 hover:bg-gray-50">
+        Show more posts
+      </button>
+    </div>
+
+    {{!-- keep your server-side pagination here if you have it --}}
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="space-y-6">
+    <section class="rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 class="text-base font-semibold text-gray-900">About the blog</h3>
+      <p class="mt-1 text-sm text-gray-600">Queue Development tips on Node/Express, Tailwind, and shipping client projects.</p>
+    </section>
+
+    <section class="rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 class="text-base font-semibold text-gray-900">Recent posts</h3>
+      <div id="recentPosts" class="mt-3 space-y-3"></div>
+    </section>
+
+    <section class="rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 class="text-base font-semibold text-gray-900">Authors</h3>
+      <div id="authorsBox" class="mt-3 space-y-2"></div>
+    </section>
+
+    <section class="rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 class="text-base font-semibold text-gray-900">Archives</h3>
+      <ul id="archivesList" class="mt-3 divide-y divide-gray-100"></ul>
+    </section>
+
+    <section class="rounded-2xl border border-gray-200 bg-white p-5">
+      <h3 class="text-base font-semibold text-gray-900">Get new posts in your inbox</h3>
+      <form action="/subscribe" method="POST" class="mt-3 space-y-2">
+        <input type="email" name="email" placeholder="you@company.com" required
+               class="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#df8327]/30" />
+        <button type="submit"
+                class="w-full rounded-xl bg-df8327 px-4 py-2 font-medium text-white hover:brightness-105">
+          Subscribe
+        </button>
+        <p class="text-xs text-gray-500">No spam. Unsubscribe anytime.</p>
+      </form>
+    </section>
+  </aside>
+</div>
+
+<!-- Footer CTA -->
+<div class="mx-auto max-w-6xl px-4 pb-10">
+  <div class="rounded-2xl border border-gray-200 bg-gradient-to-r from-[#df83271a] to-[#df83270d] p-5 flex flex-wrap items-center gap-3">
+    <h3 class="text-lg font-semibold text-gray-900">Have a project in mind?</h3>
+    <p class="text-gray-700">We design, build, and launch fast, modern websites and tools. Let’s talk!</p>
+    <a class="rounded-xl bg-[#df8327] px-4 py-2 font-medium text-white hover:brightness-105" href="/contact">Get a quote</a>
+  </div>
 </div>
 
 <style>
-    /* General Styling for Blog List Page */
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-    }
-
-    .blog-main {
-        max-width: 1200px;
-        margin: 40px auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 0 20px;
-    }
-
-    .blog-block {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        width: calc(33.333% - 20px);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .blog-block:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .blog-banner {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
-
-    .blog-details {
-        padding: 15px;
-    }
-
-    .blog-title {
-        font-size: 1.5em;
-        color: #333;
-        margin: 10px 0;
-        transition: color 0.3s ease;
-    }
-
-    .blog-link {
-        text-decoration: none;
-    }
-
-    .blog-link:hover .blog-title {
-        color: #007bff;
-    }
-
-    .blog-author,
-    .blog-date {
-        font-size: 0.9em;
-        color: #666;
-        margin: 5px 0;
-    }
-
-    .blog-snippet {
-        font-size: 1em;
-        color: #444;
-        margin-top: 10px;
-        overflow: hidden;
-        height: 60px;
-    }
-
-    .blog-snippet p {
-        margin: 0;
-    }
-
-    .blog-snippet::after {
-        content: "...";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background: #fff;
-    }
-
-    /* Responsive Styling */
-    @media (max-width: 992px) {
-        .blog-block {
-            width: calc(50% - 20px);
-        }
-    }
-
-    @media (max-width: 600px) {
-        .blog-block {
-            width: calc(100% - 20px);
-        }
-
-        .blog-title {
-            font-size: 1.2em;
-        }
-    }
-
-    .read-more {
-    display: inline-block;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.read-more:hover {
-    text-decoration: underline;
-}
+  .line-clamp-3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 </style>
+
+<script>
+  // Helpers
+  function plainText(html){ const d=document.createElement('div'); d.innerHTML=html; return d.textContent||''; }
+  function timeago(dateStr){
+    const d=new Date(dateStr); const s=Math.floor((Date.now()-d)/1000);
+    const steps=[[31536000,'year'],[2592000,'month'],[604800,'week'],[86400,'day'],[3600,'hour'],[60,'minute']];
+    for(const [sec,label] of steps){ if(s>=sec){ const n=Math.floor(s/sec); return n+' '+label+(n>1?'s':'')+' ago'; } }
+    return 'just now';
+  }
+
+  // Time-ago
+  document.querySelectorAll('.timeago').forEach(el=>{
+    el.title = el.textContent.trim();
+    el.textContent = timeago(el.getAttribute('data-timeago'));
+  });
+
+  // Read-time (from PostContent words; ~220wpm)
+  const postMap = new Map();
+  {{#each blogPosts}}
+    postMap.set('{{this.PostId}}', plainText(`{{{this.PostContent}}}`));
+  {{/each}}
+  document.querySelectorAll('.readtime').forEach(el=>{
+    const key = el.getAttribute('data-readfrom');
+    const words = (postMap.get(key)||'').match(/\S+/g);
+    const mins = Math.max(1, Math.round((words?words.length:0)/220));
+    el.textContent = mins + ' min read';
+  });
+
+  // Show more (client-only)
+  (function(){
+    const grid = document.getElementById('postGrid');
+    if(!grid) return;
+    const cards = Array.from(grid.children);
+    const batch = 9; let shown = 0;
+    function reveal(){
+      for(let i=shown;i<Math.min(shown+batch,cards.length);i++){ cards[i].classList.remove('hidden'); }
+      shown = Math.min(shown+batch,cards.length);
+      if(shown>=cards.length){ document.getElementById('btnShowMore')?.remove(); }
+    }
+    cards.forEach(c=>c.classList.add('hidden'));
+    document.getElementById('btnShowMore')?.addEventListener('click', reveal);
+    reveal();
+  })();
+
+  // Copy link
+  document.querySelectorAll('.share-copy').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const url = new URL(btn.dataset.url, location.origin).toString();
+      try{ await navigator.clipboard.writeText(url); btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy link',1200); }
+      catch{ location.href=url; }
+    });
+  });
+
+  // Stats, Recent, Authors, Archives (computed from rendered posts)
+  const cards = Array.from(document.querySelectorAll('#postGrid article'));
+  document.getElementById('stat-total').textContent = cards.length;
+
+  // Authors
+  const authors = {};
+  cards.forEach(card=>{
+    const meta = card.querySelector('p.text-sm');
+    const m = meta?.textContent.match(/By\s+([^•]+)/i);
+    if(m){ const name = m[1].trim(); authors[name]=(authors[name]||0)+1; }
+  });
+  document.getElementById('stat-authors').textContent = Object.keys(authors).length;
+
+  const authorsBox = document.getElementById('authorsBox');
+  if(authorsBox){
+    authorsBox.innerHTML = Object.entries(authors).map(([n,c])=>
+      `<div class="flex items-center justify-between rounded-lg border border-gray-100 px-3 py-2">
+         <span class="font-medium text-gray-800">${n}</span>
+         <span class="text-sm text-gray-500">${c} post${c>1?'s':''}</span>
+       </div>`).join('');
+  }
+
+  // Recent (first 5 cards)
+  const recent = document.getElementById('recentPosts');
+  if(recent){
+    recent.innerHTML = cards.slice(0,5).map(card=>{
+      const href = card.querySelector('a[href^="/blogpost"]')?.getAttribute('href')||'#';
+      const img = card.querySelector('img')?.getAttribute('src')||'';
+      const title = card.querySelector('h2')?.textContent?.trim()||'Untitled';
+      return `<a class="flex items-center gap-3" href="${href}">
+        ${img ? `<img class="h-14 w-20 rounded-lg border border-gray-200 object-cover" src="${img}" alt="${title}">` : ``}
+        <div>
+          <div class="font-medium text-gray-900">${title}</div>
+        </div>
+      </a>`;
+    }).join('');
+  }
+
+  // Archives (YYYY-MM from data-timeago)
+  const archives = {};
+  document.querySelectorAll('.timeago').forEach(el=>{
+    const d = new Date(el.getAttribute('data-timeago'));
+    if(!isNaN(d)) {
+      const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+      archives[key] = (archives[key]||0)+1;
+    }
+  });
+  const arch = document.getElementById('archivesList');
+  if(arch){
+    arch.innerHTML = Object.entries(archives)
+      .sort((a,b)=>b[0].localeCompare(a[0]))
+      .map(([k,c])=>{
+        const [y,m]=k.split('-');
+        const label = new Date(`${y}-${m}-01`).toLocaleString(undefined,{month:'long',year:'numeric'});
+        return `<li class="flex items-center justify-between py-2">
+          <a class="text-gray-800 hover:text-[#df8327]" href="/blog?archive=${k}">${label}</a>
+          <span class="text-sm text-gray-500">${c}</span>
+        </li>`;
+      }).join('');
+  }
+
+  // Optional: list/grid toggle -> add two small buttons and call:
+  // document.body.classList.toggle('list-view', true/false)
+</script>

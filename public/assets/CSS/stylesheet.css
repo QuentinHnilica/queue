@@ -1,372 +1,664 @@
-.montserrat-font {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  list-style-type: none;
-}
-
-@font-face {
-  font-family: "Montserrat", sans-serif;
-  src: url(.montserrat-font);
-}
+/* =========================================================
+   Tailwind layers first (required for proper cascade)
+   ========================================================= */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-a {
-  color: var(--text-primary);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--text-primary-dark);
-}
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-div {
-  font-family: "Montserrat", sans-serif;
+/* =========================================================
+   Theme variables (brand colors)
+   ========================================================= */
+:root {
+  --text-primary:#df8327;
+  --text-primary-dark:#b7691b;
+  --text-primary-light:#eaae73;
+  --svc-accent:#ff9a3c; /* brighter accent for effects */
 }
 
+/* =========================================================
+   Base typography (Montserrat everywhere)
+   Headings match “Affordable Sites” (800, slight tight tracking)
+   Body matches subline (500, slight loose tracking)
+   ========================================================= */
+@layer base {
+  html, body {
+    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;               /* body = Medium */
+    letter-spacing: 0.01em;         /* gentle loosen like subline */
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;               /* headings = ExtraBold */
+    letter-spacing: -0.02em;        /* subtle tighten like hero graphic */
+    line-height: 1.1;
+  }
+  a { color: var(--text-primary); text-decoration: none; }
+  a:hover { color: var(--text-primary-dark); }
+}
 
-/* Ensure Tailwind does not interfere with Quill */
-/* Reset Tailwind influence on Quill */
+/* Handy helpers (optional) */
+.hero-headline { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.hero-sub      { font-weight: 500; letter-spacing: .01em; }
+
+/* =========================================================
+   Hero background (responsive sources via image-set)
+   ========================================================= */
+.hero-bg {
+  background-image: image-set(
+    url('/assets/imgs/hero-2560x1440.avif') type('image/avif'),
+    url('/assets/imgs/hero-2560x1440.webp') type('image/webp'),
+    url('/assets/imgs/hero.png') type('image/png')
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 1536px) {
+  .hero-bg { background-image: image-set(
+    url('/assets/imgs/hero-1920x1080.avif') type('image/avif'),
+    url('/assets/imgs/hero-1920x1080.webp') type('image/webp'),
+    url('/assets/imgs/hero.png') type('image/png')
+  );}
+}
+@media (max-width: 1024px) {
+  .hero-bg { background-image: image-set(
+    url('/assets/imgs/hero-1536x864.avif') type('image/avif'),
+    url('/assets/imgs/hero-1536x864.webp') type('image/webp'),
+    url('/assets/imgs/hero.png') type('image/png')
+  );}
+}
+@media (max-width: 640px) {
+  .hero-bg { background-image: image-set(
+    url('/assets/imgs/hero-1280x720.avif') type('image/avif'),
+    url('/assets/imgs/hero-1280x720.webp') type('image/webp'),
+    url('/assets/imgs/hero.png') type('image/png')
+  );}
+}
+
+/* =========================================================
+   Value props spacing helper
+   ========================================================= */
+.val-prop-sec{ margin-top:2% !important; margin-bottom:1% !important; }
+
+/* =========================================================
+   Services grid: equal-height cards + uniform CTA widths
+   ========================================================= */
+.svc-card { display:flex; flex-direction:column; height:100%; }
+.svc-body { flex:1 1 auto; }
+
+/* CTA rows: default 75% width centered; enable full width via .svc-cta--full */
+.svc-cta {
+  display:flex; flex-direction:column; align-items:center; gap:.65rem;
+  margin-top:auto;
+}
+.svc-cta .btn-cta-sm,
+.svc-cta .btn-outline-sm { display:block; width:75%; text-align:center; }
+.svc-cta.svc-cta--full .btn-cta-sm,
+.svc-cta.svc-cta--full .btn-outline-sm { width:100%; }
+
+/* Card 1: WHITE idle; animated ORANGE BORDER right→left on hover */
+.svc-aurora{
+  position:relative;
+  background:#fff;                 /* white at rest */
+  transition:filter .3s ease;
+}
+.svc-aurora::before{
+  content:""; position:absolute; inset:0; border-radius:1rem; padding:2px;
+  background:linear-gradient(90deg, var(--svc-accent), #ff7e1b, #ffd199, var(--svc-accent));
+  background-size:300% 100%;
+  /* ring only */
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:0; pointer-events:none; transition:opacity .2s ease;
+}
+.svc-aurora:hover::before,
+.svc-aurora:focus-within::before{
+  opacity:1;
+  animation:svcGradientSlideRL 2.2s linear infinite; /* right → left */
+}
+.svc-aurora:hover{ filter:drop-shadow(0 10px 28px rgba(255,154,60,.35)); }
+@keyframes svcGradientSlideRL{
+  from{ background-position:100% 50%; }
+  to  { background-position:  0% 50%; }
+}
+
+/* Card 2: SEO color wash (brighter) */
+.svc-wash__overlay{
+  background:linear-gradient(135deg,
+    rgba(255,154,60,0) 0%,
+    rgba(255,154,60,.28) 45%,
+    rgba(255,154,60,0) 85%);
+  transform:translateX(-22%);
+  opacity:0; transition:opacity .6s ease, transform .6s ease;
+}
+.svc-wash:hover .svc-wash__overlay{ opacity:1; transform:translateX(0%); }
+
+/* Card 3: Hosting diagonal stripes (brighter) */
+.svc-stripes::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(135deg,
+    rgba(255,154,60,.18) 0px, rgba(255,154,60,.18) 12px,
+    transparent 12px, transparent 24px);
+  opacity:0; transition:opacity .3s ease;
+}
+.svc-stripes:hover::before{ opacity:.85; animation:svcStripes 2.1s linear infinite; }
+@keyframes svcStripes{ from{ background-position:0 0; } to{ background-position:48px 0; } }
+
+/* Card 4: Email conic ring pulse (brighter) */
+.svc-conic::before{
+  content:""; position:absolute; inset:-2px; border-radius:1rem; pointer-events:none;
+  background:conic-gradient(from 0deg,
+    rgba(255,154,60,0) 0deg,
+    rgba(255,154,60,.32) 70deg,
+    rgba(255,154,60,0) 140deg);
+  filter:blur(10px); opacity:0; transition:opacity .3s ease;
+}
+.svc-conic:hover::before{ opacity:1; animation:svcConicSpin 2.8s linear infinite; }
+@keyframes svcConicSpin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .svc-aurora:hover::before,
+  .svc-wash:hover .svc-wash__overlay,
+  .svc-stripes:hover::before,
+  .svc-conic:hover::before{ animation:none !important; }
+}
+
+/* =========================================================
+   Resets / structural utilities (keep light)
+   ========================================================= */
+* { box-sizing: border-box; padding: 0; margin: 0; }
+html { height: 100%; }
+.list-none { list-style-type: none; } /* keep Tailwind’s .list-none if needed */
+
+/* =========================================================
+   Quill editor isolation (so Tailwind doesn’t leak in)
+   ========================================================= */
 .quill-wrapper .ql-toolbar,
-.quill-wrapper .ql-container {
-  all: revert !important; /* Restore default Quill styling */
-}
-
-/* Ensure proper spacing and alignment */
+.quill-wrapper .ql-container { all: revert !important; }
 .quill-wrapper .ql-toolbar {
-  background: #f8f9fa; /* Light gray background */
-  padding: 6px !important;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+  background: #f8f9fa; padding: 6px !important; border-radius: 6px; border: 1px solid #ddd;
 }
-
-/* Fix Toolbar Button Sizing */
 .quill-wrapper .ql-toolbar button,
 .quill-wrapper .ql-toolbar .ql-picker {
-  font-size: 14px !important;
-  height: 28px !important;
-  padding: 6px !important;
+  font-size: 14px !important; height: 28px !important; padding: 6px !important;
 }
+.quill-wrapper .ql-toolbar button svg { width: 16px !important; height: 16px !important; }
+.quill-wrapper .ql-editor { font-size: 16px; line-height: 1.5; padding: 12px; }
+.quill-wrapper .ql-container { min-height: 200px; background: #fff; border-radius: 6px; }
 
-/* Fix Toolbar Icons */
-.quill-wrapper .ql-toolbar button svg {
-  width: 16px !important;
-  height: 16px !important;
-}
+/* =========================================================
+   Brand-specific utility fixes (Tailwind interop)
+   ========================================================= */
+.hover\:bg-primaryQDark:hover { background-color: rgb(183 105 27 / 1) !important; }
+.group:hover .group-hover\:text-primaryQ     { color: rgb(223 131 39 / 1) !important; }
+.group:hover .group-hover\:text-primaryQDark { color: rgb(183 105 27 / 1) !important; }
 
-/* Ensure Editor Text is Proper */
-.quill-wrapper .ql-editor {
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 12px;
+/* =========================================================
+   Navigation  (SCOPED to legacy/admin nav to avoid conflicts)
+   ========================================================= */
+/* Previously: global `nav { ... }` and `nav a { ... }` which affected all navs.
+   Now scoped to your legacy/admin nav wrapper `.qdevMainNav`. */
+.qdevMainNav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1%; color: #fff; background-color: #000;
 }
-
-/* Keep the editor properly sized */
-.quill-wrapper .ql-container {
-  min-height: 200px;
-  background: white;
-  border-radius: 6px;
-}
-
-.hover\:bg-primaryQDark:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(183 105 27 / var(--tw-bg-opacity, 1)) !important;
-}
-.group:hover .group-hover\:text-primaryQ {
-  --tw-text-opacity: 1;
-  color: rgb(223 131 39 / var(--tw-text-opacity, 1)) !important;
-}
-
-.group:hover .group-hover\:text-primaryQDark {
-  --tw-text-opacity: 1;
-  color: rgb(183 105 27 / var(--tw-text-opacity, 1)) !important;
-}
-:root {
-  --text-primary: #df8327;
-  --text-primary-dark: #b7691b;
-  --text-primary-light: #eaae73;
-}
-html {
-  height: 100%;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1%;
-  color: #fff;
-  background-color: black;
-}
-nav a {
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 25px;
-}
-nav a:hover {
-  text-decoration: underline;
-}
-.nav-link {
-  color: black;
-}
+.qdevMainNav a { font-weight: 800; text-decoration: none; font-size: 25px; }
+.qdevMainNav a:hover { text-decoration: underline; }
+.nav-link { color: #000; }
+.nav-link:hover { color: var(--text-primary); }
+.nav-phone { color: var(--text-primary); text-decoration: none; }
+.nav-phone:hover { color: var(--text-primary-dark); text-decoration: none; }
 
 @media (max-width: 767px) {
-  .nav-item {
-    width: 100%;
-    text-align: center;
+  .nav-item { width: 100%; text-align: center; }
+  .nav-logo { width: 75%; }
+}
+
+  @layer components {
+    /* Solid background after scroll */
+    #q-site-nav.is-solid { @apply bg-white/95 border-b-gray-200; }
+
+    /* Desktop link pills with responsive hover color transition */
+    .q-pill {
+      @apply inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-gray-800 transition-colors;
+    }
+    .q-pill--hover { @apply hover:text-[#df8327]; }
+    .q-pill:focus-visible { @apply outline-none ring-2 ring-[#df8327]/40; }
+
+    /* Dropdown menu items */
+    .q-menu-item {
+      @apply block px-4 py-2.5 text-sm text-gray-800 transition-colors;
+    }
+    .q-menu-item:hover { @apply bg-gray-50 text-[#b7691b]; }
+
+    /* Actions (curved buttons with icons) */
+    .q-action {
+      @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white transition
+             border border-transparent;
+      background:
+        linear-gradient(#1a1a1a,#1a1a1a) padding-box,
+        linear-gradient(90deg,#df8327,#eaae73) border-box;
+      transform-origin: center;
+    }
+    .q-action:hover { transform: scale(1.05); filter: brightness(1.06); }
+    .q-action:focus-visible { @apply outline-none ring-2 ring-[#df8327]/40; }
+    .q-action--call svg,
+    .q-action--support svg { @apply shrink-0; }
+
+    /* CTA */
+    .q-cta {
+      background:
+        linear-gradient(#df8327,#df8327) padding-box,
+        linear-gradient(90deg,#df8327,#eaae73) border-box;
+      border: 2px solid transparent;
+      @apply inline-flex items-center rounded-full px-4 py-2 text-sm font-extrabold text-white transition;
+    }
+    .q-cta:hover { transform: scale(1.04); filter: brightness(.98); }
+    .q-cta:focus-visible { @apply outline-none ring-2 ring-[#df8327]/40; }
+
+    /* Dropdown hover behavior on desktop:
+       show menu when hovering trigger OR the menu itself */
+    .has-dropdown:hover > .q-menu,
+    .has-dropdown:focus-within > .q-menu { opacity:1 !important; transform:translateY(0) !important; pointer-events:auto !important; }
   }
 
-  .nav-logo {
-    width: 75%;
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    #q-site-nav, #q-drawer { transition: none !important; }
+    .q-action:hover, .q-cta:hover { transform: none !important; }
   }
-}
-.nav-link:hover {
-  color: var(--text-primary);
-}
-.nav-phone {
-  color: var(--text-primary);
-  text-decoration: none;
-}
-.nav-phone:hover {
-  color: var(--text-primary-dark);
-  text-decoration: none;
-}
-.nav-phone-bot {
-}
 
-.btn-primary {
-  background-color: var(--text-primary);
-  border-color: var(--text-primary);
-}
-.btn-primary:hover {
-  background-color: var(--text-primary-dark);
-  border-color: var(--text-primary-dark);
-}
-.center {
-  text-align: center;
-}
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn-primary { background-color: var(--text-primary); border-color: var(--text-primary); }
+.btn-primary:hover { background-color: var(--text-primary-dark); border-color: var(--text-primary-dark); }
 
-/* Footer Styles */
-.footer-main {
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 2%;
-}
-.footer-logo {
-}
+/* =========================================================
+   Common layout helpers
+   ========================================================= */
+.center { text-align: center; }
+.vertical-center { margin: 0; position: absolute; top: 50%; transform: translateY(-50%); }
+.q-flex-center { display: flex; justify-content: center; flex-wrap: wrap; }
+.text-primary { color: var(--text-primary) !important; }
+.icon::before { display: inline-block; text-rendering: auto; -webkit-font-smoothing: antialiased; }
 
-.q-flex-center {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.text-primary {
-  color: var(--text-primary) !important;
-}
-.icon::before {
-  display: inline-block;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-}
+/* =========================================================
+   Footer (structure only – your real footer styles live elsewhere)
+   ========================================================= */
+.footer-main { padding-left: 5%; padding-right: 5%; padding-top: 2%; }
+.footer-privacy { display: flex; flex-wrap: wrap; justify-content: space-around; }
+.footer-privacy span { padding-left: .5rem; }
+.footer-bottom { justify-content: space-between; flex-direction: row; }
 
 @media (max-width: 767px) {
-  .footer-row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .footer-row div {
-    width: 100%;
-    margin: 0;
-    text-align: center;
-  }
-  .footer-row h5 {
-    display: none;
-  }
-  .navbar-brand img {
-    width: 50%;
-  }
-  .footer-li li:hover {
-    background-color: var(--text-primary);
-    color: black;
-  }
+  .footer-row { display: flex; flex-wrap: wrap; }
+  .footer-row div { width: 100%; margin: 0; text-align: center; }
+  .footer-row h5 { display: none; }
+  .navbar-brand img { width: 50%; }
+  .footer-li li:hover { background-color: var(--text-primary); color: #000; }
 }
 
-.footer-privacy {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+/* =========================================================
+   Service / About / Contact headers
+   (Consider switching PNG to WEBP for perf if available)
+   ========================================================= */
+.service-header,
+.contact-text,
+.about-us-header,
+.pricing-header {
+  background-image: url("/assets/imgs/real-home-back-2.png");
 }
-.footer-privacy span {
-  padding-left: 0.5rem;
-}
-.footer-bottom {
-  justify-content: space-between;
-  flex-direction: row;
-}
-
-/* Service Page */
 
 .service-header {
-  background-image: url("/assets/imgs/real-home-back-2.png");
-  text-align: center;
-  color: var(--text-primary);
-  font-size: 48px;
-  font-weight: bolder;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  text-align: center; color: var(--text-primary);
+  font-size: 48px; font-weight: 800; padding: 3% 0;
 }
-.service-header h2 {
-  font-size: 48px;
-  font-weight: bolder;
-}
+.service-header h2 { font-size: 48px; font-weight: 800; }
 
 .service-flex {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  display: flex; justify-content: center; flex-wrap: wrap; text-align: center;
+  padding: 2.5% 0;
 }
-.service-flex i {
-  font-size: 48px;
-}
-.service-flex a {
-  font-size: 36px;
-}
-.service-even {
-  background-color: lightgray;
-}
+.service-flex i { font-size: 48px; }
+.service-flex a { font-size: 36px; }
+.service-even { background: lightgray; }
+.service-title { display: flex; justify-content: center; }
+.service-body { padding-top: 2%; }
 
-.service-title {
-  display: flex;
-  justify-content: center;
-}
-.service-body {
-  padding-top: 2%;
-}
 .service-footer {
-  text-align: center;
-  padding-top: 2%;
-  padding-left: 20%;
-  padding-right: 20%;
+  text-align: center; padding-top: 2%;
+  padding-left: 20%; padding-right: 20%;
 }
-.service-footer h3 {
-  font-size: 48px;
-  font-weight: bolder;
-}
-@media (max-width: 767px) {
-  .service-flex div {
-    width: 100%;
-    text-align: center;
-  }
-  .service-title {
-    background-color: white;
-  }
-}
+.service-footer h3 { font-size: 48px; font-weight: 800; }
 
-/* Contact Form */
+@media (max-width: 767px) {
+  .service-flex div { width: 100%; text-align: center; }
+  .service-title { background-color: #fff; }
+}
 
 .contact-text {
-  background-image: url("/assets/imgs/real-home-back-2.png");
-  text-align: center;
-  color: var(--text-primary);
-  font-size: 48px;
-  font-weight: bolder;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  text-align: center; color: var(--text-primary);
+  font-size: 48px; font-weight: 800; padding: 3% 0;
 }
-
-/* About-us Page */
 
 .about-us-header {
-  background-image: url("/assets/imgs/real-home-back-2.png");
-  text-align: center;
-  color: white;
-  font-size: 16px;
-  font-weight: bolder;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  text-align: center; color: #fff; font-size: 16px; font-weight: 800;
+  padding: 3% 0; display: flex; justify-content: center; flex-wrap: wrap;
 }
-.about-us-header h3 {
-  font-size: 64px;
-  color: var(--text-primary);
-  font-weight: bolder;
-}
-.about-us-paragraph {
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 5%;
-}
+.about-us-header h3 { font-size: 64px; color: var(--text-primary); font-weight: 800; }
+.about-us-paragraph { padding: 5% 10% 0; }
 
 @media (max-width: 767px) {
-  .about-us-header div {
-    width: 100% !important;
-  }
+  .about-us-header div { width: 100% !important; }
 }
 
-/* Services-details Pages */
+/* =========================================================
+   Service details
+   ========================================================= */
 .service-details-header {
   background-image: url("/assets/imgs/backdrop2.png");
-  text-align: center;
-  color: white;
-  font-size: 16px;
-  font-weight: bolder;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  text-align: center; color: #fff; font-size: 16px; font-weight: 800;
+  padding: 3% 0; display: flex; justify-content: center; flex-wrap: wrap;
 }
-.service-details-header h3 {
-  font-size: 64px;
-  color: var(--text-primary);
-  font-weight: bolder;
-}
+.service-details-header h3 { font-size: 64px; color: var(--text-primary); font-weight: 800; }
 .service-details-paragraph {
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 5%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  font-size: 24px;
+  padding: 5% 10% 0;
+  display: flex; flex-wrap: wrap; justify-content: space-evenly; font-size: 24px;
+}
+@media (max-width: 767px) {
+  .service-details-header div { width: 100% !important; }
+  .service-details-paragraph div { width: 100%; }
 }
 
-@media (max-width: 767px) {
-  .service-details-header div {
-    width: 100% !important;
-  }
-  .service-details-paragraph div {
-    width: 100%;
+/* =========================================================
+   Pricing
+   ========================================================= */
+.pricing-header {
+  display: flex; flex-direction: column; justify-content: center; flex-wrap: wrap;
+  text-align: center; color: #fff; padding: 2% 0;
+}
+.pricing-header h3 { font-size: 48px; font-weight: 800; color: var(--text-primary); }
+.pricing-main { padding-left: 10%; padding-right: 10%; }
+
+.price-block {
+  display: flex; justify-content: space-evenly; flex-wrap: wrap;
+  padding-top: 2%; text-align: center; align-items: stretch;
+}
+.price-container {
+  border: 2px solid #000; width: 30%; border-radius: 2%;
+  padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
+  box-sizing: border-box;
+}
+.price-container h5 { font-size: 52px; color: var(--text-primary); font-weight: 800; }
+@media (max-width: 767px) { .price-container { width: 100%; } }
+
+.mid-price { background: lightgray; }
+
+table { border-collapse: collapse; border-spacing: 0; text-indent: initial; border-color: gray; }
+thead { display: table-header-group; vertical-align: middle; border-color: inherit; }
+tr { display: table-row; vertical-align: inherit; border-color: inherit; }
+th { display: table-cell; vertical-align: inherit; font-weight: 800; }
+
+/* Price compare table (unchanged, tidied) */
+section#price-compare { padding-top: 1rem; padding-bottom: 2rem; }
+section#price-compare table { width: 100%; }
+section#price-compare tr>:nth-child(3) { background: lightgray; }
+section#price-compare thead tr>:nth-child(3) { border-top-left-radius: 6px; border-top-right-radius: 6px; }
+section#price-compare tr>:nth-child(2),
+section#price-compare tr>:nth-child(3),
+section#price-compare tr>:nth-child(4) { text-align: center; width: 200px; }
+section#price-compare thead th { position: sticky; top: 0; z-index: 5; background: #fff; }
+section#price-compare thead tr th { padding-top: 1.5rem; padding-bottom: .5rem; }
+section#price-compare thead tr th:first-child { text-align: left; }
+section#price-compare tbody tr td { padding: .5rem; }
+section#price-compare tbody tr:hover:not(.header-row) td { background: var(--text-primary-light); }
+section#price-compare tbody tr:hover:not(.header) td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+section#price-compare tbody tr:hover:not(.header) td:last-child  { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+section#price-compare tr.header th:first-child {
+  border-bottom: 1px solid #d1d7e1; font-weight: 800; text-align: left; padding: 2rem .5rem .5rem; color: #252f42;
+}
+section#price-compare tbody>tr:first-child th:first-child { padding-top: .5rem; }
+section#price-compare tfoot tr td { padding: 1rem 0; }
+section#price-compare tfoot tr>:nth-child(3) { border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+section#price-compare thead .queue-svg-icon { display: block; margin: 0 auto .25rem; font-size: 2em; }
+section#price-compare .queue-icon-checkmark,
+section#price-compare .price { color: var(--text-primary); }
+section#price-compare tbody .queue-svg-icon { font-size: 1.4em; background: var(--text-primary); }
+section#price-compare strong.highlight,
+section#plans strong.highlight { color: var(--text-primary-light); filter: brightness(85%); }
+section#price-compare .disclaimers { margin-top: 2rem; font-size: .8em; color: #919191; }
+
+@media screen and (max-width: 1099px) {
+  section#price-compare tr>:nth-child(2),
+  section#price-compare tr>:nth-child(3),
+  section#price-compare tr>:nth-child(4) { width: 150px; }
+}
+@media screen and (max-width: 959px) {
+  section#price-compare tbody tr td { font-size: .9em; }
+  section#price-compare tr>:nth-child(2),
+  section#price-compare tr>:nth-child(3),
+  section#price-compare tr>:nth-child(4) { width: 125px; }
+}
+@media screen and (max-width: 767px) {
+  section#price-compare { padding-top: 0; }
+  section#price-compare tbody tr td { font-size: .8em; line-height: 1.3em; }
+  section#price-compare tr>:nth-child(2),
+  section#price-compare tr>:nth-child(3),
+  section#price-compare tr>:nth-child(4) { width: 100px; }
+  section#price-compare thead th { top: 45px; font-size: .85em; line-height: 1.2em; }
+  section#price-compare thead tr th { padding-top: 1rem; }
+  section#price-compare .button { width: 90%; padding-left: 0; padding-right: 0; font-size: .75em; }
+  section#price-compare tr.header th:first-child { font-size: .85em; line-height: 1.2em; }
+}
+@media screen and (max-width: 599px) {
+  section#price-compare tbody tr td,
+  section#price-compare thead th { font-size: .6em; }
+  section#price-compare tr>:nth-child(2),
+  section#price-compare tr>:nth-child(3),
+  section#price-compare tr>:nth-child(4) { width: 60px; }
+  section#price-compare tr td:first-child,
+  section#price-compare tr.header th:first-child { padding-left: 0; }
+  section#price-compare .button { line-height: 1em; padding-bottom: 10px; }
+  section#price-compare h2 { font-size: 1.4em; }
+  section#price-compare tfoot tr td { padding-bottom: .25rem; }
+}
+
+/* =========================================================
+   FAQ (generic spacing tweaks)
+   ========================================================= */
+@media screen and (max-width: 959px) {
+  section#faq { padding-top: 2rem; padding-bottom: 2rem; }
+  section#faq .faq-footer { margin-top: 1rem; }
+}
+@media screen and (max-width: 767px) {
+  section#faq .faq { flex-basis: 100%; }
+  section#faq .faq-footer { margin-bottom: .5rem; }
+}
+section#faq-pricing { padding-top: 3rem; padding-bottom: 1rem; }
+section#faq-pricing .faq-list { display: flex; flex-wrap: wrap; justify-content: space-between; }
+section#faq-pricing .faq { flex-basis: 47%; margin-bottom: 2.5rem; }
+article.portfolio.archive h3, section#faq-pricing h4 { margin-bottom: .5rem; }
+section#faq .faq p, section#faq-pricing p { margin-top: 0; font-size: .9em; }
+@media screen and (max-width: 959px) {
+  section#faq-pricing { padding-top: 2rem; padding-bottom: 0; }
+  section#faq-pricing .faq { flex-basis: 100%; }
+}
+
+/* =========================================================
+   Public navbar guard (prevents global link colors from leaking in)
+   ========================================================= */
+#q-site-nav a { color: inherit; }
+#q-site-nav.is-solid { background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb; }
+/* Optional: if you use q-pill/q-chip/q-cta classes from the new navbar component */
+#q-site-nav .q-pill { color: rgb(31 41 55); }     /* text-gray-800 */
+#q-site-nav .q-cta, #q-site-nav .q-chip { color:#fff; }
+
+
+/* ====================== PUBLIC NAV (pure CSS, no @apply) ====================== */
+
+/* Guard: do not inherit global link colors inside the public nav */
+#q-site-nav a { color: inherit; text-decoration: none; }
+#q-site-nav.is-solid { background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb; }
+
+/* Layout helpers for the pills (desktop links) */
+#q-site-nav .q-pill {
+  display: inline-flex; align-items: center;
+  padding: .5rem .75rem; border-radius: .75rem;
+  font-size: 0.875rem; font-weight: 600; /* text-sm, semibold */
+  color: rgb(31,41,55); /* gray-800 */
+  transition: color .15s ease, filter .15s ease;
+  position: relative;
+}
+
+/* Color on hover + underline animation */
+#q-site-nav .q-pill:hover { color: var(--text-primary); filter: brightness(1.02); }
+#q-site-nav .q-pill::after {
+  content: ""; position: absolute; left: 14%; right: 14%; bottom: 6px; height: 2px;
+  transform: scaleX(0); transform-origin: center; transition: transform .18s ease;
+  background: linear-gradient(90deg, var(--text-primary), var(--text-primary-light));
+  border-radius: 2px;
+}
+#q-site-nav .q-pill:hover::after { transform: scaleX(1); }
+
+/* Dropdown menu (desktop) */
+#q-site-nav .q-menu {
+  position: absolute; left: 0; margin-top: .5rem; width: 14rem; /* 56 */
+  overflow: hidden; border-radius: .75rem; border: 1px solid #e5e7eb;
+  background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  opacity: 0; transform: translateY(4px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none;
+}
+#q-site-nav .has-dropdown:hover > .q-menu,
+#q-site-nav .has-dropdown:focus-within > .q-menu {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+
+/* Dropdown items */
+#q-site-nav .q-menu-item {
+  display: block; padding: .625rem 1rem; font-size: .875rem; color: #1f2937; /* gray-800 */
+  transition: background-color .15s ease, color .15s ease;
+}
+#q-site-nav .q-menu-item:hover { background: #f9fafb; color: var(--text-primary-dark); }
+
+/* Curved action buttons (Call/Support) with gradient border and grow on hover */
+#q-site-nav .q-action {
+  display:inline-flex; align-items:center; gap:.5rem;
+  border-radius:9999px; padding:.5rem 1rem; font-size:.875rem; font-weight:600;
+  color:#fff; border:1px solid transparent;
+  background:
+    linear-gradient(#1a1a1a,#1a1a1a) padding-box,
+    linear-gradient(90deg,var(--text-primary),var(--text-primary-light)) border-box;
+  transition: transform .18s ease, filter .18s ease, background .18s ease;
+  transform-origin:center;
+}
+#q-site-nav .q-action:hover { transform: scale(1.05); filter: brightness(1.06); }
+#q-site-nav .q-action svg { width: 1rem; height: 1rem; flex: 0 0 auto; }
+
+/* Primary CTA */
+#q-site-nav .q-cta {
+  display:inline-flex; align-items:center; border-radius:9999px;
+  padding:.5rem 1rem; font-size:.875rem; font-weight:800; color:#fff;
+  border:2px solid transparent;
+  background:
+    linear-gradient(var(--text-primary),var(--text-primary)) padding-box,
+    linear-gradient(90deg,var(--text-primary),var(--text-primary-light)) border-box;
+  transition: transform .18s ease, filter .18s ease;
+}
+#q-site-nav .q-cta:hover { transform: scale(1.04); filter: brightness(.98); }
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  #q-site-nav, #q-drawer, #q-site-nav .q-pill::after { transition: none !important; }
+  #q-site-nav .q-action:hover, #q-site-nav .q-cta:hover { transform: none !important; }
+}
+
+/* Mobile drawer (already styled via inline classes; keep guard) */
+#q-site-nav .q-chip, #q-site-nav .q-cta { color:#fff; }
+
+
+/* base gradient has two layers: inner dark fill + animated border gradient */
+#q-site-nav .q-action {
+  display:inline-flex; align-items:center; gap:.5rem;
+  border-radius:9999px; padding:.5rem 1rem; font-size:.875rem; font-weight:600;
+  color:#fff; border:1px solid transparent;
+  background:
+    linear-gradient(#1a1a1a,#1a1a1a) padding-box,
+    linear-gradient(90deg,var(--text-primary),var(--text-primary-light),var(--text-primary)) border-box;
+  background-size: 100% 100%, 200% 100%;
+  background-position: 0 0, 0% 0%;
+  transition: transform .18s ease, filter .18s ease, background-position .6s linear;
+  transform-origin:center;
+}
+#q-site-nav .q-action:hover {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+  background-position: 0 0, 100% 0%; /* sweep the accent gradient */
+}
+#q-site-nav .q-action svg { width: 1rem; height: 1rem; flex: 0 0 auto; }
+
+#q-site-nav .q-action:hover {
+  background:
+    linear-gradient(#1c1c1c,#1c1c1c) padding-box,
+    linear-gradient(90deg,var(--text-primary),var(--text-primary-light),var(--text-primary)) border-box;
+  background-size: 100% 100%, 200% 100%;
+  background-position: 0 0, 100% 0%;
+}
+
+/* parent must be relative so absolute menu positions correctly */
+#q-site-nav .has-dropdown { position: relative; }
+
+/* hover + focus-within opens it */
+#q-site-nav .has-dropdown:hover > .q-menu,
+#q-site-nav .has-dropdown:focus-within > .q-menu,
+#q-site-nav .has-dropdown.open > .q-menu { /* click fallback */
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+
+/* ensure it's hidden by default */
+#q-site-nav .q-menu {
+  position: absolute; left: 0; top: 100%;
+  margin-top: .5rem; width: 14rem; overflow: hidden;
+  border-radius: .75rem; border: 1px solid #e5e7eb; background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  opacity: 0; transform: translateY(4px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none; z-index: 50;
+}
+#q-site-nav .has-dropdown.open svg { transform: rotate(180deg); transition: transform .18s ease; }
+
+/* Parent must be relative for menu positioning */
+#q-site-nav .has-dropdown { position: relative; }
+
+/* Hover + focus + click (.open) opens menu */
+#q-site-nav .has-dropdown:hover > .q-menu,
+#q-site-nav .has-dropdown:focus-within > .q-menu,
+#q-site-nav .has-dropdown.open > .q-menu {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+
+/* Rotate the chevron when open (visual confirmation) */
+#q-site-nav .has-dropdown.open svg { transform: rotate(180deg); transition: transform .18s ease; }
+
+/* Ensure the animated gradient border on call/support wins the cascade */
+#q-site-nav .q-action {
+  background:
+    linear-gradient(#1a1a1a,#1a1a1a) padding-box,
+    linear-gradient(90deg,var(--text-primary),var(--text-primary-light),var(--text-primary)) border-box;
+  background-size: 100% 100%, 200% 100%;
+  background-position: 0 0, 0% 0%;
+  transition: transform .18s ease, filter .18s ease, background-position .6s linear;
+}
+#q-site-nav .q-action:hover {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+  background-position: 0 0, 100% 0%;
+}
+
+@media (max-width: 640px) {
+  .footer-socials{
+    justify-content: center;
   }
 }

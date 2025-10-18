@@ -1,55 +1,371 @@
-<section class="bg-gray-50 py-12">
-    <!-- Service Header -->
-    <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold text-gray-900">Email Features</h2>
-        <p class="text-lg text-gray-600 mt-4">
-            Strengthen your brand and build trust with secure, professional email solutions.
+<section class="bg-gray-50 py-12 text-gray-800">
+  <!-- Header -->
+  <div class="text-center mb-12 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Email Features</h2>
+    <p class="text-lg text-gray-600 mt-4">
+      Strengthen your brand and build trust with secure, professional email—configured for deliverability, security, and ease of use.
+    </p>
+  </div>
+
+  <!-- Hero / Intro (matches your About “Mission” card style) -->
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row lg:space-x-6 items-center bg-white shadow-md rounded-lg p-8 mb-12 transition-transform hover:scale-105">
+      <div class="lg:w-1/2">
+        <img src="/assets/imgs/Email_tile-01-01.webp" alt="Professional email setup"
+             class="rounded-lg shadow-lg">
+      </div>
+      <div class="lg:w-1/2 mt-6 lg:mt-0">
+        <h3 class="text-3xl font-semibold text-primaryQ mb-4">Professional, secure, and on-brand</h3>
+        <p class="text-gray-700 leading-relaxed">
+          From domain authentication (SPF, DKIM, DMARC) to branded signatures and mailbox policies, we set up email that clients trust—and that actually lands in the inbox.
         </p>
-    </div>
 
-    <!-- Service Details -->
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-6">
-        <!-- Image -->
-        <div class="flex justify-center">
-            <img src="/assets/imgs/Email_tile-01-01.webp" alt="Email Features" class="rounded-lg shadow-lg">
-        </div>
-
-        <!-- Text Content -->
-        <div>
-            <!-- Features List -->
-            <div class="mb-6">
-                <p class="flex items-center text-gray-700 text-lg mb-2">
-                    <i class="fa fa-check-circle text-#2e5374 mr-3"></i> Branding
-                </p>
-                <p class="flex items-center text-gray-700 text-lg mb-2">
-                    <i class="fa fa-check-circle text-#2e5374 mr-3"></i> Security
-                </p>
-                <p class="flex items-center text-gray-700 text-lg">
-                    <i class="fa fa-check-circle text-#2e5374 mr-3"></i> Customer Trust
-                </p>
+        <!-- Key benefits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Brand-matched everything</p>
+              <p class="text-gray-600 text-sm">Addresses, signatures, and templates aligned to your identity.</p>
             </div>
-
-            <!-- Paragraph -->
-            <p class="text-gray-700 leading-relaxed mb-6">
-                Using a company-branded email reinforces your brand identity with every interaction, making your
-                business more
-                recognizable and memorable to clients and partners. With a company email, you have control over your
-                domain and
-                email accounts, allowing you to manage user access, set up different email aliases, and retain ownership
-                of your
-                communication channels.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-                When customers receive emails from a company-branded address, it instills confidence and trust in the
-                legitimacy
-                of the communication, reducing the likelihood of being perceived as spam.
-            </p>
-            <p class="text-gray-700 mt-4">
-                You can see all Email Features in our packages <a href="/pricing"
-                    class="text-#2e5374 hover:underline">here</a>.
-            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Deliverability first</p>
+              <p class="text-gray-600 text-sm">Authentication + warmup to keep you out of spam.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Security &amp; compliance</p>
+              <p class="text-gray-600 text-sm">MFA, retention, litigation hold, and least-privilege roles.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <div>
+              <p class="font-semibold text-gray-900">Admin made simple</p>
+              <p class="text-gray-600 text-sm">Aliases, groups, forwarding, and onboarding flows.</p>
+            </div>
+          </div>
         </div>
+
+        <p class="text-gray-700 mt-6">
+          See how email features map to each package
+          <a href="/pricing" class="text-primaryQ hover:underline">here</a>.
+        </p>
+      </div>
     </div>
+  </div>
+
+  <!-- Feature Band (brand gradient like your Core Values section) -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white">
+    <div class="container mx-auto px-6 py-10">
+      <h3 class="text-3xl font-bold text-center mb-6">What’s included</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Branding &amp; Identity</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>you@<em>yourdomain</em>.com setup &amp; aliases</li>
+            <li>Branded signatures &amp; templates</li>
+            <li>Shared mailboxes &amp; groups (sales@, support@)</li>
+          </ul>
+        </div>
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Deliverability</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>SPF, DKIM, DMARC alignment</li>
+            <li>Domain warmup &amp; reputation checks</li>
+            <li>Inbox placement testing</li>
+          </ul>
+        </div>
+        <div class="p-6 bg-white rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform hover:scale-105 group">
+          <h4 class="text-xl font-semibold mb-3 group-hover:text-primaryQ transition-colors">Security &amp; Admin</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>MFA, SSO, device policies</li>
+            <li>Retention, DLP, audit logging</li>
+            <li>Onboarding/offboarding playbooks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold text-center mb-8">How we work</h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">1</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Assess</h4>
+        <p class="text-gray-700 mt-2">Domain, DNS, current provider, mailflow, and security posture.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">2</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Plan</h4>
+        <p class="text-gray-700 mt-2">Provider selection, addresses/aliases, authentication and policies.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">3</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Implement</h4>
+        <p class="text-gray-700 mt-2">DNS, mailboxes, groups; migrate mail and verify deliverability.</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primaryQ text-white font-semibold">4</span>
+        <h4 class="mt-4 text-xl font-semibold text-gray-900">Secure &amp; Train</h4>
+        <p class="text-gray-700 mt-2">MFA/SSO, retention rules, and quick user/admin training.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deliverables & Outcomes -->
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+        <h3 class="text-2xl font-semibold text-primaryQ mb-4">What you’ll get</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <ul class="space-y-2">
+            <li>Mailbox &amp; alias setup</li>
+            <li>Branded signatures &amp; templates</li>
+            <li>SPF/DKIM/DMARC configured</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>Security &amp; retention policies</li>
+            <li>Admin guide &amp; user handouts</li>
+            <li>Deliverability test report</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+        <h3 class="text-2xl font-semibold text-primaryQ mb-4">Expected outcomes</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Professional, trustworthy communications</li>
+          <li>Higher inbox placement &amp; fewer bounces</li>
+          <li>Reduced spoofing &amp; phishing risk</li>
+          <li>Simple admin for growth and roles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study (brand gradient band, compact & balanced) -->
+  <div class="bg-gradient-to-r from-primaryQLight to-primaryQDark text-white mt-12">
+    <div class="container mx-auto px-6 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+        <!-- Left: content card -->
+        <div class="md:col-span-3 bg-white p-5 rounded-lg text-[rgba(31,41,55)] shadow-lg transition-transform duration-300 hover:scale-105 group">
+          <p class="text-sm font-medium text-primaryQ">Case Study</p>
+          <h4 class="mt-1 text-xl font-semibold group-hover:text-primaryQ transition-colors">
+            B2B firm improves inbox placement by 35%
+          </h4>
+
+          <!-- KPI chips -->
+          <div class="mt-3 flex flex-wrap gap-2 text-sm">
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> +35% inbox placement
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▼</span> −62% spam folder hits
+            </span>
+            <span class="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-3 py-1">
+              <span class="mr-1 text-emerald-600">▲</span> DMARC aligned
+            </span>
+          </div>
+
+          <!-- Wins -->
+          <ul class="mt-4 space-y-2 text-gray-700">
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Implemented SPF, DKIM, DMARC; fixed forwarding and envelope-from alignment.
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Segmented sending &amp; gradual warmup to restore reputation.
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-primaryQ mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Phishing-resistant MFA and role-based access for admins.
+            </li>
+          </ul>
+
+          <blockquote class="mt-4 border-l-4 border-primaryQ/30 pl-3 text-gray-700 italic">
+            “Support tickets about missed emails basically stopped. Sales loved the new signatures too.”
+          </blockquote>
+
+          <a href="/contact" class="text-primaryQ hover:underline mt-3 inline-block">Contact For More Details →</a>
+        </div>
+
+        <!-- Right: simple before/after deliverability chart (inline SVG, hover-grow) -->
+        <figure class="md:col-span-2 w-full rounded-lg border border-white/20 bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105">
+          <figcaption class="text-sm text-gray-600 mb-2">Inbox vs Spam (before → after)</figcaption>
+          <svg viewBox="0 0 520 260" role="img" aria-labelledby="mailChartTitle mailChartDesc" class="w-full h-auto">
+            <title id="mailChartTitle">Deliverability improvement chart</title>
+            <desc id="mailChartDesc">Bars show increased inbox placement and reduced spam after authentication and warmup.</desc>
+            <defs>
+              <style>
+                .axis { stroke:#e5e7eb; stroke-width:1 }
+                .label { fill:#6b7280; font:12px/1 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial }
+                figure:hover svg g.grow { transform: scale(1.02); transform-origin: 50% 50%; transition: transform .25s ease }
+                @media (prefers-reduced-motion: reduce){ figure:hover svg g.grow { transform:none } }
+              </style>
+              <linearGradient id="barInbox" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="currentColor" stop-opacity=".95"/>
+                <stop offset="100%" stop-color="currentColor" stop-opacity=".65"/>
+              </linearGradient>
+            </defs>
+
+            <!-- axes -->
+            <path d="M60 20 V220 M60 220 H500" class="axis"/>
+            <text x="10" y="224" class="label">0%</text>
+            <text x="4"  y="184" class="label">25%</text>
+            <text x="4"  y="144" class="label">50%</text>
+            <text x="4"  y="104" class="label">75%</text>
+            <text x="-2" y="64"  class="label">100%</text>
+
+            <!-- Bars -->
+            <g class="grow">
+              <!-- Inbox (primaryQ) -->
+              <g class="text-primaryQ">
+                <text x="110" y="238" class="label" fill="#374151">Inbox</text>
+                <!-- Before ~55% -->
+                <rect x="100" y="145" width="40" height="75" fill="#9ca3af" opacity=".45"/>
+                <!-- After ~90% -->
+                <rect x="160" y="40" width="40" height="180" fill="url(#barInbox)"/>
+              </g>
+
+              <!-- Spam (emerald line color but greyed for “before”) -->
+              <g color="#16a34a">
+                <text x="330" y="238" class="label" fill="#374151">Spam</text>
+                <!-- Before ~35% -->
+                <rect x="320" y="95" width="40" height="125" fill="#9ca3af" opacity=".45"/>
+                <!-- After ~8% -->
+                <rect x="380" y="205" width="40" height="15" class="text-primaryQ" fill="currentColor" opacity=".85"/>
+              </g>
+
+              <!-- Legend -->
+              <g>
+                <rect x="410" y="26" width="12" height="12" rx="2" class="text-primaryQ" fill="currentColor" opacity=".9"/>
+                <text x="428" y="36" class="label" fill="#374151">After</text>
+                <rect x="410" y="46" width="12" height="12" rx="2" fill="#9ca3af" opacity=".9"/>
+                <text x="428" y="56" class="label" fill="#374151">Before</text>
+              </g>
+            </g>
+          </svg>
+          <figcaption class="mt-2 text-xs text-gray-500">Illustrative values; replace with your test results.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages teaser -->
+  <div class="container mx-auto px-6 mt-12">
+    <div class="rounded-lg bg-white shadow-md p-6 md:p-8 transition-transform hover:scale-105">
+      <h3 class="text-2xl font-semibold text-gray-900">Packages</h3>
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Starter</p>
+          <p class="text-gray-600 mt-1">Single domain, up to 5 users</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>SPF/DKIM/DMARC setup</li>
+            <li>Signatures &amp; 1 template</li>
+            <li>Basic admin guide</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Growth</p>
+          <p class="text-gray-600 mt-1">Teams (6–25 users)</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Groups &amp; shared mailboxes</li>
+            <li>Deliverability testing + warmup</li>
+            <li>Security &amp; retention policies</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-gray-200 p-5">
+          <p class="font-semibold text-gray-900">Scale</p>
+          <p class="text-gray-600 mt-1">Multi-domain or regulated</p>
+          <ul class="mt-3 text-gray-700 text-sm space-y-1">
+            <li>Advanced DLP &amp; auditing</li>
+            <li>Litigation hold, vault, SSO/MFA</li>
+            <li>Migrations &amp; staff training</li>
+          </ul>
+        </div>
+      </div>
+      <a href="/pricing" class="mt-4 inline-flex items-center text-primaryQ hover:underline">See full pricing →</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold text-center mb-8">Email FAQs</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Will you migrate our existing mail?</summary>
+        <p class="mt-3 text-gray-700">Yes—IMAP/POP or provider-to-provider, with staged cutovers to minimize downtime.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Do you support Google/Microsoft?</summary>
+        <p class="mt-3 text-gray-700">We support Google Workspace and Microsoft 365, including SSO/MFA and admin policies.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">How do you prevent spoofing?</summary>
+        <p class="mt-3 text-gray-700">DMARC with alignment, restricted API keys, and least-privilege role design. We also advise on vendor senders.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-md p-6 transition-transform hover:scale-105">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-900">Can you provide user training?</summary>
+        <p class="mt-3 text-gray-700">Absolutely. We deliver short guides on phishing, attachments/links, and mailbox hygiene.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- CTA (matches Contact card vibe) -->
+  <div class="container mx-auto px-6">
+    <div class="bg-white shadow-md rounded-lg p-8 transition-transform hover:scale-105">
+      <div class="flex items-center mb-6">
+        <div class="bg-primaryQ text-white p-6 rounded-full shadow-md transition-transform hover:scale-125">
+          <!-- envelope icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-3xl font-semibold text-primaryQ ml-4">Get your email set up the right way</h3>
+      </div>
+      <p class="text-gray-700">We’ll evaluate your domain and send a quick plan for branding, deliverability, and security.</p>
+      <a href="#book-a-demo" class="mt-6 inline-block text-primaryQ hover:underline">Book a demo →</a>
+    </div>
+  </div>
+
+  <!-- JSON-LD (Service) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Business Email Setup & Management",
+    "provider": { "@type": "Organization", "name": "Queue Development LLC", "url": "https://queuedevelop.com" },
+    "serviceType": "Email Services",
+    "areaServed": "US",
+    "description": "Branded business email with SPF/DKIM/DMARC, deliverability testing, security policies, and admin training.",
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "USD", "url": "https://queuedevelop.com/pricing" }
+  }
+  </script>
 </section>
 
- {{> bookADemo }}
+<!-- Anchor for your form -->
+<a id="book-a-demo" class="sr-only" aria-hidden="true"></a>
+{{> bookADemo }}

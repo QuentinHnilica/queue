@@ -1,0 +1,229 @@
+<footer class="bg-gray-800 text-gray-300 py-10">
+  <div class="container mx-auto px-6">
+    <!-- 5-column top grid -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+      <!-- Logo -->
+      <div class="flex flex-col items-center md:items-start">
+        <a href="/" class="mb-4">
+          <img src="/assets/imgs/queue-white.png" alt="Queue Development Logo" class="w-48 md:w-64">
+        </a>
+        <p class="text-sm text-gray-400">© 2025 Queue Development, LLC. All rights reserved.</p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><a href="/web-features" class="hover:text-primaryQ transition">Website Design</a></li>
+          <li><a href="/email-features" class="hover:text-primaryQ transition">Email Features</a></li>
+          <li><a href="/hosting" class="hover:text-primaryQ transition">Hosting</a></li>
+          <li><a href="/seo" class="hover:text-primaryQ transition">SEO</a></li>
+        </ul>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Products</h3>
+        <ul class="space-y-2">
+          <li><a href="/web-development" class="hover:text-primaryQ transition">Web Development</a></li>
+          <li><a href="/web-design" class="hover:text-primaryQ transition">Web Design</a></li>
+          <li><a href="/web-applications" class="hover:text-primaryQ transition">Web Applications</a></li>
+        </ul>
+      </div>
+
+      <!-- Info (trimmed — no Blog/Portfolio here) -->
+      <div>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Info</h3>
+        <ul class="space-y-2">
+          <li><a href="/about-us" class="hover:text-primaryQ transition">About Us</a></li>
+          <li><a href="/services" class="hover:text-primaryQ transition">Services</a></li>
+          <li><a href="/contact" class="hover:text-primaryQ transition">Contact</a></li>
+
+          <!-- Socials -->
+          <li class="flex direction-row footer-socials gap-2 pt-2 justify-center md:justify-start">
+            <a href="https://www.facebook.com/profile.php?id=61569442722393" target="_blank"
+               class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primaryQ hover:text-black transition"
+               aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            {{!--
+            <a href="https://instagram.com/queuedevelop" target="_blank"
+               class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primaryQ hover:text-black transition"
+               aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            --}}
+            <a href="https://www.linkedin.com/company/queue-development-llc/" target="_blank"
+               class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primaryQ hover:text-black transition"
+               aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h3 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h3>
+        <p class="text-sm text-gray-400 mb-4">Bi-Weekly digest of Blogposts and updates put out by Queue Development!</p>
+          <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
+            <input type="email" id="email" name="email" placeholder="Email address"
+              class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ bg-gray-700 text-white">
+            <button type="submit"
+              class="relative bg-primaryQ text-white text-md font-semibold px-4 py-2 rounded-lg shadow-lg transition hover:bg-opacity-80">
+              Get Started
+            </button>
+          </form>
+        <p id="newsletterMessage" class="text-sm mt-2"></p>
+      </div>
+    </div>
+
+    <!-- NEW: Explore section (Blog & Portfolio pulled out) -->
+    <div class="mt-10 border-t border-gray-700 pt-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Blog card -->
+        <a href="/blog"
+           class="group block rounded-xl border border-gray-700/70 bg-gray-800/60 p-5 text-left hover:bg-gray-700/50 transition">
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg font-semibold text-white">Blog</h4>
+            <span class="text-primaryQ transition-transform group-hover:translate-x-1">→</span>
+          </div>
+          <p class="mt-1 text-sm text-gray-400">
+            Insights, tutorials, and case studies from the Queue Development team.
+          </p>
+        </a>
+
+        <!-- Portfolio card -->
+        <a href="/portfolio"
+           class="group block rounded-xl border border-gray-700/70 bg-gray-800/60 p-5 text-left hover:bg-gray-700/50 transition">
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg font-semibold text-white">Portfolio</h4>
+            <span class="text-primaryQ transition-transform group-hover:translate-x-1">→</span>
+          </div>
+          <p class="mt-1 text-sm text-gray-400">
+            Recent work focused on speed, UX, and measurable results.
+          </p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-8 border-t border-gray-700 pt-4">
+      <div class="flex flex-col md:flex-row justify-center md:justify-between items-center text-sm text-center">
+        <div class="flex flex-wrap justify-center md:justify-start space-x-4">
+          <a href="/accessibility" class="hover:text-primaryQ transition">Accessibility</a>
+          <span class="hidden md:inline">|</span>
+          <a href="/terms" class="hover:text-primaryQ transition">Terms and Conditions</a>
+          <span class="hidden md:inline">|</span>
+          <a href="/privacy" class="hover:text-primaryQ transition">Privacy Statement</a>
+          <span class="hidden md:inline">|</span>
+          <a href="/policy" class="hover:text-primaryQ transition">Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Sticky Need Help Chat Trigger ============ -->
+  <button id="q-chat-hide"
+    class="fixed bottom-24 right-5 z-50 rounded-full bg-gray-200/90 p-2 text-gray-700 shadow hover:bg-gray-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#df8327]/30"
+    aria-label="Hide help button (dismiss)">
+    ✕
+  </button>
+  <button id="q-chat-trigger"
+    class="fixed bottom-5 right-5 z-50 rounded-full bg-[#df8327] p-4 text-white shadow-xl hover:bg-[#b7691b] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#df8327]/30"
+    aria-haspopup="dialog" aria-controls="q-chat-panel">
+    Need Help?
+  </button>
+  <div id="q-chat-panel" role="dialog" aria-modal="true"
+       class="fixed bottom-20 right-5 z-50 hidden w-80 max-w-[90vw] rounded-2xl border border-gray-200 bg-white p-4 shadow-2xl">
+    <div class="flex items-center justify-between">
+      <h3 class="text-lg font-bold text-primaryQ">How can we help?</h3>
+      <button id="q-chat-close" class="rounded-md px-2 py-1 text-gray-600 hover:bg-gray-100">✕</button>
+    </div>
+    <div class="mt-3 space-y-2 text-sm">
+      <a href="/Book-A-Demo" class="btn-cta-sm w-full text-center">Book a Demo</a>
+      <a href="/contact" class="btn-outline-sm w-full text-center">Contact Form</a>
+      <a href="/#estimator" class="btn-outline-sm w-full text-center">Try the Estimator</a>
+    </div>
+  <form id="sticky-contact-form" class="mt-3 space-y-2">
+    <input type="email" id="sticky-email" name="email" placeholder="Your email" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+    <textarea name="message" id="sticky-message" rows="2" placeholder="Ask a quick question…" class="w-full rounded-lg border border-gray-300 px-3 py-2"></textarea>
+    <button class="btn-grad w-full" id="sticky-sub" type="submit">Send</button>
+  </form>
+  </div>
+</footer>
+
+
+
+  <script src="/assets/js/newsletter.js"></script>
+    <script src="/assets/js/sticky-form.js"></script>
+
+<script>
+// Sticky chat + exit/dismiss
+try{
+  var trig=document.getElementById('q-chat-trigger'),
+      pan =document.getElementById('q-chat-panel'),
+      x   =document.getElementById('q-chat-close'),
+      hide=document.getElementById('q-chat-hide');
+
+  // create the exit button if it's not in the HTML
+  if(!hide){
+    hide=document.createElement('button');
+    hide.id='q-chat-hide';
+    hide.type='button';
+    hide.setAttribute('aria-label','Hide help button (dismiss)');
+    hide.className='fixed bottom-24 right-5 z-50 rounded-full bg-gray-200/90 p-2 text-gray-700 shadow hover:bg-gray-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#df8327]/30';
+    hide.textContent='✕';
+    document.body.appendChild(hide);
+  }
+
+  var KEY='qChatDismissedAt', DAY=864e5; // 24h
+  function open(){ pan&&pan.classList.remove('hidden'); trig&&trig.setAttribute('aria-expanded','true'); }
+  function close(){ pan&&pan.classList.add('hidden');  trig&&trig.setAttribute('aria-expanded','false'); }
+  function hideAll(){
+    close();
+    trig&&trig.classList.add('hidden');
+    hide&&hide.classList.add('hidden');
+    localStorage.setItem(KEY, String(Date.now()));
+  }
+
+  // honor previous dismissal
+  var last=+localStorage.getItem(KEY)||0;
+  if(Date.now()-last < DAY){ hideAll(); }
+
+  // toggle panel
+  trig&&trig.addEventListener('click', function(){
+    if(!pan) return;
+    pan.classList.toggle('hidden');
+    trig.setAttribute('aria-expanded', String(!pan.classList.contains('hidden')));
+    if(!pan.classList.contains('hidden')){
+      var first=pan.querySelector('a,button,input,textarea,select');
+      first&&first.focus();
+    }
+  });
+
+  // close panel from inside
+  x&&x.addEventListener('click', close);
+
+  // dismiss everything
+  hide&&hide.addEventListener('click', hideAll);
+
+  // esc closes
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+  // click outside closes
+  document.addEventListener('click', function(e){
+    if(!pan || pan.classList.contains('hidden')) return;
+    var insidePanel = pan.contains(e.target);
+    var onTrigger   = trig && trig.contains(e.target);
+    var onHide      = hide && hide.contains(e.target);
+    if(!insidePanel && !onTrigger && !onHide) close();
+  }, {capture:true});
+}catch(_){}
+</script>
+
+  <style>
+      .btn-outline { display:inline-block; border:1px solid #e5e7eb; padding:.75rem 1.25rem; border-radius:.75rem; font-weight:600; }
+  .btn-cta-sm { display:inline-block; background:#df8327; color:#fff; font-weight:700; padding:.55rem 1rem; border-radius:.6rem; }
+  .btn-outline-sm { display:inline-block; border:1px solid #df8327; color:#df8327; font-weight:700; padding:.55rem 1rem; border-radius:.6rem; }
+  </style>
