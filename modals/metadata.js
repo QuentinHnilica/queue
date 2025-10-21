@@ -5,33 +5,37 @@ class MetaData extends Model {};
 
 
 MetaData.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        pageName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        title:{
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        Keywords:{
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableNames: true,
-        underscored: true,
-        modelName: 'MetaData',
-    }
-)
+    pageName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    Keywords: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableNames: true,
+    underscored: true,
+    modelName: "MetaData",
+  }
+);
 
 module.exports = MetaData;
