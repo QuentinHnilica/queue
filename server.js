@@ -121,10 +121,7 @@ app.use(prepareFormTokens); // injects {{token}}, {{ts}}, {{hpName}} on ALL GET 
 app.use(fetchMetaData);
 
 // Static assets
-const PUBLIC_DIR = PUBLICFOLDER
-  ? path.resolve(PUBLICFOLDER)
-  : path.join(__dirname, "public");
-app.use(express.static(PUBLIC_DIR));
+app.use(express.static(PUBLICFOLDER));
 app.use("/uploads", express.static(path.join(__dirname, "public", "uploads")));
 
 app.post("/__echo", (req, res) => {
