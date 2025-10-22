@@ -122,7 +122,7 @@ app.use(fetchMetaData);
 
 // Static assets
 app.use(express.static(PUBLICFOLDER));
-app.use("/uploads", express.static(path.join(__dirname, "public", "uploads")));
+app.use("/uploads", express.static(path.join(UPLOADSDIR)));
 
 app.post("/__echo", (req, res) => {
   res.json({
