@@ -14,7 +14,7 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const { prepareFormTokens } = require("./controllers/Middleware/antiSpam");
 
-const { PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, VIEWSFOLDER, NODE_ENV } =
+const { PARTIALSDIR, LAYOUTDIR, PUBLICFOLDER, VIEWSFOLDER, NODE_ENV, UPLOADSDIR } =
   process.env;
 
 const app = express();
