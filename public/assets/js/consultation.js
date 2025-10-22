@@ -12,6 +12,15 @@ const description = document.querySelector("#description");
 const formContainer = document.querySelector(".form-container"); // Update this to target your form container
 const confirmationMessage = document.querySelector(".confirmation-message");
 
+// 👉 NEW: cache anti-spam inputs
+const jsFlagEl = document.querySelector('input[name="js_enabled"]');
+const tokenEl = document.querySelector('input[name="form_token"]');
+const tsEl = document.querySelector('input[name="form_ts"]');
+const hpEl = document.querySelector("#hp-wrap input");
+
+// 👉 NEW: ensure the submit button does not trigger native submit/hash
+if (sub) sub.setAttribute("type", "button");
+
 let businessTypeValue = ""; // To hold selected business type
 
 // Toggle dropdown visibility
@@ -21,7 +30,7 @@ businessTypeTrigger.addEventListener("click", () => {
 });
 
 // Update selected business type and close dropdown
-businessTypeOptions.forEach(option => {
+businessTypeOptions.forEach((option) => {
   option.addEventListener("click", (e) => {
     businessTypeValue = e.target.getAttribute("data-value");
     businessTypeSelected.textContent = e.target.textContent; // Update selected value display
@@ -45,7 +54,7 @@ function validateForm() {
   }
 
   // Validate Phone
-  if (phone.value == null || phone.value.length < 10) {
+  if (phone.value == null || phone.value.replace(/\D/g, "").length < 10) {
     errors++;
     phone.value = "";
     phone.placeholder = "Phone Must Be Valid";
@@ -58,7 +67,11 @@ function validateForm() {
   }
 
   // Validate Years in Business
-  if (established.value == null || established.value == "" || established.value <= 0) {
+  if (
+    established.value == null ||
+    established.value == "" ||
+    established.value <= 0
+  ) {
     errors++;
     established.placeholder = "Years in Business Must Be Filled";
   }
@@ -84,13 +97,15 @@ function validateForm() {
   return errors;
 }
 
-
 const newMessage = async (e) => {
   e.preventDefault();
   let theErrors = validateForm();
   console.log(theErrors);
 
   if (theErrors === 0) {
+    // 👉 NEW: be sure JS flag is set (in case inline script didn’t run)
+    if (jsFlagEl && jsFlagEl.value !== "1") jsFlagEl.value = "1";
+
     let newMessage = {
       formName: "Business Inquiry",
       formData: {
@@ -102,6 +117,12 @@ const newMessage = async (e) => {
         employees: employees.value,
         businessType: businessTypeValue, // Use the custom dropdown value
         description: description.value,
+
+        // 👉 NEW: anti-spam fields your middleware expects
+        form_token: tokenEl ? tokenEl.value : "",
+        form_ts: tsEl ? tsEl.value : "",
+        js_enabled: jsFlagEl ? jsFlagEl.value : "1",
+        ...(hpEl ? { [hpEl.name]: hpEl.value } : {}), // dynamic honeypot name
       },
     };
 
@@ -115,9 +136,9 @@ const newMessage = async (e) => {
       console.log("Form Submitted Successfully");
       formContainer.style.display = "none";
       confirmationMessage.style.display = "block";
-
     } else {
-      alert(response.statusText);
+      const txt = await response.text();
+      alert(txt || response.statusText);
     }
   }
 };

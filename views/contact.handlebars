@@ -17,11 +17,11 @@
             <!-- first / last -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label for="name" class="block text-[11px] tracking-wide font-semibold text-gray-700 uppercase mb-2">
+                <label for="name"  class="block text-[11px] tracking-wide font-semibold text-gray-700 uppercase mb-2">
                   First Name <span class="text-primaryQ">*</span>
                 </label>
                 <input
-                  id="name" type="text"
+                  id="name" type="text" name="name"
                   class="w-full px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-400 border border-gray-300 focus:ring-2 focus:ring-primaryQ/50 focus:border-primaryQ transition"
                   placeholder="Jane" />
               </div>
@@ -30,7 +30,7 @@
                   Last Name <span class="text-primaryQ">*</span>
                 </label>
                 <input
-                  id="lastName" type="text"
+                  id="lastName" type="text" name="lastName"
                   class="w-full px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-400 border border-gray-300 focus:ring-2 focus:ring-primaryQ/50 focus:border-primaryQ transition"
                   placeholder="Doe" />
               </div>
@@ -43,17 +43,17 @@
                   Email Address <span class="text-primaryQ">*</span>
                 </label>
                 <input
-                  id="email" type="email" aria-required="true" aria-describedby="emailHelp"
+                  id="email" type="email" name="email" aria-required="true" aria-describedby="emailHelp"
                   class="w-full px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-400 border border-gray-300 focus:ring-2 focus:ring-primaryQ/50 focus:border-primaryQ transition"
                   placeholder="you@company.com" />
                 <div id="emailHelp" class="text-xs text-gray-500 mt-2">We'll never share your email with anyone else.</div>
               </div>
               <div>
-                <label for="phone" class="block text-[11px] tracking-wide font-semibold text-gray-700 uppercase mb-2">
+                <label for="phone"  class="block text-[11px] tracking-wide font-semibold text-gray-700 uppercase mb-2">
                   Phone Number <span class="text-primaryQ">*</span>
                 </label>
                 <input
-                  id="phone" type="text" aria-required="true" aria-describedby="phoneHelp"
+                  id="phone" type="text" name="phone" aria-required="true" aria-describedby="phoneHelp"
                   class="w-full px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-400 border border-gray-300 focus:ring-2 focus:ring-primaryQ/50 focus:border-primaryQ transition"
                   placeholder="(555) 555-5555" />
                 <div id="phoneHelp" class="text-xs text-gray-500 mt-2">Optional — helps us reach you faster.</div>
@@ -66,11 +66,19 @@
                 Message <span class="text-primaryQ">*</span>
               </label>
               <textarea
-                id="message" rows="4" aria-required="true" aria-describedby="messageHelp"
+                id="message" rows="4" aria-required="true" name="message" aria-describedby="messageHelp"
                 class="w-full px-4 py-3 rounded-lg bg-white text-gray-900 placeholder-gray-400 border border-gray-300 focus:ring-2 focus:ring-primaryQ/50 focus:border-primaryQ transition"
                 placeholder="How can we help?"></textarea>
               <div id="messageHelp" class="text-xs text-gray-500 mt-2">A sentence or two is perfect.</div>
             </div>
+
+                        <!-- server tokens -->
+            <input type="hidden" name="form_token" value="{{token}}">
+            <input type="hidden" name="form_ts" value="{{ts}}">
+            <input type="hidden" name="js_enabled" value="0">
+
+            <!-- honeypot wrapper; field injected by JS -->
+            <div id="hp-wrap" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;"></div>
 
             <!-- submit -->
             <div class="mt-7">
@@ -153,7 +161,25 @@
   </div>
 </section>
 
+<script>
+  // flip JS flag
+  document.querySelector('input[name="js_enabled"]').value = '1';
+
+  // inject a hidden honeypot *after* load so scrapers that parse HTML won’t see it
+  (function(){
+    const wrap = document.getElementById('hp-wrap');
+    const hpInput = document.createElement('input');
+    hpInput.type = 'text';
+    hpInput.autocomplete = 'off';
+    hpInput.name = '{{hpName}}';      // random per request
+    hpInput.tabIndex = -1;
+    wrap.appendChild(hpInput);
+  })();
+</script>
+
 
 
 <!-- keep your external handler -->
 <script src="/assets/js/contact.js"></script>
+
+

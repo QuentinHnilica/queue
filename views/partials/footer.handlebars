@@ -66,14 +66,22 @@
       <div>
         <h3 class="text-lg font-semibold text-primaryQ mb-4">Subscribe to our Newsletter</h3>
         <p class="text-sm text-gray-400 mb-4">Bi-Weekly digest of Blogposts and updates put out by Queue Development!</p>
-          <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
-            <input type="email" id="email" name="email" placeholder="Email address"
-              class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ bg-gray-700 text-white">
-            <button type="submit"
-              class="relative bg-primaryQ text-white text-md font-semibold px-4 py-2 rounded-lg shadow-lg transition hover:bg-opacity-80">
-              Get Started
-            </button>
-          </form>
+<form id="newsletterForm" class="flex flex-col sm:flex-row gap-2">
+  <input type="email" id="email" name="email" placeholder="Email address"
+    class="px-4 py-2 w-full sm:w-auto rounded-md focus:outline-none focus:ring focus:ring-primaryQ bg-gray-700 text-white">
+
+  <!-- anti-spam fields -->
+  <input type="hidden" name="form_token" value="{{token}}">
+  <input type="hidden" name="form_ts"    value="{{ts}}">
+  <input type="hidden" name="js_enabled" value="0">
+  <div id="hp-wrap" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;"></div>
+
+  <button type="submit"
+    class="relative bg-primaryQ text-white text-md font-semibold px-4 py-2 rounded-lg shadow-lg transition hover:bg-opacity-80">
+    Get Started
+  </button>
+</form>
+
         <p id="newsletterMessage" class="text-sm mt-2"></p>
       </div>
     </div>
@@ -145,11 +153,19 @@
       <a href="/contact" class="btn-outline-sm w-full text-center">Contact Form</a>
       <a href="/#estimator" class="btn-outline-sm w-full text-center">Try the Estimator</a>
     </div>
-  <form id="sticky-contact-form" class="mt-3 space-y-2">
-    <input type="email" id="sticky-email" name="email" placeholder="Your email" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
-    <textarea name="message" id="sticky-message" rows="2" placeholder="Ask a quick question…" class="w-full rounded-lg border border-gray-300 px-3 py-2"></textarea>
-    <button class="btn-grad w-full" id="sticky-sub" type="submit">Send</button>
-  </form>
+<form id="sticky-contact-form" class="mt-3 space-y-2">
+  <input type="email" id="sticky-email" name="email" placeholder="Your email" class="w-full rounded-lg border border-gray-300 px-3 py-2" />
+  <textarea name="message" id="sticky-message" rows="2" placeholder="Ask a quick question…" class="w-full rounded-lg border border-gray-300 px-3 py-2"></textarea>
+
+  <!-- anti-spam hidden fields -->
+  <input type="hidden" name="form_token" value="{{token}}">
+  <input type="hidden" name="form_ts"    value="{{ts}}">
+  <input type="hidden" name="js_enabled" value="0">
+  <div id="hp-wrap" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;"></div>
+
+  <button class="btn-grad w-full" id="sticky-sub" type="submit">Send</button>
+</form>
+
   </div>
 </footer>
 
@@ -157,6 +173,23 @@
 
   <script src="/assets/js/newsletter.js"></script>
     <script src="/assets/js/sticky-form.js"></script>
+
+    <script>
+  // flip JS flag
+  document.querySelector('input[name="js_enabled"]')?.setAttribute('value','1');
+  // inject honeypot with per-request random name
+  (function(){
+    const wrap = document.getElementById('hp-wrap');
+    if (!wrap) return;
+    const hp = document.createElement('input');
+    hp.type = 'text';
+    hp.autocomplete = 'off';
+    hp.name = '{{hpName}}';
+    hp.tabIndex = -1;
+    wrap.appendChild(hp);
+  })();
+</script>
+
 
 <script>
 // Sticky chat + exit/dismiss

@@ -8,6 +8,11 @@ const fs = require("fs");
 const sharp = require("sharp");
 
 const { sendLeadNotification } = require("./mailer");
+const {
+  contactLimiter,
+  antiSpamValidate,
+  prepareFormTokens,
+} = require("./Middleware/antiSpam");
 
 // ✅ Define upload path
 const UPLOADS_DIR = path.join("/mnt/data", "uploads");
@@ -90,12 +95,20 @@ router.get("/about-us", async (req, res) => {
   res.render("about");
 });
 
-router.get("/contact", async (req, res) => {
-  res.render("contact");
+// ✅ Keep only this
+router.get('/contact', prepareFormTokens, (req, res) => {
+  res.render('contact', {
+    token: res.locals.token,
+    ts: res.locals.ts,
+    hpName: res.locals.hpName,
+  });
 });
 
-router.get("/Book-A-Demo", async (req, res) => {
-  res.render("packageForm");
+// ❌ Remove the extra token/ts generation you had in this handler
+
+
+router.get("/Book-A-Demo", prepareFormTokens, async (req, res) => {
+  res.render("packageForm"); // will receive {{token}}, {{ts}}, {{hpName}}
 });
 
 router.get("/products/web-development", async (req, res) => {
@@ -147,36 +160,60 @@ router.get("/products/web-applications", async (req, res) => {
   res.render("webApplications");
 });
 
-router.post("/contact/submit", async (req, res) => {
-  try {
-    // (Optional) normalize source so your email shows where it came from
-    const payload = { ...req.body, source: "contact" };
-    const newMess = await Leads.create(payload);
 
-    // try to email the client; don't fail the lead creation if email breaks
-    sendLeadNotification({
-      clientEmail: process.env.CLIENT_NOTIFY_EMAIL,
-      lead: newMess.toJSON ? newMess.toJSON() : newMess,
-    }).catch((e) => console.error("Lead email failed:", e));
 
-    res.status(200).json(newMess);
-  } catch (err) {
-    res.status(400).json(err);
+
+router.post(
+  "/contact/submit",
+  contactLimiter,
+  antiSpamValidate,
+  async (req, res) => {
+    try {
+      // (Optional) normalize source so your email shows where it came from
+      const payload = { ...req.body, source: "contact" };
+      const newMess = await Leads.create(payload);
+
+      // try to email the client; don't fail the lead creation if email breaks
+      sendLeadNotification({
+        clientEmail: process.env.CLIENT_NOTIFY_EMAIL,
+        lead: newMess.toJSON ? newMess.toJSON() : newMess,
+      }).catch((e) => console.error("Lead email failed:", e));
+
+      res.status(200).json(newMess);
+    } catch (err) {
+      res.status(400).json(err);
+      console.error(err, "not able to get it")
+    }
   }
-});
+);
 
-router.post("/consult/submit", async (req, res) => {
+// POST: protect + clean before saving
+router.post('/consult/submit', contactLimiter, antiSpamValidate, async (req, res) => {
   try {
-    const payload = { ...req.body, source: "consult" };
+    const { formName, formData = {} } = req.body;
+
+    // strip anti-spam fields before persisting
+    const {
+      form_token,
+      form_ts,
+      js_enabled,
+      [req.session.hpName]: _hp,
+      ...clean
+    } = formData;
+
+    const payload = { formName, formData: clean, source: 'consult' };
+
     const newMess = await Leads.create(payload);
 
+    // fire-and-forget email
     sendLeadNotification({
       clientEmail: process.env.CLIENT_NOTIFY_EMAIL,
       lead: newMess.toJSON ? newMess.toJSON() : newMess,
-    }).catch((e) => console.error("Lead email failed:", e));
+    }).catch(e => console.error('Lead email failed:', e));
 
     res.status(200).json(newMess);
   } catch (err) {
+    console.error('consult submit error', err);
     res.status(400).json(err);
   }
 });

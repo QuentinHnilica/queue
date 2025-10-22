@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'support@queuedevelop.com',
-    pass: '@8HcA71K}Rk6',
+    pass: 's@dMoose85!@#$',
   },
 });
 
@@ -30,7 +30,7 @@ router.post('/newsletter/subscribe', async (req, res) => {
     console.log('Subscriber saved:', subscriber);
 
     await transporter.sendMail({
-      from: 'support@queuedevelop.com',
+      from: "support@queuedevelop.com",
       to: email,
       subject: "Thanks for subscribing!",
       html: `
@@ -39,7 +39,7 @@ router.post('/newsletter/subscribe', async (req, res) => {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to SPLYR</title>
+    <title>Welcome to Queue Development</title>
   </head>
   <body style="font-family:Arial, sans-serif;background-color:#fefefe;margin:0;padding:0;">
     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fefefe;">
@@ -49,7 +49,9 @@ router.post('/newsletter/subscribe', async (req, res) => {
             <!-- Header -->
             <tr>
               <td align="center" style="padding-bottom: 20px;">
-                <h1 style="color:#000000;margin:0;font-size:24px;">Welcome to <span style="color:#ed1b24;">SPLYR</span> — Smarter Shopping Starts Here</h1>
+                <h1 style="color:#000000;margin:0;font-size:24px;">
+                  Welcome to <span style="color:#df8327;">Queue Development</span> — Where Speed Meets UX
+                </h1>
               </td>
             </tr>
 
@@ -58,38 +60,49 @@ router.post('/newsletter/subscribe', async (req, res) => {
               <td style="color:#000000;font-size:16px;line-height:1.6;padding: 0 20px;">
                 <p style="margin-bottom: 16px;">
                   Hey there 👋<br><br>
-                  Thanks for joining <strong>SPLYR Trade Post</strong> — your new go-to for curated goods straight from trusted Chinese OEM suppliers.
+                  Thanks for subscribing to the <strong>Queue Development Newsletter</strong>.
                 </p>
                 <p style="margin-bottom: 16px;">
-                  We built this platform to help shoppers like you skip inflated retail prices, middlemen, and the headaches of international sourcing.
+                  Every other week, you’ll get concise, practical insights on:
                 </p>
+                <ul style="margin:0 0 16px 20px;padding:0;">
+                  <li>Improving website speed and Core Web Vitals</li>
+                  <li>Design patterns that lift conversions</li>
+                  <li>SEO tactics that compound over time</li>
+                  <li>Case studies from real client projects</li>
+                  <li>Occasional templates, checklists, and tools</li>
+                </ul>
                 <p style="margin-bottom: 24px;">
-                  As a welcome gift, here’s <strong>10% off your first order</strong>:
+                  No fluff—just tactics you can apply this week.
                 </p>
-                <div style="text-align: center; font-size: 20px; font-weight: bold; padding: 12px; background-color: #f2f2f2; border-radius: 6px; margin-bottom: 24px;">
-                  🎁 Discount Code: <span style="color:#ed1b24;">SPLYR10</span>
-                </div>
-                <p style="margin-bottom: 32px; text-align: center;">
-                  Use it at checkout — no minimum purchase required.
-                </p>
-                <div style="text-align: center;">
-                  <a href="https://www.splyrtradepost.com" style="background-color:#1dede2;color:#000000;text-decoration:none;font-weight:bold;padding:12px 24px;border-radius:6px;display:inline-block;">
-                    Shop Now & Save 10%
+
+                <!-- CTA -->
+                <div style="text-align: center; margin: 28px 0;">
+                  <a href="https://www.queuedevelop.com/Book-A-Demo"
+                     style="background-color:#df8327;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 24px;border-radius:6px;display:inline-block;">
+                    Book a Demo
+                  </a>
+                  <div style="height:10px;"></div>
+                  <a href="https://www.queuedevelop.com/contact"
+                     style="color:#df8327;text-decoration:underline;font-weight:bold;">
+                    Start a Project Conversation →
                   </a>
                 </div>
+
+                <p style="margin-bottom: 0;">
+                  If you ever have a question you want us to cover, just reply to this email—we read every message.
+                </p>
               </td>
             </tr>
 
-            <!-- New Section: We're Just Getting Started -->
+            <!-- Social / Follow -->
             <tr>
-              <td style="padding: 40px 20px 20px; text-align: center; font-size: 16px; color: #000000;">
-                <h2 style="font-size:18px; font-weight:bold; margin-bottom: 12px;">We’re Just Getting Started 🚀</h2>
-                <p style="margin-bottom: 16px;">
-                  SPLYR is starting small — handpicking only the suppliers and products we trust.
-                  But we’re adding more OEMs and new finds every day.
-                </p>
-                <p style="margin-bottom: 0;">
-                  Keep checking back for fresh drops, trusted factories, and smarter ways to shop the global supply chain.
+              <td style="padding: 30px 20px 0; text-align: center; font-size: 14px; color: #000000;">
+                <p style="margin: 0 0 8px;">Follow us for quick tips and updates:</p>
+                <p style="margin: 0;">
+                  <a href="https://www.linkedin.com/company/queue-development-llc/" style="color:#df8327;text-decoration:underline;">LinkedIn</a>
+                  &nbsp;•&nbsp;
+                  <a href="https://www.queuedevelop.com/blog" style="color:#df8327;text-decoration:underline;">Blog</a>
                 </p>
               </td>
             </tr>
@@ -97,14 +110,17 @@ router.post('/newsletter/subscribe', async (req, res) => {
             <!-- Footer / Unsubscribe -->
             <tr>
               <td style="padding-top: 40px; text-align: center; font-size: 12px; color: #666;">
-                <p style="margin-bottom: 4px;">You're receiving this email because you signed up for updates from SPLYR Trade Post.</p>
-                <p style="margin-bottom: 8px;">
-                  If you'd rather not receive emails from us, you can
-                  <a href="https://www.queuedevelop.com/unsubscribe/${encodeURIComponent(
-        formData.email
-      )}" style="color:#ed1b24;text-decoration:underline;">unsubscribe here</a>.
+                <p style="margin-bottom: 4px;">
+                  You’re receiving this email because you opted in at Queue Development.
                 </p>
-                <p style="margin: 4px 0;">SPLYR Trade Post</p>
+                <p style="margin-bottom: 8px;">
+                  If you’d rather not receive emails from us, you can
+                  <a href="https://www.queuedevelop.com/unsubscribe/${encodeURIComponent(
+                    email
+                  )}"
+                     style="color:#df8327;text-decoration:underline;">unsubscribe here</a>.
+                </p>
+                <p style="margin: 4px 0;">Queue Development, LLC</p>
               </td>
             </tr>
           </table>
@@ -113,6 +129,7 @@ router.post('/newsletter/subscribe', async (req, res) => {
     </table>
   </body>
 </html>
+
         `,
     });
     console.log('Confirmation email sent to:', email);

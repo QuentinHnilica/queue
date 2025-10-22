@@ -123,6 +123,15 @@
           ></textarea>
         </div>
 
+        <!-- required hidden fields -->
+        <input type="hidden" name="form_token" value="{{token}}">
+        <input type="hidden" name="form_ts"    value="{{ts}}">
+        <input type="hidden" name="js_enabled" value="0">
+
+        <!-- honeypot container (hidden) -->
+        <div id="hp-wrap" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;overflow:hidden;"></div>
+
+
         <button
           type="submit"
           class="relative bg-primaryQ p-4 px-10 rounded-lg overflow-hidden group w-full"
@@ -147,6 +156,25 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  // mark that JS executed
+  document.querySelector('input[name="js_enabled"]').value = '1';
+
+  // inject honeypot with the per-request random name
+  (function(){
+    const wrap = document.getElementById('hp-wrap');
+    if (!wrap) return;
+    const hp = document.createElement('input');
+    hp.type = 'text';
+    hp.autocomplete = 'off';
+    hp.name = '{{hpName}}';     // from prepareFormTokens
+    hp.tabIndex = -1;
+    wrap.appendChild(hp);
+  })();
+</script>
+
 
 <style>
 /* Custom dropdown styles */

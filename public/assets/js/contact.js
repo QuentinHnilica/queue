@@ -1,73 +1,84 @@
-const sub = document.querySelector("#Sub");
-const name1 = document.querySelector("#name");
-const name2 = document.querySelector("#lastName");
-const email = document.querySelector("#email");
-const phone = document.querySelector("#phone");
-const message = document.querySelector("#message");
+// /assets/js/contact.js
+(() => {
+  console.log("hello?");
 
-function validateFourm() {
-  let errors = 0;
+  const oldForm = document.getElementById("contact-form");
+  if (!oldForm) return;
 
-  if (name1.value == null || name1.value == "") {
-    errors++;
-    name1.placeholder = "Name Must Be Filled";
+  // Remove any previously-attached handlers from other scripts
+  const f = oldForm.cloneNode(true); // deep clone (keeps inputs, kills listeners)
+  oldForm.parentNode.replaceChild(f, oldForm);
+
+  // Re-query elements from the *new* form
+  const btn = f.querySelector("#Sub");
+
+  // Prevent native submit & perform our JSON submit (works for click *and* Enter)
+  f.setAttribute("novalidate", "");
+  f.addEventListener(
+    "submit",
+    (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      submitAsJson(); // <-- actually submit here
+    },
+    { capture: true }
+  );
+
+  // (Optional) also bind the button; not strictly needed since submit handles it
+  if (btn) {
+    console.log("Btn Real");
+    btn.addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        console.log("Hellllloo??");
+        // Trigger form submit path (so Enter & click use same flow)
+        f.requestSubmit ? f.requestSubmit() : submitAsJson();
+      },
+      { capture: true }
+    );
   }
-    if (name2.value == null || name2.value == "") {
-      errors++;
-      name2.placeholder = "Name Must Be Filled";
-    }
 
-  if (email.value == null || email.value == "") {
-    errors++;
-    email.placeholder = "email Must Be Filled";
-  }
+  async function submitAsJson() {
+    // your existing validation
+    if (typeof validateFourm === "function" && validateFourm() !== 0) return;
 
-  if (phone.value == null || phone.value.length < 10) {
-    errors++;
-    phone.value = "";
-    phone.placeholder = "phone Must Valid";
-  }
+    const hpEl = document.querySelector("#hp-wrap input");
 
-  if (message.value == null || message.value == "") {
-    errors++;
-    message.placeholder = "message Must Be Filled";
-  }
-
-  return errors;
-}
-
-const newMessage = async (e) => {
-      const form = document.getElementById("contact-form");
-  e.preventDefault();
-  let theErrors = validateFourm();
-  console.log(theErrors);
-
-  if (theErrors === 0) {
-    let newMessage = {
+    const payload = {
       formName: "Contact Us",
-      formData:{
-      firstName: name1.value,
-      lastName: name2.value,
-      email: email.value,
-      phone: phone.value,
-      message: message.value,},
+      formData: {
+        firstName: document.getElementById("name").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+        form_token: document.querySelector('input[name="form_token"]').value,
+        form_ts: document.querySelector('input[name="form_ts"]').value,
+        js_enabled: document.querySelector('input[name="js_enabled"]').value,
+        ...(hpEl ? { [hpEl.name]: hpEl.value } : {}),
+      },
     };
 
-    const response = await fetch("/contact/submit", {
+    console.log("about to POST JSON", payload);
+
+    const r = await fetch("/contact/submit", {
       method: "POST",
-      body: JSON.stringify(newMessage),
       headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
 
-    if (response.ok) {
-            const header = document.querySelector("section .text-left");
-            if (header) header.innerHTML = "";
-            form.innerHTML =
-              '<h3 class="text-xl font-semibold text-center text-gray-900">Thank you for reaching out — a support agent will be in touch shortly!</h3>';
+    if (r.ok) {
+      const header = document.querySelector("section .text-left");
+      if (header) header.innerHTML = "";
+      f.innerHTML =
+        '<h3 class="text-xl font-semibold text-center text-gray-900">Thank you for reaching out — a support agent will be in touch shortly!</h3>';
     } else {
-      alert(response.statusText);
+      const txt = await r.text();
+      alert(txt || "Submission failed.");
     }
   }
-};
-
-sub.addEventListener("click", newMessage);
+})();
