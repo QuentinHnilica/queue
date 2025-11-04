@@ -20,7 +20,7 @@ module.exports = {
     extend: {
       colors: {
         primaryQ: "#df8327", // Custom orange color
-        primaryQDark: "#b7691b",
+        primaryQDark: "#8a4a12",
         primaryQLight: "#eaae73",
       },
       scale: {
